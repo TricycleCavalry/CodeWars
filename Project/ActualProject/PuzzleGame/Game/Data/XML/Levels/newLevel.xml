@@ -30,6 +30,7 @@
     <Block BlockId="BlockingBlock" Tile="13 2"/>
     <Block BlockId="BlockingBlock" Tile="14 2"/>
     <Block BlockId="BlockingBlock" Tile="15 2"/>
+	<Block BlockId="ControllableBlock" Tile="0 3"/>
     <Block BlockId="BlockingBlock" Tile="10 3"/>
     <Block BlockId="BlockingBlock" Tile="11 3"/>
     <Block BlockId="BlockingBlock" Tile="12 3"/>
