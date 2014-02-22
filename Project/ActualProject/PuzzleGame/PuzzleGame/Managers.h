@@ -3,6 +3,7 @@
 
 #include  "ControllManager.h"
 #include "BlockManager.h"
+#include "SpriteManager.h"
 
 
 class Managers
@@ -14,6 +15,7 @@ public:
 public:
 	ControllManager myControllManager;
 	BlockManager myBlockManager;
+	SpriteManager mySpriteManager;
 
 
 };
