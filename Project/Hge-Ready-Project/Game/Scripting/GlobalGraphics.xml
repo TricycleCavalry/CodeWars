@@ -1,0 +1,57 @@
+<Graphic
+	Type = "Sprite" 
+	SpriteSheetId = "slurp"
+	GraphicId ="slurp"
+	SpriteSheetRectangle = "0 0 64 12"
+	Origin = "32 6"
+	>
+</Graphic>
+
+<Graphic
+	Type = "Sprite"
+	SpriteSheetId = "slurp"
+	GraphicId = "NULL"
+	SpriteSheetRectangle = "30 4 4 4"
+	Origin = "2 2"
+	>
+</Graphic>
+
+<Graphic
+	Type = "Sprite"
+	SpriteSheetId = "RegularEnemy"
+	GraphicId = "RegularEnemy"
+	SpriteSheetRectangle = "0 0 32 32"
+	Origin = "16 16"
+	>
+</Graphic>
+
+<Graphic
+	Type = "Font"
+	FilePath = "Graphics\Fonts\SagoeUI12.fnt"
+	FontId = "UI12"
+	Color = "255 255 255 255">	
+</Graphic>
+
+<!--
+<Graphic
+	Type = "StaticAnimation" 
+	SpriteSheetId = "HealthPickup"
+	GraphicId ="HealthPickup"
+	SpriteSheetRectangle = "0 0 64 124"
+	Orgin = "32 62"
+	BlendMode = "TOMAT"	
+	Interval = "0.1"
+	NumberOfImages = "4"
+	Loop = "true"
+	>
+</Graphic>
+
+<Graphic
+	Type = "DistortionMesh"
+	SpriteSheetId = "WeaponStoreBackGround"
+	GraphicId = "WeaponStore"
+	SpriteSheetRectangle = "0 0 1280 1024"
+	BlendMode = "TOMAT"
+	>
+</Graphic>
+-->

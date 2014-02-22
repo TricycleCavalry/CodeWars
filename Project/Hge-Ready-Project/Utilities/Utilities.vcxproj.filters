@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Component System">
+      <UniqueIdentifier>{787e7d36-854a-4e8e-9658-ffe10904b65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component System\Component">
+      <UniqueIdentifier>{c58f8981-5fee-4f6d-9ff3-0b2e05966271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component System\Entity">
+      <UniqueIdentifier>{4d660cab-8c62-4495-8e69-37d0cffe79f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time">
+      <UniqueIdentifier>{c5549ff9-9a53-4af5-bc75-2e8f7f059cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time\SystemTime">
+      <UniqueIdentifier>{5b7226ec-8c3d-4619-bf14-e1dae00fe73d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time\TimeManager">
+      <UniqueIdentifier>{76435e1c-33dc-4ad2-a641-342d68cb2c13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time\Timer">
+      <UniqueIdentifier>{1c27fa25-e364-4f0b-aebd-317240b87c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arrays">
+      <UniqueIdentifier>{4ba3a82d-2354-4a92-a45a-2dadae712033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arrays\GrowingArray">
+      <UniqueIdentifier>{847e1516-c4b9-47b7-82eb-349926b84e74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arrays\StaticArray">
+      <UniqueIdentifier>{bdf91f0c-ffd8-4e92-acb6-474d7031f219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Macros">
+      <UniqueIdentifier>{1162acb8-cbd5-42bf-bed8-995ca6206124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{dcf8a6af-e24b-4fde-8280-08918033c8f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug\File">
+      <UniqueIdentifier>{7d2b838a-d43e-4fe1-b804-1e3a8083ae90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug\Assert">
+      <UniqueIdentifier>{9bfe3669-443f-4773-8441-6ce53468bc7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug\StackWalker">
+      <UniqueIdentifier>{5cd12924-92fb-4e08-986c-407ca59bcf80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML">
+      <UniqueIdentifier>{cd22a471-ecb1-4470-9175-5e14fc36913e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML\XMLWrapper">
+      <UniqueIdentifier>{9d3d52c3-62c2-4f28-a9f0-f70a8e79a43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{3e9292a7-f83f-49ec-bfe2-ae4b99002421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Shapes">
+      <UniqueIdentifier>{dd36a2ac-e6a5-4c4c-a67b-e184d95b3b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Shapes\Rect">
+      <UniqueIdentifier>{ba540dfa-7d9a-4ce4-aa6e-de26bf33bc1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Shapes\Circle">
+      <UniqueIdentifier>{de58f30f-6deb-477f-b4a1-c09d4eb8fde4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Vector">
+      <UniqueIdentifier>{04213f8b-fb54-485f-a11d-8c7064258513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Matrix">
+      <UniqueIdentifier>{e65cbd2e-febc-4351-a886-460414d31e7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{513c13ca-badc-4741-aa8d-af076f8e3adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\LuaBind">
+      <UniqueIdentifier>{61a91538-3712-4ab6-aa17-2646c4140fcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\LuaState">
+      <UniqueIdentifier>{c7afa727-937c-4e0f-9c0d-3c40d8bba69a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Example">
+      <UniqueIdentifier>{b803f6fa-0f34-4618-a64d-cace652e909b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Example\LuaObject">
+      <UniqueIdentifier>{e4e81a46-a703-4a37-a166-d48ee85794ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Example\Object">
+      <UniqueIdentifier>{b4726154-a0d7-4bc7-9e08-f8183fd01e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Intersections">
+      <UniqueIdentifier>{4003858e-1085-4922-918f-456080953669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component System\ComponentTypes">
+      <UniqueIdentifier>{5187e501-ba6c-4795-9056-5417c988ad89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\LuaUtilities">
+      <UniqueIdentifier>{bc277320-4255-4de6-97af-ed823e59338d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\LuaState\ScriptStruct">
+      <UniqueIdentifier>{6a2675f0-61d1-4694-97f2-2ab49cd19998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VTune">
+      <UniqueIdentifier>{40a6cef6-d8c1-4244-a52c-e83cab093779}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Component.cpp">
+      <Filter>Component System\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Component System\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="TI_Time.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemTime.cpp">
+      <Filter>Time\SystemTime</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Time\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Time\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Debug\File</Filter>
+    </ClCompile>
+    <ClCompile Include="StackWalker\StackWalker.cpp">
+      <Filter>Debug\StackWalker</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLWrapper.cpp">
+      <Filter>XML\XMLWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Math\Shapes\Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Math\Shapes\Circle</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaState.cpp">
+      <Filter>Lua\LuaState</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaObject.cpp">
+      <Filter>Lua\Example\LuaObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Lua\Example\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersections.cpp">
+      <Filter>Math\Intersections</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaUtilities.cpp">
+      <Filter>Lua\LuaUtilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Component.h">
+      <Filter>Component System\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Component System\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="TI_Time.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemTime.h">
+      <Filter>Time\SystemTime</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Time\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Time\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="GrowingArray.h">
+      <Filter>Arrays\GrowingArray</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticArray.h">
+      <Filter>Arrays\StaticArray</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonMacros.h">
+      <Filter>Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Debug\File</Filter>
+    </ClInclude>
+    <ClInclude Include="DL_Assert.h">
+      <Filter>Debug\Assert</Filter>
+    </ClInclude>
+    <ClInclude Include="StackWalker\stackwalker.h">
+      <Filter>Debug\StackWalker</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLWrapper.h">
+      <Filter>XML\XMLWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Math\Shapes\Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Math\Shapes\Circle</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix33.h">
+      <Filter>Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix44.h">
+      <Filter>Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaBind.h">
+      <Filter>Lua\LuaBind</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaState.h">
+      <Filter>Lua\LuaState</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaObject.h">
+      <Filter>Lua\Example\LuaObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Lua\Example\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersections.h">
+      <Filter>Math\Intersections</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentTypes.h">
+      <Filter>Component System\ComponentTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaUtilities.h">
+      <Filter>Lua\LuaUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptStruct.h">
+      <Filter>Lua\LuaState\ScriptStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="VTune.h">
+      <Filter>VTune</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

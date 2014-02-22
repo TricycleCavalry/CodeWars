@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Input">
+      <UniqueIdentifier>{72167c74-ee69-44e7-aa01-3fcdd61cf0a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\InputData">
+      <UniqueIdentifier>{4bc4f3dd-dad2-40cf-a541-8b512d365fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\InputHandler">
+      <UniqueIdentifier>{067acbfa-e2c0-40cf-898c-ecc57048871a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\InputReader">
+      <UniqueIdentifier>{0dfd3b1f-337e-487a-a8a8-6c27eb2d5b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\InputThreadHandler">
+      <UniqueIdentifier>{6c0a6b6a-585c-40e4-9822-c221f71e8e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PostMaster">
+      <UniqueIdentifier>{219338d6-8b32-41f3-aad2-be4494887fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PostMaster\Mail">
+      <UniqueIdentifier>{5e4efb73-4c63-4da1-b73d-fb0b0a3901b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PostMaster\MailingList">
+      <UniqueIdentifier>{dd5c3fa5-2b01-4f32-92dd-0fa1c6f2f4a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PostMaster\Subscriber">
+      <UniqueIdentifier>{0607d08b-aff5-486c-82fc-626c60fd15a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{ecd07e52-33c1-4ed4-b850-2f685705288b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\RenderData">
+      <UniqueIdentifier>{33cc17b6-00ea-400a-8351-8ffd125c061b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\ThreadRenderData">
+      <UniqueIdentifier>{840b05db-5a6e-4ffa-948c-d447234ee2ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factories">
+      <UniqueIdentifier>{28e3a2da-008d-4822-ac0e-2cb8103aaecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factories\BaseFactory">
+      <UniqueIdentifier>{58e6785d-d52e-43ab-a0f7-c5a4cb35373a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factories\BaseFactory\GraphicsFactory">
+      <UniqueIdentifier>{97d009d2-31a8-4b3c-be86-77a1d3e8e44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic">
+      <UniqueIdentifier>{672e7e82-5d38-4b53-b3dd-2618e600eebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic\Animation">
+      <UniqueIdentifier>{1c34adad-c489-4740-80e5-d4b16f2b3a82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic\Sprite">
+      <UniqueIdentifier>{573667f4-db9e-4306-99b3-95f3d3ee500d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic\NULLGraphic">
+      <UniqueIdentifier>{83ecce23-b1f9-45b0-b311-b6e261c47b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic\GraphicData">
+      <UniqueIdentifier>{b798980a-8a6e-49a8-b213-a02f0951410c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic\Font">
+      <UniqueIdentifier>{03c3fd82-3a42-45d4-89ef-a95c2d0937cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphic\DistortionMesh">
+      <UniqueIdentifier>{be2ec0d4-96bf-4072-97ec-ec7211a46ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{1af583ec-85c8-4a70-b82e-1de3644db3cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StateStack">
+      <UniqueIdentifier>{00121769-7b75-4a07-bd0b-d0a3d498697c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StateStack\State">
+      <UniqueIdentifier>{8c2f6eb7-1f9e-4fae-b92a-cdcf198ba630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factories\BaseFactory\CollisionFactory">
+      <UniqueIdentifier>{68bf0cd0-70d4-46ac-81d2-4fc75a138243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem">
+      <UniqueIdentifier>{45dfd19d-fa65-42f9-a2cc-59da8c0f949d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem\Collision">
+      <UniqueIdentifier>{f2d48f27-dfe1-4ed0-9957-a77c46cb51d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem\Collision\CollisionBox">
+      <UniqueIdentifier>{5a22bbbe-c3ef-47f6-9f4e-e06e9d60fd07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem\Collision\CollisionCircle">
+      <UniqueIdentifier>{62f79c9a-4d58-49f4-9965-e0f09be4b90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem\Collision\CollisionPoint">
+      <UniqueIdentifier>{42b3d50b-d51a-41a1-9322-0e8ef5c960b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem\CollisionData">
+      <UniqueIdentifier>{09e00ad9-c8a6-46c7-9f6c-4ff62806c5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CollisionSystem\CollisionFeedback">
+      <UniqueIdentifier>{4681c359-bf45-46ce-8875-9d218e782727}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InputData.h">
+      <Filter>Input\InputData</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Input\InputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="InputReader.h">
+      <Filter>Input\InputReader</Filter>
+    </ClInclude>
+    <ClInclude Include="InputThreadHandler.h">
+      <Filter>Input\InputThreadHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="PostMaster.h">
+      <Filter>PostMaster</Filter>
+    </ClInclude>
+    <ClInclude Include="Mail.h">
+      <Filter>PostMaster\Mail</Filter>
+    </ClInclude>
+    <ClInclude Include="MailType.h">
+      <Filter>PostMaster\Mail</Filter>
+    </ClInclude>
+    <ClInclude Include="MailingList.h">
+      <Filter>PostMaster\MailingList</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
+      <Filter>PostMaster\Subscriber</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderData.h">
+      <Filter>Renderer\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadRenderData.h">
+      <Filter>Renderer\ThreadRenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseFactory.h">
+      <Filter>Factories\BaseFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsFactory.h">
+      <Filter>Factories\BaseFactory\GraphicsFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphic.h">
+      <Filter>Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Graphic\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Graphic\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="NULLGraphic.h">
+      <Filter>Graphic\NULLGraphic</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicData.h">
+      <Filter>Graphic\GraphicData</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Graphic\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Corners.h">
+      <Filter>Graphic\DistortionMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="DistortionMesh.h">
+      <Filter>Graphic\DistortionMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="StateStack.h">
+      <Filter>StateStack</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>StateStack\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="CollisionFactory.h">
+      <Filter>Factories\BaseFactory\CollisionFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionSystem.h">
+      <Filter>CollisionSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>CollisionSystem\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionBox.h">
+      <Filter>CollisionSystem\Collision\CollisionBox</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionCircle.h">
+      <Filter>CollisionSystem\Collision\CollisionCircle</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionPoint.h">
+      <Filter>CollisionSystem\Collision\CollisionPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionData.h">
+      <Filter>CollisionSystem\CollisionData</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionFeedback.h">
+      <Filter>CollisionSystem\CollisionFeedback</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Input\InputHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="InputReader.cpp">
+      <Filter>Input\InputReader</Filter>
+    </ClCompile>
+    <ClCompile Include="InputThreadHandler.cpp">
+      <Filter>Input\InputThreadHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="PostMaster.cpp">
+      <Filter>PostMaster</Filter>
+    </ClCompile>
+    <ClCompile Include="MailingList.cpp">
+      <Filter>PostMaster\MailingList</Filter>
+    </ClCompile>
+    <ClCompile Include="Subscriber.cpp">
+      <Filter>PostMaster\Subscriber</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseFactory.cpp">
+      <Filter>Factories\BaseFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsFactory.cpp">
+      <Filter>Factories\BaseFactory\GraphicsFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphic.cpp">
+      <Filter>Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Graphic\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Graphic\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="NULLGraphic.cpp">
+      <Filter>Graphic\NULLGraphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Graphic\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="DistortionMesh.cpp">
+      <Filter>Graphic\DistortionMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="StateStack.cpp">
+      <Filter>StateStack</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="CollisionFactory.cpp">
+      <Filter>Factories\BaseFactory\CollisionFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionSystem.cpp">
+      <Filter>CollisionSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>CollisionSystem\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionBox.cpp">
+      <Filter>CollisionSystem\Collision\CollisionBox</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionCircle.cpp">
+      <Filter>CollisionSystem\Collision\CollisionCircle</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionPoint.cpp">
+      <Filter>CollisionSystem\Collision\CollisionPoint</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+#ifndef _COMPONENT_TYPES_HEADER_
+#define _COMPONENT_TYPES_HEADER_
+
+enum ComponentTypes
+{
+	CT_MOVEMENT_CONTROL,
+	CT_RENDER,
+	CT_SHOOTING_CONTROL,
+	CT_COLLISION,
+	CT_AI,
+};
+
+#endif

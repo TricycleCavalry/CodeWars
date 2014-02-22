@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{592c488b-5763-48d5-824b-f089262a726c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pre-Compiled Headers">
+      <UniqueIdentifier>{dea43755-19ac-4a6e-a888-b8f21d1945fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{a6e48579-e168-47ba-a580-ca264ec33aa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\GameState">
+      <UniqueIdentifier>{0b287dea-e49b-4084-b98b-4a40cea053b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Root">
+      <UniqueIdentifier>{c514c61e-5989-47ce-bf08-4fdcf2a68d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaInterpreter">
+      <UniqueIdentifier>{ca61986d-88c0-455a-b0f6-133c7e2044a3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="HGE_Template.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HGE_Template.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Pre-Compiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>States\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Root.cpp">
+      <Filter>Root</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterpreter.cpp">
+      <Filter>LuaInterpreter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Pre-Compiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Pre-Compiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Pre-Compiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>States\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="Root.h">
+      <Filter>Root</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterpreter.h">
+      <Filter>LuaInterpreter</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

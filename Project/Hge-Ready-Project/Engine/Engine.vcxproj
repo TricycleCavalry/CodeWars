@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DE8AD5E3-47E7-455C-9598-1D336776081B}</ProjectGuid>
+    <RootNamespace>Engine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Library\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <IncludePath>C:\Program Files %28x86%29\Intel\VTune Amplifier XE 2013\include;C:\Users\straja1\Documents\hge181\include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Intel\VTune Amplifier XE 2013\lib32;C:\Users\straja1\Documents\hge181\lib\vc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Library\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LibraryPath>C:\Program Files %28x86%29\Intel\VTune Amplifier XE 2013\lib32;C:\Users\straja1\Documents\hge181\lib\vc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Intel\VTune Amplifier XE 2013\include;C:\Users\straja1\Documents\hge181\include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Utilities;$(SolutionDir)Lua\lua-5.2.2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)$(Configuration).lib</OutputFile>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Utilities;$(SolutionDir)Lua\lua-5.2.2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)$(Configuration).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="CollisionBox.h" />
+    <ClInclude Include="CollisionCircle.h" />
+    <ClInclude Include="CollisionData.h" />
+    <ClInclude Include="CollisionFactory.h" />
+    <ClInclude Include="CollisionFeedback.h" />
+    <ClInclude Include="CollisionPoint.h" />
+    <ClInclude Include="CollisionSystem.h" />
+    <ClInclude Include="InputData.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InputReader.h" />
+    <ClInclude Include="InputThreadHandler.h" />
+    <ClInclude Include="PostMaster.h" />
+    <ClInclude Include="Mail.h" />
+    <ClInclude Include="MailType.h" />
+    <ClInclude Include="MailingList.h" />
+    <ClInclude Include="Subscriber.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderData.h" />
+    <ClInclude Include="ThreadRenderData.h" />
+    <ClInclude Include="BaseFactory.h" />
+    <ClInclude Include="GraphicsFactory.h" />
+    <ClInclude Include="Graphic.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="NULLGraphic.h" />
+    <ClInclude Include="GraphicData.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Corners.h" />
+    <ClInclude Include="DistortionMesh.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="StateStack.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Engine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CollisionBox.cpp" />
+    <ClCompile Include="CollisionCircle.cpp" />
+    <ClCompile Include="CollisionFactory.cpp" />
+    <ClCompile Include="CollisionPoint.cpp" />
+    <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="InputReader.cpp" />
+    <ClCompile Include="InputThreadHandler.cpp" />
+    <ClCompile Include="PostMaster.cpp" />
+    <ClCompile Include="MailingList.cpp" />
+    <ClCompile Include="Subscriber.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="BaseFactory.cpp" />
+    <ClCompile Include="GraphicsFactory.cpp" />
+    <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="NULLGraphic.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="DistortionMesh.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="StateStack.cpp" />
+    <ClCompile Include="Engine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.vcxproj">
+      <Project>{dea30783-6d46-431e-b2a3-dfb47dcf8f08}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

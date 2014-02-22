@@ -1,0 +1,2 @@
+<SpriteSheet Path = "Graphics\missile_projectile1.dds" SpriteSheetId = "slurp" IsMesh = "false"/>
+<SpriteSheet Path = "Graphics\RegularEnemy.png" SpriteSheetId = "RegularEnemy" IsMesh = "false"/>
