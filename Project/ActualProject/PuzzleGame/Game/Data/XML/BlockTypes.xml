@@ -1,0 +1,5 @@
+<BlockType BlockId = "BlockingBlock" Color = "1 1 1 1">	
+	<Attributes>
+		<Blocking/>
+	</Attributes>	
+</BlockType>
