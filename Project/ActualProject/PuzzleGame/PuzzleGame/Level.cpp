@@ -43,11 +43,11 @@ void Level::Update(const float& anElapsedTime)
 	}
 }
 
-void Level::Render()
+void Level::Render(const Vector2<float> &aCameraPosition)
 {
 	for(int i=0,count=myTiles.Count();i<count;i++)
 	{
-		myTiles[i].Render();
+		myTiles[i].Render(aCameraPosition);
 	}
 }
 

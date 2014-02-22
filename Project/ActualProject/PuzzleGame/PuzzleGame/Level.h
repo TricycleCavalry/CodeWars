@@ -16,7 +16,7 @@ public:
 	void Init(const Vector2<int>& someDimensions);
 
 	void Update(const float& anElapsedTime);
-	void Render();
+	void Render(const Vector2<float> &aCameraPosition);
 
 	Tile* GetTile(const Vector2<int>& aTilePosition);
 
