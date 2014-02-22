@@ -19,6 +19,7 @@ void Game::Init()
 
 void Game::Update(const float& anElapsedTime)
 {
+	myCamera.Update(anElapsedTime);
 	ROOT->GetManagers().myControllManager.Update(anElapsedTime);
 	myLevel->Update(anElapsedTime);
 }

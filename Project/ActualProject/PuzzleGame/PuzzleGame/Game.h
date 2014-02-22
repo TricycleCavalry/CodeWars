@@ -1,6 +1,8 @@
 #ifndef _GAME_HEADER_
 #define _GAME_HEADER_
 
+#include "Camera.h"
+
 class Level;
 
 class Game
@@ -17,6 +19,7 @@ private:
 	void LoadLevel();
 
 	Level* myLevel;
+	Camera myCamera;
 };
 
 #endif
