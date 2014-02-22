@@ -9,6 +9,7 @@
 #include "hgeSprite.h"
 #include "Vector2.h"
 #include "ROOT.h"
+#include "Containers.h"
 
 
 App::App(HGE& aHGE)
@@ -29,6 +30,7 @@ bool App::Init()
 	srand(static_cast<unsigned int>(time(NULL))); 
 	DL_Debug::Create();
 	Root::Create();
+	Root::GetInstance()->GetContainers().mySpriteManager.SetHGE(&myHGE);
 	myTimeManager.InitDefaults();
 
 	myGame.Init();

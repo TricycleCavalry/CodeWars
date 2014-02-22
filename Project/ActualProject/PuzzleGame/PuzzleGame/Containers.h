@@ -3,6 +3,7 @@
 
 #include "BlockContainer.h"
 #include "BlockAttributeContainer.h"
+#include "SpriteManager.h"
 
 struct Containers
 {
@@ -10,6 +11,7 @@ struct Containers
 	~Containers();
 	BlockContainer myBlockContainer;
 	BlockAttributeContainer myBlockAttributeContainer;
+	SpriteManager mySpriteManager;
 };
 
 #endif

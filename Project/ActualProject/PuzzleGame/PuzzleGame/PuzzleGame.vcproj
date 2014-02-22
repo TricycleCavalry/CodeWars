@@ -374,6 +374,30 @@
 				</File>
 			</Filter>
 		</Filter>
+		<Filter
+			Name="SpriteManager"
+			>
+			<File
+				RelativePath=".\SpriteManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SpriteManager.h"
+				>
+			</File>
+			<Filter
+				Name="SpriteWrapper"
+				>
+				<File
+					RelativePath=".\SpriteWrapper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SpriteWrapper.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
 		<File
 			RelativePath=".\main.cpp"
 			>
