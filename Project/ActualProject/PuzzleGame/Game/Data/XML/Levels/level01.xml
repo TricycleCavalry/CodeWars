@@ -1,4 +1,4 @@
-<Level GridDimensions="18 9">
+<Level GridDimensions="18 9" WinningTile = "15 4">
     <Block BlockId="BlockingBlock" Tile="0 0"/>
     <Block BlockId="BlockingBlock" Tile="1 0"/>
     <Block BlockId="BlockingBlock" Tile="2 0"/>
