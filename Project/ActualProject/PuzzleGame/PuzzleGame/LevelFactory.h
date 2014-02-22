@@ -18,10 +18,9 @@ public:
 	Level* CreateLevel(const std::string& aFilepath);
 
 private:
-	void CreateTiles(GrowingArray<Tile*>& someTiles, XmlElement& anXMLListElement);
-	void CreateBlocks(GrowingArray<Block*>& someBlocks, XmlElement& anXMLListElement);
+	void CreateBlocks(Level* aLevel, tinyxml2::XMLElement* aBlockElement);
 private:
-	std::string myCurrentLevelpath;
+	std::string myCurrentLevelFilePath;
 };
 
 #endif

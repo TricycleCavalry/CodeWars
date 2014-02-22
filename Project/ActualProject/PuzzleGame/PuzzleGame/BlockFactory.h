@@ -23,8 +23,8 @@ public:
 
 	Block* GetBlockType(StringId& aId);
 private:
-	void CreateBlockType(XmlElement* anXMLElement);
-	void CreateBlockAttributes(XmlElement* anXMLElement, Block* aBlock);
+	void CreateBlockType(tinyxml2::XMLElement* anXMLElement);
+	void CreateBlockAttributes(tinyxml2::XMLElement* anXMLElement, Block* aBlock);
 
 	std::map<StringId,Block*> myTypes;
 

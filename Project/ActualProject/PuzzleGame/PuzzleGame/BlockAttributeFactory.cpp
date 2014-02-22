@@ -19,7 +19,7 @@ BlockAttributeFactory::~BlockAttributeFactory()
 
 }
 
-void BlockAttributeFactory::CreateAttributeList(XmlElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes)
+void BlockAttributeFactory::CreateAttributeList(tinyxml2::XMLElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes)
 {
 	//someAttributes.RemoveAll();
 	tinyxml2::XMLElement* attributes = anAttributeListXML;
@@ -31,7 +31,7 @@ void BlockAttributeFactory::CreateAttributeList(XmlElement* anAttributeListXML, 
 	}
 	
 }
-BlockAttribute* BlockAttributeFactory::CreateAttributeFromType(XmlElement* anAttributeXml)
+BlockAttribute* BlockAttributeFactory::CreateAttributeFromType(tinyxml2::XMLElement* anAttributeXml)
 {
 	BlockAttribute* attribute = NULL;
 	
@@ -49,7 +49,7 @@ BlockAttribute* BlockAttributeFactory::CreateAttributeFromType(XmlElement* anAtt
 	return attribute;
 }
 
-BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(XmlElement* anAttributeXml)
+BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(tinyxml2::XMLElement* anAttributeXml)
 {
 	//TODO
 	//ControllableBlockAttribute* attribute = ROOT->CONTAINERS->BLOCK_ATTRIBUTE->GetNewControllableBlockAttribute();
@@ -62,7 +62,7 @@ BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(XmlEleme
 	return controllableAttribute;
 }
 
-BlockAttribute* BlockAttributeFactory::CreateBlockingBlockAttribute(XmlElement* anAttribute)
+BlockAttribute* BlockAttributeFactory::CreateBlockingBlockAttribute(tinyxml2::XMLElement* anAttribute)
 {
 	BlockAttributeBlockin* blockblockAttribute = new BlockAttributeBlockin();
 

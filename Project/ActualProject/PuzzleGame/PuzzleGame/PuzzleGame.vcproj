@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="PuzzleGame"
 	ProjectGUID="{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}"
 	RootNamespace="PuzzleGame"
@@ -366,14 +366,6 @@
 				</File>
 				<File
 					RelativePath=".\Tile.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="TileInfo"
-				>
-				<File
-					RelativePath=".\TileInfo.h"
 					>
 				</File>
 			</Filter>

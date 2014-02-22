@@ -3,13 +3,12 @@
 
 #include "GrowingArray.h"
 #include "Vector2.h"
-#include "TileInfo.h"
 
-class Tile;
-class Block;
+#include "Tile.h"
 
 class Level
 {
+	friend class LevelFactory;
 public:
 	Level(void);
 	~Level(void);
@@ -22,11 +21,11 @@ public:
 	Tile* GetTile(const Vector2<int>& aTilePosition);
 
 private:
-	int GetTileForPosition(const Vector2<int>& aPosition);
+	int GetIndexForPosition(const Vector2<int>& aPosition);
 
 	Vector2<int> myDimensions;
 
-	GrowingArray<TileInfo> myTiles;
+	GrowingArray<Tile> myTiles;
 };
 
 #endif

@@ -17,11 +17,10 @@ BlockFactory::~BlockFactory()
 
 void BlockFactory::LoadTypes(const std::string& aFilepath)
 {
-	XmlDoc* typeDoc = new XmlDoc();
-	typeDoc->LoadFile(aFilepath.c_str());
+	tinyxml2::XMLElement* typeDoc = XMLUTIL::LoadFile(aFilepath);
 
-	XmlElement* blockTypesList = typeDoc->FirstChildElement();
-	XmlElement* blockTypeIterator = blockTypesList->FirstChildElement();
+	tinyxml2::XMLElement* blockTypesList = typeDoc->FirstChildElement();
+	tinyxml2::XMLElement* blockTypeIterator = blockTypesList->FirstChildElement();
 
 	while(blockTypeIterator!=NULL)
 	{
@@ -35,7 +34,7 @@ Block* GetBlock(const char* aTypeId)
 	return NULL;
 }
 
-void BlockFactory::CreateBlockType(XmlElement* anXMLElement)
+void BlockFactory::CreateBlockType(tinyxml2::XMLElement* anXMLElement)
 {
 	Block* block = CONTAINERS.myBlockContainer.GetNewBlock();
 	myCurrentBlockBlockAttributes.RemoveAll();
@@ -51,8 +50,8 @@ void BlockFactory::CreateBlockType(XmlElement* anXMLElement)
 	myTypes[type] = block;
 }
 
-void BlockFactory::CreateBlockAttributes(XmlElement* anXMLElement, Block* aBlock)
+void BlockFactory::CreateBlockAttributes(tinyxml2::XMLElement* anXMLElement, Block* aBlock)
 {
-	XmlElement& attributesList = *anXMLElement->FirstChildElement("Attributes");
+	tinyxml2::XMLElement* attributesList = anXMLElement->FirstChildElement("Attributes");
 	//FACTORIES.myBlockAttributeFactory.CreateAttributeList(attributesList,aBlock->GetAttributes());
 }

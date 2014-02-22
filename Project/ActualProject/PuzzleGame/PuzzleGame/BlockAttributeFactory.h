@@ -14,16 +14,16 @@ public:
 
 
 	
-	void CreateAttributeList(XmlElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes);
+	void CreateAttributeList(tinyxml2::XMLElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes);
 
 private:
 	BlockAttribute* CreateBlockAttribute(tinyxml2::XMLElement* anBlockAttribute);
 	
 private:
-	BlockAttribute* CreateAttributeFromType(XmlElement* anAttribute);
+	BlockAttribute* CreateAttributeFromType(tinyxml2::XMLElement* anAttribute);
 	
-	BlockAttribute* CreateControllableBlockAttribute(XmlElement* anAttribute);
-	BlockAttribute* CreateBlockingBlockAttribute(XmlElement* anAttribute);
+	BlockAttribute* CreateControllableBlockAttribute(tinyxml2::XMLElement* anAttribute);
+	BlockAttribute* CreateBlockingBlockAttribute(tinyxml2::XMLElement* anAttribute);
 };
 
 #endif
