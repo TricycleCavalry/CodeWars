@@ -1,12 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PuzzleGame", "PuzzleGame\PuzzleGame.vcproj", "{AD903704-E5CA-4E7F-B274-FC5D78F42326}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utilities", "Utilities\Utilities.vcproj", "{43884794-3158-4103-942A-E20137CC8571}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PuzzleGame", "PuzzleGame\PuzzleGame.vcproj", "{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43884794-3158-4103-942A-E20137CC8571} = {43884794-3158-4103-942A-E20137CC8571}
+		{7E060FE5-68A3-42FF-A436-D80C66408C54} = {7E060FE5-68A3-42FF-A436-D80C66408C54}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcproj", "{7E060FE5-68A3-42FF-A436-D80C66408C54}"
 	ProjectSection(ProjectDependencies) = postProject
 		{43884794-3158-4103-942A-E20137CC8571} = {43884794-3158-4103-942A-E20137CC8571}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utilities", "Utilities\Utilities.vcproj", "{43884794-3158-4103-942A-E20137CC8571}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,14 +20,18 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD903704-E5CA-4E7F-B274-FC5D78F42326}.Debug|Win32.ActiveCfg = Debug|Win32
-		{AD903704-E5CA-4E7F-B274-FC5D78F42326}.Debug|Win32.Build.0 = Debug|Win32
-		{AD903704-E5CA-4E7F-B274-FC5D78F42326}.Release|Win32.ActiveCfg = Release|Win32
-		{AD903704-E5CA-4E7F-B274-FC5D78F42326}.Release|Win32.Build.0 = Release|Win32
 		{43884794-3158-4103-942A-E20137CC8571}.Debug|Win32.ActiveCfg = Debug|Win32
 		{43884794-3158-4103-942A-E20137CC8571}.Debug|Win32.Build.0 = Debug|Win32
 		{43884794-3158-4103-942A-E20137CC8571}.Release|Win32.ActiveCfg = Release|Win32
 		{43884794-3158-4103-942A-E20137CC8571}.Release|Win32.Build.0 = Release|Win32
+		{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}.Debug|Win32.Build.0 = Debug|Win32
+		{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}.Release|Win32.ActiveCfg = Release|Win32
+		{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}.Release|Win32.Build.0 = Release|Win32
+		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Debug|Win32.Build.0 = Debug|Win32
+		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Release|Win32.ActiveCfg = Release|Win32
+		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
