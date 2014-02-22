@@ -240,6 +240,10 @@
 					RelativePath=".\Block.h"
 					>
 				</File>
+				<File
+					RelativePath=".\BlockVariables.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="BlockAttribute"

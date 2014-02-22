@@ -8,6 +8,7 @@
 Block::Block(void)
 :	myIntersectingBlocks(4)
 ,	myAttributes(64)
+,	myDictionary(2048)
 {
 }
 
@@ -18,7 +19,12 @@ Block::~Block(void)
 void Block::Init(const Vector2<float>& aPosition, const Vector2<float>& someExtents)
 {
 	myPosition = aPosition;
-	myExtents = someExtents;	
+	myExtents = someExtents;
+	for(int i = 0; i < myAttributes.Count(); ++i)
+	{
+		myAttributes[i]->Init();
+	}
+
 }
 
 void Block::Update(const float anElapsedTime)
@@ -109,7 +115,7 @@ Block* Block::Copy()
 	Block* returnBlock = CONTAINERS.myBlockContainer.GetNewBlock();
 	for(int i = 0; i < myAttributes.Count(); ++i)
 	{
-		//returnBlock->AddAttribute(myAttributes[i]->Copy());
+		returnBlock->AddAttribute(myAttributes[i]->Copy());
 		//returnBlock->GetAttribute<BlockAttribute*>(static_cast<BlockAttributeType>(i)) ->SetOwner(returnBlock);
 	}
 	returnBlock->mySprite = mySprite;

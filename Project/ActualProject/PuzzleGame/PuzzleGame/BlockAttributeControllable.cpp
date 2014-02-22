@@ -4,6 +4,7 @@
 
 #include "Block.h"
 #include "Root.h"
+#include "OpaqueDictionary.h"
 
 BlockAttributeControllable::BlockAttributeControllable(void)
 :	BlockAttribute(BAT_CONTROLLABLE)
@@ -24,19 +25,19 @@ void BlockAttributeControllable::Init()
 }
 void BlockAttributeControllable::Update(const float anElapsedTime)
 {
-
 	GrowingArray<Block*> intersectingBlocks = myOwner->GetIntersectingBlocks();
 	for(int i = 0; i < intersectingBlocks.Count(); ++i)
 	{
-		break;
 		//TODO have it like dis?
-		//if(intersectingBlocks[i]->GetVariable("Blocked") == true)
+		if(intersectingBlocks[i]->myDictionary.Lookup(BlockVariables::Blocked) == true)
 		{
-			myIsMoving = false;
-			myOwner->SnapToGrid();
-			break;
-		}
-		
+			if(intersectingBlocks[i]->myDictionary.Get<bool>(BlockVariables::Blocked) == true)
+			{
+				myIsMoving = false;
+				myOwner->SnapToGrid();
+				break;
+			}
+		}		
 	}
 	if(myIsMoving == true)
 	{

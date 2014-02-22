@@ -7,6 +7,8 @@
 #include "GrowingArray.h"
 #include "StaticArray.h"
 #include "BlockAttributeType.h"
+#include "OpaqueDictionary.h"
+#include "BlockVariables.h"
 #include "SpriteWrapper.h"
 
 class BlockAttribute;
@@ -44,7 +46,8 @@ public:
 
 	Block* Copy();
 
-private:
+public:
+	OpaqueDictionary myDictionary;
 
 
 private:
@@ -55,12 +58,20 @@ private:
 	
 	SpriteWrapper mySprite;
 	Vector4f myBlockColor;
+
 };
 
 template<typename TYPE>
 TYPE* Block::GetAttribute(const BlockAttributeType aType)
 {
-	return reinterpret_cast<TYPE*>(myAttributes[aType]);
+	for(int i = 0; i < myAttributes.Count(); ++i)
+	{
+		if(myAttributes[i]->GetType() == aType)
+		{
+			return reinterpret_cast<TYPE*>(myAttributes[i]);
+		}
+	}
+	
 }
 
 #endif

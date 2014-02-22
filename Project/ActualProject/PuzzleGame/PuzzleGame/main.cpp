@@ -36,9 +36,6 @@ void HGE_Shutdown(HGE* aHGEInstance)
 	aHGEInstance->Release();
 }
 
-
-
-
 int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aPrevHInstance, LPSTR aCommandLine, int aNumberOfCommands)
 {
 	HGE* hgeEngine=HGE_Init();

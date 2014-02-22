@@ -10,6 +10,12 @@ BlockManager::~BlockManager(void)
 {
 }
 
+void BlockManager::Update(const float anElapsedTime)
+{
+}
+void BlockManager::Render(const Vector2<float>& aCameraPosition)
+{
+}
 void BlockManager::SetLevel(Level* aLevel)
 {
 	myLevel = aLevel;
