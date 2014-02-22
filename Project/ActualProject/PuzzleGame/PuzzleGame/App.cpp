@@ -23,9 +23,9 @@ App::~App()
 
 bool App::Init()
 {
-	HWND hWnd = GetForegroundWindow();
+	HWND hWnd = myHGE.System_GetState(HGE_HWND);
 	HINSTANCE hInstance = reinterpret_cast<HINSTANCE>(GetWindowLong(hWnd,GWL_HINSTANCE));
-	myInputThread.StartThread(hInstance,hWnd,myHGE.System_GetState(HGE_SCREENWIDTH),myHGE.System_GetState(HGE_SCREENHEIGHT),true);
+	InputHandler::Create(hInstance,hWnd,myHGE.System_GetState(HGE_SCREENWIDTH),myHGE.System_GetState(HGE_SCREENHEIGHT),true);
 	
 	srand(static_cast<unsigned int>(time(NULL))); 
 	DL_Debug::Create();

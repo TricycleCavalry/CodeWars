@@ -2,7 +2,6 @@
 #define APPLICATION_HEADER
 
 #include "TimeManager.h"
-#include "InputThreadHandler.h"
 #include "InputHandler.h"
 #include "Game.h"
 
@@ -22,8 +21,6 @@ public:
 
 	bool Render();
 private:
-	InputThreadHandler myInputThread;
-	InputHandler myInputHandler;
 	HGE& myHGE;
 	TimeManager myTimeManager;
 
