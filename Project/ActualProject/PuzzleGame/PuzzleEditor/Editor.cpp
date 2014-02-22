@@ -85,7 +85,16 @@ void Editor::Render()
 	{
 		myBlocks[myTiles[i].myBlockId].first->Render(myTiles[i].myX,myTiles[i].myY);
 	}
-	myPositionInGridSprite->Render(myPositionInGridX*myTileSize,myPositionInGridY*myTileSize);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 1, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32 + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32 + 1, 0xFFFF0000);
+
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 1, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
+	/*myPositionInGridSprite->Render(myPositionInGridX*myTileSize,myPositionInGridY*myTileSize);*/
 	//myFont->Render( 800, 75, HGETEXT_LEFT, "Current tile type:" );
 	//myFont->Render( 800, 100, HGETEXT_LEFT, myTileInfo[myTiles[myPositionInGridX + myPositionInGridY*myHeight].myType].myType.c_str() );
 }
