@@ -33,11 +33,11 @@ private:
 	int myHeight;
 	float myTileSize;
 	GrowingArray<Tile> myTiles;
-	GrowingArray<std::pair<hgeSprite*,std::string>> myBlocks;
-	hgeSprite *myPositionInGridSprite;
+	GrowingArray<std::pair<DWORD,std::string>> myBlocks;
 	int myPositionInGridX;
 	int myPositionInGridY;
 	HGE *myHGE;
+	hgeSprite* myTileSprite;
 	hgeFont *myFont;
 };
 

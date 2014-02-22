@@ -17,7 +17,6 @@ Editor::Editor(void)
 Editor::~Editor(void)
 {
 	//delete blocks.
-	delete myPositionInGridSprite;
 }
 
 void Editor::Init( HGE *aHGE )
@@ -35,9 +34,6 @@ void Editor::Init( HGE *aHGE )
 	
 	LoadBlockTypes();
 	CreateGrid();
-
-	HTEXTURE texGridPosition = myHGE->Texture_Load("Data\\GFX\\Editor\\TilePosition.png");
-	myPositionInGridSprite = new hgeSprite( texGridPosition, 0.f,0.f,myHGE->Texture_GetWidth(texGridPosition),myHGE->Texture_GetHeight(texGridPosition) );
 }
 
 bool Editor::Update()
@@ -83,7 +79,8 @@ void Editor::Render()
 {
 	for( int i = 0, count = myTiles.Count(); i < count; ++i )
 	{
-		myBlocks[myTiles[i].myBlockId].first->Render(myTiles[i].myX,myTiles[i].myY);
+		myTileSprite->SetColor(myBlocks[myTiles[i].myBlockId].first);
+		myTileSprite->Render(myTiles[i].myX,myTiles[i].myY);
 	}
 	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, 0xFFFF0000);
 	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 1, 0xFFFF0000);
@@ -107,13 +104,14 @@ void Editor::LoadBlockTypes()
 	tinyxml2::XMLElement* block = blocktypes->FirstChildElement();
 	block = block->FirstChildElement();
 
+	myTileSprite = new hgeSprite(0,0,0,32.f,32.f);
+
 	while(block!=NULL)
 	{
 		std::string blockType = block->Attribute("Id");
-		std::string spritePath = block->Attribute("Sprite");
-		HTEXTURE tex = myHGE->Texture_Load(spritePath.c_str());
-		hgeSprite *sprite = new hgeSprite( tex, 0.f,0.f,myHGE->Texture_GetWidth(tex),myHGE->Texture_GetHeight(tex) );
-		myBlocks.Add(std::pair<hgeSprite*,std::string>(sprite,blockType));
+		Vector4f spriteColor = XMLUTIL::GetVector4(block->Attribute("Color"),Vector4f(1,1,1,1));;
+
+		myBlocks.Add(std::pair<DWORD,std::string>(ARGB(spriteColor.a,spriteColor.r,spriteColor.g,spriteColor.b),blockType));
 		block = block->NextSiblingElement();
 	}
 }
@@ -181,7 +179,7 @@ void Editor::SaveFile( const std::string &aFile )
 		tileElement = doc->NewElement("Block");
 		tileElement->SetAttribute("BlockId",myBlocks[myTiles[i].myBlockId].second.c_str());
 
-		std::string tile = CommonUtilities::GetString("%i",myTiles[i].myX) + " " + CommonUtilities::GetString("%i",myTiles[i].myY);
+		std::string tile = CommonUtilities::GetString("%i",myTiles[i].myX/32) + " " + CommonUtilities::GetString("%i",myTiles[i].myY/32);
 
 		tileElement->SetAttribute("Tile",tile.c_str());
 
