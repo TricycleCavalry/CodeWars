@@ -30,7 +30,7 @@ bool App::Init()
 	srand(static_cast<unsigned int>(time(NULL))); 
 	DL_Debug::Create();
 	Root::Create();
-	Root::GetInstance()->GetContainers().mySpriteManager.SetHGE(&myHGE);
+	Root::GetInstance()->GetManagers().mySpriteManager.SetHGE(&myHGE);
 	myTimeManager.InitDefaults();
 
 	myGame.Init();
@@ -67,7 +67,7 @@ bool App::Update()
 
 
 bool App::Render()
-{
+{	
 	myHGE.Gfx_BeginScene();
 	myHGE.Gfx_Clear(0);
 	// DO HGE render stuff
