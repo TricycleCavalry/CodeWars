@@ -1,10 +1,10 @@
 <BlockTypes>
-	<BlockType Id = "BlockingBlock" Color = "1 1 1 1">	
+	<BlockType Id = "BlockingBlock" Color = "1 1 1 1" Sprite = "Data\\GFX\\White.png">	
 		<Attributes>
 			<Blocking/>
 		</Attributes>	
 	</BlockType>
-	<BlockType Id = "ControllableBlock" Color = "1 1 1 1">	
+	<BlockType Id = "ControllableBlock" Color = "1 1 1 1" Sprite = "Data\\GFX\\Tiles\\tile01.png">
 		<Attributes>
 			<Controllable/>
 		</Attributes>	
