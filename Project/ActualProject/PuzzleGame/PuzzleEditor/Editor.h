@@ -20,21 +20,20 @@ public:
 	bool Update();
 	void Render();
 
+	void LoadBlockTypes();
+
 	void SaveFile( const std::string &aFile );
 
 private:
 	void CreateGrid();
-	void InitSprites();
-	void InitTileInfo();
 
 	void CheckInputOnTile( const BYTE &aKey, int anIntegerToIncreaseWith );
 
-	float myWidth;
-	float myHeight;
+	int myWidth;
+	int myHeight;
 	float myTileSize;
 	GrowingArray<Tile> myTiles;
-	GrowingArray<hgeSprite*> mySprites;
-	GrowingArray<TileInfo> myTileInfo;
+	GrowingArray<std::pair<hgeSprite*,std::string>> myBlocks;
 	hgeSprite *myPositionInGridSprite;
 	int myPositionInGridX;
 	int myPositionInGridY;

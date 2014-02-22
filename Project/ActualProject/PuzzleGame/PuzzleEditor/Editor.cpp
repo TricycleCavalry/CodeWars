@@ -5,16 +5,18 @@
 #include "InputHandler.h"
 #include "hgefont.h"
 #include "FI_File.h"
+#include "XMLUTIL.h"
 
 
 Editor::Editor(void)
+:	myBlocks(64)
 {
 }
 
 
 Editor::~Editor(void)
 {
-	mySprites.DeleteAll();
+	//delete blocks.
 	delete myPositionInGridSprite;
 }
 
@@ -25,42 +27,17 @@ void Editor::Init( HGE *aHGE )
 	myHGE = aHGE;
 	myWidth = 10;
 	myHeight = 10;
-	myTileSize = 64;
+	myTileSize = 32;
 	myTiles.Init( myWidth * myHeight );
-	mySprites.Init( 5 );
-	myTileInfo.Init( 5 );
+	myBlocks.Init(64);
 	
 	myFont = new hgeFont( "font1.fnt" );
 	
-	
+	LoadBlockTypes();
 	CreateGrid();
-	InitSprites();
-	InitTileInfo();
-}
 
-void Editor::InitSprites()
-{
-	HTEXTURE tex = myHGE->Texture_Load("TileNormal.png");
-	hgeSprite *sprite = new hgeSprite( tex, 0.f,0.f,myHGE->Texture_GetWidth(tex),myHGE->Texture_GetHeight(tex) );
-	mySprites.Add(sprite);
-	HTEXTURE texBlocked = myHGE->Texture_Load("TileBlocked.png");
-	hgeSprite *blockedSprite = new hgeSprite( texBlocked, 0.f,0.f,myHGE->Texture_GetWidth(texBlocked),myHGE->Texture_GetHeight(texBlocked) );
-	mySprites.Add(blockedSprite);
-	HTEXTURE texGridPosition = myHGE->Texture_Load("TilePosition.png");
+	HTEXTURE texGridPosition = myHGE->Texture_Load("Data\\GFX\\Editor\\TilePosition.png");
 	myPositionInGridSprite = new hgeSprite( texGridPosition, 0.f,0.f,myHGE->Texture_GetWidth(texGridPosition),myHGE->Texture_GetHeight(texGridPosition) );
-}
-
-void Editor::InitTileInfo()
-{
-	for( int i = 0; i < TTE_NUM; ++i )
-	{
-		TileInfo info;
-		info.myType = "";
-		myTileInfo.Add(info);
-	}
-	
-	myTileInfo[0].myType = "Ice!";
-	myTileInfo[1].myType = "Blocked!";
 }
 
 bool Editor::Update()
@@ -93,6 +70,10 @@ bool Editor::Update()
 			--myPositionInGridY;
 		}
 	}
+	else if( InputKeyState(DIK_P,DIKS_CLICKED) )
+	{
+		SaveFile("Data\\XML\\Levels\\newLevel.xml");
+	}
 	CheckInputOnTile(DIK_UPARROW,1);
 	CheckInputOnTile(DIK_DOWNARROW,-1);
 	return true;
@@ -102,11 +83,30 @@ void Editor::Render()
 {
 	for( int i = 0, count = myTiles.Count(); i < count; ++i )
 	{
-		mySprites[myTiles[i].myType]->Render(myTiles[i].myX,myTiles[i].myY);
+		myBlocks[myTiles[i].myBlockId].first->Render(myTiles[i].myX,myTiles[i].myY);
 	}
 	myPositionInGridSprite->Render(myPositionInGridX*myTileSize,myPositionInGridY*myTileSize);
-	myFont->Render( 800, 75, HGETEXT_LEFT, "Current tile type:" );
-	myFont->Render( 800, 100, HGETEXT_LEFT, myTileInfo[myTiles[myPositionInGridX + myPositionInGridY*myHeight].myType].myType.c_str() );
+	//myFont->Render( 800, 75, HGETEXT_LEFT, "Current tile type:" );
+	//myFont->Render( 800, 100, HGETEXT_LEFT, myTileInfo[myTiles[myPositionInGridX + myPositionInGridY*myHeight].myType].myType.c_str() );
+}
+
+void Editor::LoadBlockTypes()
+{
+	tinyxml2::XMLDocument* blocktypes = new tinyxml2::XMLDocument();
+	blocktypes->LoadFile("Data\\XML\\BlockTypes.xml");
+
+	tinyxml2::XMLElement* block = blocktypes->FirstChildElement();
+	block = block->FirstChildElement();
+
+	while(block!=NULL)
+	{
+		std::string blockType = block->Attribute("Id");
+		std::string spritePath = block->Attribute("Sprite");
+		HTEXTURE tex = myHGE->Texture_Load(spritePath.c_str());
+		hgeSprite *sprite = new hgeSprite( tex, 0.f,0.f,myHGE->Texture_GetWidth(tex),myHGE->Texture_GetHeight(tex) );
+		myBlocks.Add(std::pair<hgeSprite*,std::string>(sprite,blockType));
+		block = block->NextSiblingElement();
+	}
 }
 
 void Editor::CheckInputOnTile( const BYTE &aKey, int anIntegerToIncreaseWith )
@@ -115,17 +115,17 @@ void Editor::CheckInputOnTile( const BYTE &aKey, int anIntegerToIncreaseWith )
 	{
 		return;
 	}
-	int type = myTiles[myPositionInGridX + myPositionInGridY*myHeight].myType;
+	int type = myTiles[myPositionInGridX + myPositionInGridY*myHeight].myBlockId;
 	type += anIntegerToIncreaseWith;
-	if( type >= TTE_NUM )
+	if( type >= myBlocks.Count() )
 	{
 		type = 0;
 	}
 	if( type < 0 )
 	{
-		type = TTE_NUM-1;
+		type = myBlocks.Count()-1;
 	}
-	myTiles[myPositionInGridX + myPositionInGridY*myHeight].myType = (TileTypeEnum)type;
+	myTiles[myPositionInGridX + myPositionInGridY*myHeight].myBlockId = type;
 }
 
 void Editor::CreateGrid()
@@ -137,7 +137,7 @@ void Editor::CreateGrid()
 			for( int x = 0; x < myWidth; ++x )
 			{
 				Tile tile;
-				tile.myType = TTE_NORMAL;
+				tile.myBlockId = 0;
 				tile.myX = x * myTileSize;
 				tile.myY = y * myTileSize;
 				myTiles.Add( tile );
@@ -159,11 +159,27 @@ void Editor::CreateGrid()
 
 void Editor::SaveFile( const std::string &aFile )
 {
-	File file;
-	file.Open( aFile, 1 << WRITE );
-	for( int i = 0, count = myTiles.Count(); i < count; ++i )
+	tinyxml2::XMLDocument* doc = new tinyxml2::XMLDocument();
+	tinyxml2::XMLElement* levelElement = doc->NewElement("Level");
+
+	std::string dimensions = CommonUtilities::GetString("%i",myWidth) + " " + CommonUtilities::GetString("%i",myHeight);
+	levelElement->SetAttribute("GridDimensions",dimensions.c_str());
+
+	tinyxml2::XMLElement* tileElement = NULL;
+
+	for(int i = 0, count = myTiles.Count(); i < count; ++i )
 	{
-		file.WriteInt( myTiles[i].myType );
+		tileElement = doc->NewElement("Block");
+		tileElement->SetAttribute("BlockId",myBlocks[myTiles[i].myBlockId].second.c_str());
+
+		std::string tile = CommonUtilities::GetString("%i",myTiles[i].myX) + " " + CommonUtilities::GetString("%i",myTiles[i].myY);
+
+		tileElement->SetAttribute("Tile",tile.c_str());
+
+		levelElement->InsertEndChild(tileElement);
 	}
-	file.Close();
+
+	doc->InsertEndChild(levelElement);
+
+	doc->SaveFile(aFile.c_str());
 }
