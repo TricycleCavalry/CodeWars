@@ -49,13 +49,16 @@ void Game::Update(const float& anElapsedTime)
 	}
 	myCamera.SetPosition(camPos);
 	myCamera.Update(anElapsedTime);
+	ROOT->GetManagers().myBlockManager.Update(anElapsedTime);
 	ROOT->GetManagers().myControllManager.Update(anElapsedTime);
 	myLevel->Update(anElapsedTime);
 }
 
 void Game::Render()
 {
-	myLevel->Render(myCamera.GetPosition());
+	Vector2f cameraPos = myCamera.GetPosition();
+	myLevel->Render(cameraPos);
+	ROOT->GetManagers().myBlockManager.Render(cameraPos);
 }
 
 void Game::LoadLevel()

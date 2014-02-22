@@ -31,6 +31,7 @@ void BlockFactory::LoadTypes(const std::string& aFilepath)
 
 Block* BlockFactory::GetBlock(const char* aTypeId)
 {
+
 	return myTypes[aTypeId]->Copy();
 }
 

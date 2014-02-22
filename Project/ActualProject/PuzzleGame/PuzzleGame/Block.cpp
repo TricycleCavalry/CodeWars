@@ -24,14 +24,14 @@ void Block::Init(const Vector2<float>& aPosition, const Vector2<float>& someExte
 	{
 		myAttributes[i]->Init();
 	}
-
+	ROOT->GetManagers().myBlockManager.AddBlock(this);
 }
 
 void Block::Update(const float anElapsedTime)
 {
 	myIntersectingBlocks.RemoveAll();
 	//TODO: ROOT->myBlockManager->GetIntersectingBlocks(this,myIntersectingBlocks);
-	for( int i = 0; i < BAT_NUM; ++i)
+	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 		myAttributes[i]->Update(anElapsedTime);
 	}
