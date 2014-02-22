@@ -43,5 +43,10 @@ void BlockManager::SnapBlockToGrid(Block* aBlock)
 }
 void BlockManager::Clear()
 {
+	for(int i=0,count=myBlocks.Count();i<count;i++)
+	{
+		myBlocks[i]->GetAttributes().RemoveAll();
+	}
 	myBlocks.RemoveAll();
+	
 }

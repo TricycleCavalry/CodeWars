@@ -33,6 +33,8 @@ public:
 
 	Vector2<float> GetPosition();
 
+	void Exit();
+
 	GrowingArray<Block*>& GetBlocks();
 
 	TileType GetTileType();
@@ -41,6 +43,8 @@ private:
 	GrowingArray<Block*> myBlocks;
 	Vector2<int> myPosition;
 	SpriteWrapper mySprite;
+	SpriteWrapper myBlinkSprite;
+	float myBlinkTime;
 };
 
 #endif

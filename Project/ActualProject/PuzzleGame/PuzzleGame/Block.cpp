@@ -66,6 +66,7 @@ void Block::Move(const Vector2<float>& aMovementVector)
 				Vector2<float> differenceF = difference.GetNormalize();
 				indexedPos += Vector2<int>(differenceF.x,differenceF.y);
 				myCurrentTile->GetBlocks().RemoveCyclic(this);
+				myCurrentTile->Exit();
 				OnExit();
 				OnEnter(ROOT->GetLevel()->GetTile(indexedPos));
 				myCurrentTile->GetBlocks().Add(this);

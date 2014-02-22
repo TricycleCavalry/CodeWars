@@ -35,7 +35,7 @@ void BlockAttributeControllable::Update(const float anElapsedTime)
 	
 	if(*myIsMoving == true)
 	{
-		myTimeMoved = MIN(myTimeMoved+(anElapsedTime*5.f),5.f);
+		myTimeMoved = MIN(myTimeMoved+(anElapsedTime*10.f),10.f);
 		Vector2<float> movementDirection;
 		GetDirection(myMovementDirectionType,movementDirection);
 		myOwner->Move(movementDirection * (anElapsedTime * 100) *myTimeMoved);

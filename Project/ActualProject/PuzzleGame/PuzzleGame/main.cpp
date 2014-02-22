@@ -12,7 +12,7 @@ HGE* HGE_Init()
 
 	hgeInstance->System_SetState(HGE_LOGFILE, "HGE_Error.log");
 //	hgeInstance->System_SetState(HGE_GFXRESTOREFUNC, GfxRestoreFunc);
-	hgeInstance->System_SetState(HGE_TITLE, "Project Random");
+	hgeInstance->System_SetState(HGE_TITLE, "Swipe That Block");
 	hgeInstance->System_SetState(HGE_ZBUFFER,true);
 	hgeInstance->System_SetState(HGE_WINDOWED, true);
 	hgeInstance->System_SetState(HGE_SCREENWIDTH, 800);
