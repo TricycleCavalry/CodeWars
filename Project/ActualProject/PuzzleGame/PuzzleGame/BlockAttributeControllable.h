@@ -12,8 +12,9 @@ public:
 
 	void Init();
 	void Update(const float anElapsedTime);
-	void Move(const MovementDirectionType& aMovementDirection);
+	void Move(const MovementDirectionType& aMovementDirection,const Vector2<float>& aEndPosition);
 
+	bool IsMoving();
 	void Clear();
 
 protected:
@@ -22,6 +23,7 @@ protected:
 private:
 	bool myIsMoving;
 	MovementDirectionType myMovementDirectionType;
+	Vector2<float> myEndPosition;
 
 
 };

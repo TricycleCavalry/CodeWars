@@ -6,6 +6,10 @@
 
 #include "Tile.h"
 
+#define TILE_WIDTH 32	//NoNeed
+#define TILE_HEIGHT 32  //NoNeed
+#define TILE_SIZE 32
+
 class Level
 {
 	friend class LevelFactory;
@@ -18,6 +22,7 @@ public:
 	void Render(const Vector2<float>& aCameraPosition);
 
 	Tile* GetTile(const Vector2<int>& aTilePosition);
+	Tile* GetTile(const Vector2<float>& aPosition);
 
 	void SetHGE(HGE* aHGE);
 

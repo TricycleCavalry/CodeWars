@@ -6,11 +6,14 @@
 #include "block.h"
 #include "InputHandler.h"
 #include "Block.h"
+#include "Level.h"
+#include "Tile.h"
 
 ControllManager::ControllManager(void)
 :	myControllableBlockAttributes(4)
 ,	myControllableBlocks(4)
 ,	myActiveControllableBlockIndex(0)
+,	myLevel(NULL)
 {
 }
 
@@ -45,6 +48,10 @@ void ControllManager::RemoveControllableBlock(Block* aBlock)
 void ControllManager::SetCamera(Camera* aCamera)
 {
 	myCamera = aCamera;
+}
+void ControllManager::SetLvel(Level* aLevel)
+{
+	myLevel = aLevel;
 }
 void ControllManager::UpdateInput()
 {
@@ -109,6 +116,54 @@ void ControllManager::SwitchBlock(const int aDirection)
 }
 void ControllManager::MoveBlock(const MovementDirectionType aDirection)
 {
-	myControllableBlockAttributes[myActiveControllableBlockIndex]->Move(aDirection);
+	if(myControllableBlockAttributes[myActiveControllableBlockIndex]->IsMoving() == true)
+	{
+		return;
+	}
+	Vector2<float> direction;
+	GetDirection(aDirection,direction);
+	direction *= TILE_SIZE;
+	Vector2<float> currentTilePos(myControllableBlocks[myActiveControllableBlockIndex]->GetPosition());
+	Tile* currentTile = myLevel->GetTile(currentTilePos);
+	Tile* prevTile = NULL;
+	
+	bool* blocked = NULL;
+
+	while(currentTile != NULL)
+	{
+		GrowingArray<Block*>& currentTileBlocks = currentTile->GetBlocks();
+		for(int i = 0; i < currentTileBlocks.Count(); ++i)
+		{
+			if(currentTileBlocks[i]->myDictionary.Lookup(BlockVariables::Blocked,blocked) == true)
+			{
+				if(*blocked = true)
+				{
+					break;
+				}
+			}
+		}
+		if(blocked != NULL)
+		{
+			if(*blocked == true)
+			{
+				break;
+			}
+		}
+		else
+		{
+		currentTilePos += direction;
+		prevTile = currentTile;
+		currentTile = myLevel->GetTile(currentTilePos);
+		if(currentTile == NULL)
+		{
+			break;
+		}
+		}
+		
+	}
+	//if(currentTile->Get
+	
+	myControllableBlockAttributes[myActiveControllableBlockIndex]->Move(aDirection,prevTile->GetPosition());
 }
+
 

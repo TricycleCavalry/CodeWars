@@ -28,6 +28,8 @@ public:
 	void Update(const float& anElapsedTime);
 	void Render(const Vector2<float> &aCameraPosition);
 
+	Vector2<float> GetPosition();
+
 	GrowingArray<Block*>& GetBlocks();
 private:
 	TileType myType;

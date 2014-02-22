@@ -43,7 +43,10 @@ void Tile::Render(const Vector2<float> &aCameraPosition)
 	Vector2<int> camPos(aCameraPosition.myX, aCameraPosition.myY);
 	mySprite.Render(myPosition - camPos);
 }
-
+Vector2<float> Tile::GetPosition()
+{
+	return Vector2<float>(myPosition.x,myPosition.y);
+}
 GrowingArray<Block*>& Tile::GetBlocks()
 {
 	return myBlocks;

@@ -24,6 +24,7 @@ public:
 	void Render(const Vector2<float>& aCameraPosition);
 	
 	Vector2<float>& GetPosition();
+	void SetPosition(const Vector2<float>& aPosition);
 	void Move(const Vector2<float>& aMovementVector);
 	void AddAttribute(BlockAttribute* aAttribute);
 	void AddAttributes(GrowingArray<Block*>& someAttributes);
@@ -71,7 +72,8 @@ TYPE* Block::GetAttribute(const BlockAttributeType aType)
 			return reinterpret_cast<TYPE*>(myAttributes[i]);
 		}
 	}
-	
+	DL_PRINT("Block::GetAttribute() returned NULL!");
+	return NULL;
 }
 
 #endif

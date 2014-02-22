@@ -25,34 +25,34 @@ void BlockAttributeControllable::Init()
 }
 void BlockAttributeControllable::Update(const float anElapsedTime)
 {
-	GrowingArray<Block*> intersectingBlocks = myOwner->GetIntersectingBlocks();
-	for(int i = 0; i < intersectingBlocks.Count(); ++i)
-	{
-		//TODO have it like dis?
-		if(intersectingBlocks[i]->myDictionary.Lookup(BlockVariables::Blocked) == true)
-		{
-			if(intersectingBlocks[i]->myDictionary.Get<bool>(BlockVariables::Blocked) == true)
-			{
-				myIsMoving = false;
-				myOwner->SnapToGrid();
-				break;
-			}
-		}		
-	}
+	//GrowingArray<Block*> intersectingBlocks = myOwner->GetIntersectingBlocks();
+	
+	
 	if(myIsMoving == true)
-	{
+	{		
 		Vector2<float> movementDirection;
 		GetDirection(myMovementDirectionType,movementDirection);
-		myOwner->Move(movementDirection * anElapsedTime);
+		myOwner->Move(movementDirection * anElapsedTime * 100);
+
+		
+		if( (myOwner->GetPosition()- myEndPosition).Length() < 2.f)
+		{
+			myOwner->SetPosition(myEndPosition);
+			myIsMoving = false;
+		}
 	}
 }
 
-void BlockAttributeControllable::Move(const MovementDirectionType& aMovementDirection)
+void BlockAttributeControllable::Move(const MovementDirectionType& aMovementDirection,const Vector2<float>& aEndPosition)
 {
 	myIsMoving = true;
 	myMovementDirectionType = aMovementDirection;
+	myEndPosition = aEndPosition;
 }
-
+bool BlockAttributeControllable::IsMoving()
+{
+	return myIsMoving;
+}
 void BlockAttributeControllable::Clear()
 {
 	ROOT->GetManagers().myControllManager.RemoveControllableBlock(myOwner);

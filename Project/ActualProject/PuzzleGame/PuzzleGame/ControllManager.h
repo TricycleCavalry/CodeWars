@@ -5,6 +5,8 @@
 #include "StaticArray.h"
 #include "Camera.h"
 
+class Level;
+
 enum MovementDirectionType;
 class Block;
 
@@ -33,11 +35,14 @@ public:
 	void RemoveControllableBlock(Block* aBlock);
 
 	void SetCamera(Camera* aCamera);
+	void SetLvel(Level* aLevel);
 
 private:
 	void UpdateInput();
 	void SwitchBlock(const int aDirection);
 	void MoveBlock(const MovementDirectionType aDirection);
+
+	Vector2<float> GetDirectionVector(const MovementDirectionType aDirection);
 
 private:
 	GrowingArray<BlockAttributeControllable*> myControllableBlockAttributes;
@@ -47,6 +52,7 @@ private:
 	int myActiveControllableBlockIndex;
 
 	Camera* myCamera;
+	Level* myLevel;
 
 	StaticArray<int,CIT_NUM> myInputKeys;
 

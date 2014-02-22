@@ -6,8 +6,7 @@
 #include "Root.h"
 #include "hge.h"
 
-#define TILE_WIDTH 32
-#define TILE_HEIGHT 32
+
 
 Level::Level(void)
 :	myTiles(256)
@@ -70,6 +69,12 @@ Tile* Level::GetTile(const Vector2<int>& aTilePosition)
 	}
 	return returnTile;
 }
+Tile* Level::GetTile(const Vector2<float>& aPosition)
+{
+	Vector2<int> pos(aPosition.x,aPosition.y);
+	pos/= TILE_SIZE;
+	return GetTile(pos);
+}
 void Level::SetHGE(HGE* aHGE)
 {
 	myHGE = aHGE;
@@ -86,6 +91,11 @@ int Level::GetIndexForPosition(const Vector2<int>& aPosition)
 	if(aPosition.x >= 0 && aPosition.x < myDimensions.x)
 	{
 		indexToReturn = aPosition.x;
+		
+	}
+	else
+	{
+		return -1;
 	}
 	if(aPosition.y >= 0 && aPosition.y < myDimensions.y)
 	{
@@ -94,6 +104,10 @@ int Level::GetIndexForPosition(const Vector2<int>& aPosition)
 			indexToReturn = 0;
 		}
 		indexToReturn += aPosition.y * myDimensions.x;
+	}
+	else
+	{
+		return -1;
 	}
 	return indexToReturn;
 }

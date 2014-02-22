@@ -84,5 +84,6 @@ void Game::LoadLevel()
 	}
 
 	myLevel = FACTORIES.myLevelFactory.CreateLevel(filePath);
+	ROOT->GetManagers().myControllManager.SetLvel(myLevel);
 	
 }

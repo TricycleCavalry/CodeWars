@@ -56,9 +56,12 @@ bool App::Update()
 	}
 
 	float elapsedTime = static_cast<float>(myTimeManager.GetElapsedTime().GetTime());
+	if(elapsedTime > 0.8)
+	{
+		elapsedTime = 0.1;
+	} 
 	myGame.Update(elapsedTime);
 
-	myGame.Update(elapsedTime);
 
 	Render();
 	return(true);

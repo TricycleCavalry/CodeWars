@@ -44,6 +44,10 @@ Vector2<float>& Block::GetPosition()
 {
 	return myPosition;
 }
+void Block::SetPosition(const Vector2<float>& aPosition)
+{
+	myPosition = aPosition;
+}
 void Block::Move(const Vector2<float>& aMovementVector)
 {
 	myPosition += aMovementVector;
