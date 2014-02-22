@@ -14,6 +14,8 @@ public:
 	void Update(const float& anElapsedTime);
 	void Render();
 private:
+	void LoadLevel();
+
 	Level* myLevel;
 };
 

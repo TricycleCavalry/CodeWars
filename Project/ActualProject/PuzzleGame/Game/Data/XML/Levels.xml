@@ -1,0 +1,3 @@
+<Levels StartLevelId = "FirstLevel">
+	<Level ID = "FirstLevel" FilePath = "Data/XML/Levels/level01.xml"/>
+</Levels>

@@ -91,7 +91,7 @@ Block* Block::Copy()
 	Block* returnBlock = CONTAINERS.myBlockContainer.GetNewBlock();
 	for(int i = 0; i < BAT_NUM; ++i)
 	{
-		returnBlock->AddAttribute(myAttributes[i]->Copy());
+		//returnBlock->AddAttribute(myAttributes[i]->Copy());
 		//returnBlock->GetAttribute<BlockAttribute*>(static_cast<BlockAttributeType>(i)) ->SetOwner(returnBlock);
 	}	
 	return returnBlock;

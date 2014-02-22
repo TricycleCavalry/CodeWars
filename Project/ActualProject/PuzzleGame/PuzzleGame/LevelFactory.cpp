@@ -51,11 +51,9 @@ void LevelFactory::CreateBlocks(Level* aLevel, tinyxml2::XMLElement* aBlockEleme
 		}
 		else
 		{
-			//TODO
-			blockTilePosF *= 32;
 			currentTile->GetBlocks().Add(FACTORIES.myBlockFactory.GetBlock(blockId.c_str()));
-			currentTile->GetBlocks().GetLast()->Init(blockTilePosF,Vector2<float>(16,16));
 		}
+
 		blockIterator = blockIterator->NextSiblingElement();
 	}
 }

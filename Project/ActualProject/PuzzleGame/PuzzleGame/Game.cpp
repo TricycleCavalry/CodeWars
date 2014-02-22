@@ -14,10 +14,7 @@ Game::~Game(void)
 
 void Game::Init()
 {
-	//TODO levelFactory style
-	myLevel = ROOT->GetFactories().myLevelFactory.CreateLevel("filepath");
-	//myLevel = new Level();
-	myLevel->Init(Vector2<int>(100,100));
+	LoadLevel();
 }
 
 void Game::Update(const float& anElapsedTime)
@@ -29,4 +26,29 @@ void Game::Update(const float& anElapsedTime)
 void Game::Render()
 {
 	myLevel->Render();
+}
+
+void Game::LoadLevel()
+{
+	tinyxml2::XMLElement* levelElement = XMLUTIL::LoadFile("Data/XML/Levels.xml");
+	std::string startLevelId = levelElement->Attribute("StartLevelId");
+	levelElement = levelElement->FirstChildElement("Level");
+
+	std::string filePath = "None";
+	while(levelElement != NULL)
+	{
+		if(XMLUTIL::GetString(levelElement,"ID") == startLevelId)
+		{
+			filePath = XMLUTIL::GetString(levelElement,"FilePath");
+			break;
+		}
+		levelElement = levelElement->NextSiblingElement();
+	}
+
+	if(filePath == "None")
+	{
+		DL_ASSERT("No level with the Id: %s was found",startLevelId.c_str());
+	}
+
+	myLevel = FACTORIES.myLevelFactory.CreateLevel(filePath);
 }
