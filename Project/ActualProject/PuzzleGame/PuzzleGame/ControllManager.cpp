@@ -14,6 +14,7 @@ ControllManager::ControllManager(void)
 ,	myControllableBlocks(4)
 ,	myActiveControllableBlockIndex(0)
 ,	myLevel(NULL)
+,	myNumControllableBlocks(0)
 {
 }
 
@@ -35,6 +36,7 @@ void ControllManager::AddControllableBlock(Block* aBlock)
 	{
 		myControllableBlockAttributes.Add(controllAttribute);
 		myControllableBlocks.Add(aBlock);
+		++myNumControllableBlocks;
 		return;
 	}
 	DL_PRINT("Failed to add controllable lock to ControllManager");
@@ -43,6 +45,7 @@ void ControllManager::AddControllableBlock(Block* aBlock)
 }
 void ControllManager::RemoveControllableBlock(Block* aBlock)
 {
+	--myNumControllableBlocks;
 	//TODO remove
 }
 void ControllManager::SetCamera(Camera* aCamera)
