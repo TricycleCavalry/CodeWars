@@ -5,6 +5,7 @@ enum BlockAttributeType
 	BAT_NULL,
 	BAT_CONTROLLABLE,
 	BAT_BLOCK,
+	BAT_PUSH,
 	BAT_NUM,
 };
 #endif

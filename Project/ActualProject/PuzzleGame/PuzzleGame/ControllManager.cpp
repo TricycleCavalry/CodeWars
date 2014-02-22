@@ -27,6 +27,7 @@ ControllManager::~ControllManager(void)
 void ControllManager::Update(const float anElapsedTime)
 {
 	//TODO: what?
+	myCamera->MoveToPosition(myControllableBlocks[myActiveControllableBlockIndex]->GetPosition(),0.2f);
 	UpdateInput();
 }
 void ControllManager::AddControllableBlock(Block* aBlock)
@@ -119,7 +120,7 @@ void ControllManager::SwitchBlock(const int aDirection)
 	{
 		myActiveControllableBlockIndex = 0;
 	}
-	myCamera->MoveToPosition(myControllableBlocks[myActiveControllableBlockIndex]->GetPosition(),0.8f);
+	myCamera->MoveToPosition(myControllableBlocks[myActiveControllableBlockIndex]->GetPosition(),0.2f);
 }
 void ControllManager::MoveBlock(const MovementDirectionType aDirection)
 {

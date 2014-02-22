@@ -24,6 +24,7 @@ private:
 	
 	BlockAttribute* CreateControllableBlockAttribute(tinyxml2::XMLElement* anAttribute);
 	BlockAttribute* CreateBlockingBlockAttribute(tinyxml2::XMLElement* anAttribute);
+	BlockAttribute* CreatePushBlockAttribute(tinyxml2::XMLElement* anAttribute);
 };
 
 #endif

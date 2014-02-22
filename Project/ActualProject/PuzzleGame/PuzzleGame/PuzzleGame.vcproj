@@ -475,6 +475,14 @@
 			</File>
 		</Filter>
 		<File
+			RelativePath=".\BlockAttributePush.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\BlockAttributePush.h"
+			>
+		</File>
+		<File
 			RelativePath=".\main.cpp"
 			>
 			<FileConfiguration

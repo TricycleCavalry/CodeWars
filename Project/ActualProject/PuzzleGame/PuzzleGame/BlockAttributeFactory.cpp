@@ -68,3 +68,7 @@ BlockAttribute* BlockAttributeFactory::CreateBlockingBlockAttribute(tinyxml2::XM
 
 	return blockblockAttribute;
 }
+BlockAttribute* BlockAttributeFactory::CreatePushBlockAttribute(tinyxml2::XMLElement* anAttribute)
+{
+	return NULL;
+}
