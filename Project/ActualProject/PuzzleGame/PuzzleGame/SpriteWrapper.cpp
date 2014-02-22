@@ -37,12 +37,15 @@ void SpriteWrapper::SetSprite(hgeSprite *aHgeSprite)
 void SpriteWrapper::Render(Vector2<int> aPosition)
 {
 	if(mySprite!=NULL)
+	{
+		PreRender();
 		mySprite->Render(static_cast<float>(aPosition.myX), static_cast<float>(aPosition.myY));
+	}
 }
 void SpriteWrapper::Render(Vector2<float> aPosition)
 {
 	PreRender();
-	mySprite->Render(aPosition.myX, aPosition.myX);
+	mySprite->Render(aPosition.myX, aPosition.myY);
 }
 void SpriteWrapper::Render(Vector2<float> aPosition, const float aRotation)
 {
