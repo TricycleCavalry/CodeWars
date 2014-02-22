@@ -16,7 +16,7 @@ Editor::Editor(void)
 
 Editor::~Editor(void)
 {
-	//delete blocks.
+	delete myTileSprite;
 }
 
 void Editor::Init( HGE *aHGE )
@@ -31,6 +31,8 @@ void Editor::Init( HGE *aHGE )
 	myBlocks.Init(64);
 	
 	myFont = new hgeFont( "font1.fnt" );
+	myFont->SetColor(ARGB(255,0,255,0));
+	//myFont->SetScale(.f);
 	
 	LoadBlockTypes();
 	CreateGrid();
@@ -92,8 +94,8 @@ void Editor::Render()
 	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
 	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
 	/*myPositionInGridSprite->Render(myPositionInGridX*myTileSize,myPositionInGridY*myTileSize);*/
-	//myFont->Render( 800, 75, HGETEXT_LEFT, "Current tile type:" );
-	//myFont->Render( 800, 100, HGETEXT_LEFT, myTileInfo[myTiles[myPositionInGridX + myPositionInGridY*myHeight].myType].myType.c_str() );
+	myFont->Render( 500, 75, HGETEXT_LEFT, "Current tile type:" );
+	myFont->Render( 500, 100, HGETEXT_LEFT, myBlocks[myTiles[myPositionInGridX + myPositionInGridY*myHeight].myBlockId].second.c_str() );
 }
 
 void Editor::LoadBlockTypes()
