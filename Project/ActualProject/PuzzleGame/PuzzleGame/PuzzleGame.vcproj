@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="PuzzleGame"
 	ProjectGUID="{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}"
 	RootNamespace="PuzzleGame"
@@ -345,6 +345,18 @@
 				RelativePath=".\Game.h"
 				>
 			</File>
+			<Filter
+				Name="Camera"
+				>
+				<File
+					RelativePath=".\Camera.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Camera.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Level"
