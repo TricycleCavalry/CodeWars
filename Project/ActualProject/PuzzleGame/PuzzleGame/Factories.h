@@ -5,8 +5,14 @@
 #include "BlockFactory.h"
 #include "BlockAttributeFactory.h"
 
-struct Factories
+class Factories
 {
+public:
+	Factories();
+	~Factories();
+	void Init();
+public:
+
 	LevelFactory myLevelFactory;
 	BlockFactory myBlockFactory;
 	BlockAttributeFactory myBlockAttributeFactory;

@@ -11,13 +11,19 @@ class BlockAttributeFactory
 public:
 	BlockAttributeFactory();
 	~BlockAttributeFactory();
+
+
 	
-	void CreateAttributeList(XmlElement& anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes);
+	void CreateAttributeList(XmlElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes);
+
+private:
+	BlockAttribute* CreateBlockAttribute(tinyxml2::XMLElement* anBlockAttribute);
 	
 private:
-	BlockAttribute* CreateAttributeFromType(XmlElement& anAttribute);
+	BlockAttribute* CreateAttributeFromType(XmlElement* anAttribute);
 	
-	BlockAttribute* CreateControllableAttribute(XmlElement& anAttribute);
+	BlockAttribute* CreateControllableBlockAttribute(XmlElement* anAttribute);
+	BlockAttribute* CreateBlockingBlockAttribute(XmlElement* anAttribute);
 };
 
 #endif

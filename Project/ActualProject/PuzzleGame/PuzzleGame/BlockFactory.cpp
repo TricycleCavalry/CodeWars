@@ -3,6 +3,7 @@
 #include "Root.h"
 
 #include "BlockContainer.h"
+#include "Block.h"
 
 BlockFactory::BlockFactory()
 {
@@ -24,33 +25,34 @@ void BlockFactory::LoadTypes(const std::string& aFilepath)
 
 	while(blockTypeIterator!=NULL)
 	{
-		CreateBlockType(*blockTypeIterator);
+		CreateBlockType(blockTypeIterator);
 		blockTypeIterator = blockTypeIterator->NextSiblingElement();
 	}
 }
 
-Block* BlockFactory::CreateBlock(XmlElement& anXMLElement)
+Block* GetBlock(const char* aTypeId)
 {
-	Block* newBlock = CONTAINERS.myBlockContainer.GetNewBlock();
-	
-	StringId type = anXMLElement.Attribute("Type");
-
-	//TODO
-	//newBlock->Copy(myTypes[type]);
-	
-	return newBlock;
+	return NULL;
 }
 
-void BlockFactory::CreateBlockType(XmlElement& anXMLElement)
+void BlockFactory::CreateBlockType(XmlElement* anXMLElement)
 {
 	Block* block = CONTAINERS.myBlockContainer.GetNewBlock();
+	myCurrentBlockBlockAttributes.RemoveAll();
+	ROOT->GetFactories().myBlockAttributeFactory.CreateAttributeList(anXMLElement,myCurrentBlockBlockAttributes);
 
-	StringId type = anXMLElement.Attribute("Type");
+	for(int i = 0; i < myCurrentBlockBlockAttributes.Count(); ++i)	
+	{
+		block->AddAttribute(myCurrentBlockBlockAttributes[i]);
+	}
+	//block->AddAttributes(myCurrentBlockBlockAttributes);
+
+	StringId type = anXMLElement->Attribute("Id");
 	myTypes[type] = block;
 }
 
-void BlockFactory::CreateBlockAttributes(XmlElement& anXMLElement, Block* aBlock)
+void BlockFactory::CreateBlockAttributes(XmlElement* anXMLElement, Block* aBlock)
 {
-	XmlElement& attributesList = *anXMLElement.FirstChildElement("Attributes");
+	XmlElement& attributesList = *anXMLElement->FirstChildElement("Attributes");
 	//FACTORIES.myBlockAttributeFactory.CreateAttributeList(attributesList,aBlock->GetAttributes());
 }

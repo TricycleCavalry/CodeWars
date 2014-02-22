@@ -4,6 +4,10 @@
 
 #include "XMLUtil.h"
 #include "GrowingArray.h"
+#include "Root.h"
+
+#include "BlockAttributeBlockin.h"
+#include "BlockAttributeControllable.h"
 
 BlockAttributeFactory::BlockAttributeFactory()
 {
@@ -15,33 +19,52 @@ BlockAttributeFactory::~BlockAttributeFactory()
 
 }
 
-void BlockAttributeFactory::CreateAttributeList(XmlElement& anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes)
+void BlockAttributeFactory::CreateAttributeList(XmlElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes)
 {
-	someAttributes.RemoveAll();
-	
+	//someAttributes.RemoveAll();
+	tinyxml2::XMLElement* attributes = anAttributeListXML;
+	tinyxml2::XMLElement* attribute = attributes->FirstChildElement();
+	while(attribute != NULL)
+	{
+		someAttributes.Add(CreateAttributeFromType(attribute));
+		attribute = attribute->NextSiblingElement();
+	}
 	
 }
-	
-BlockAttribute* BlockAttributeFactory::CreateAttributeFromType(XmlElement& anAttributeXml)
+BlockAttribute* BlockAttributeFactory::CreateAttributeFromType(XmlElement* anAttributeXml)
 {
 	BlockAttribute* attribute = NULL;
 	
-	std::string attributeType = anAttributeXml.Name();
+	std::string attributeType = anAttributeXml->Name();
 	
-	if(attributeType=="Controllable")
+	if(attributeType == "Controllable")
 	{
-		attribute = CreateControllableAttribute(anAttributeXml);
+		attribute = CreateControllableBlockAttribute(anAttributeXml);
+	}
+	else if( attributeType == "Blocking")
+	{
+		attribute = CreateBlockingBlockAttribute(anAttributeXml);
 	}
 	
 	return attribute;
 }
 
-BlockAttribute* BlockAttributeFactory::CreateControllableAttribute(XmlElement& anAttributeXml)
+BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(XmlElement* anAttributeXml)
 {
+	//TODO
 	//ControllableBlockAttribute* attribute = ROOT->CONTAINERS->BLOCK_ATTRIBUTE->GetNewControllableBlockAttribute();
+	BlockAttributeControllable* controllableAttribute = new BlockAttributeControllable();
+	
 	
 	BlockAttribute* attribute = NULL;
 	//init shizzle
 	
-	return attribute;
+	return controllableAttribute;
+}
+
+BlockAttribute* BlockAttributeFactory::CreateBlockingBlockAttribute(XmlElement* anAttribute)
+{
+	BlockAttributeBlockin* blockblockAttribute = new BlockAttributeBlockin();
+
+	return blockblockAttribute;
 }

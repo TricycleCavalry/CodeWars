@@ -74,7 +74,7 @@ void InputHandler::OnResize(int aScreenWidth, int aScreenHeight)
 
 void InputHandler::RecaptureDevices()
 {
-	if(ourInstance != nullptr)
+	if(ourInstance != NULL)
 	{
 		myInputReader.RecaptureKeyboard();
 		myInputReader.RecaptureMouse();

@@ -36,6 +36,10 @@ void Block::AddAttribute(BlockAttribute* aAttribute)
 	BlockAttributeType type = aAttribute->GetType();
 	myAttributes[type] = aAttribute;
 }
+void Block::AddAttributes(GrowingArray<Block*>& someAttributes)
+{
+
+}
 StaticArray<BlockAttribute*,BAT_NUM>& Block::GetAttributes()
 {
 	return myAttributes;

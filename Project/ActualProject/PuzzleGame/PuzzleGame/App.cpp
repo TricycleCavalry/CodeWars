@@ -32,6 +32,7 @@ bool App::Init()
 	Root::Create();
 	Root::GetInstance()->GetManagers().mySpriteManager.SetHGE(&myHGE);
 	myTimeManager.InitDefaults();
+	//ROOT->GetFactories().Load();
 
 	myGame.Init();
 	return(true);
@@ -50,13 +51,13 @@ bool App::Update()
 	GrowingArray<InputData>& inputData = myInputThread.GetInputDataArray();
 	if(inputData.Count() > 0)
 	{
-		myInputHandler.Update(inputData.GetLast());
+		//myInputHandler.Update(inputData.GetLast());
 	}
 	myTimeManager.Update();
 
-	if(myInputHandler.IsKeyClicked(DIK_ESCAPE) == true)
+	//if(myInputHandler.IsKeyClicked(DIK_ESCAPE) == true)
 	{
-		return false;
+	//	return false;
 	}
 
 	float elapsedTime = static_cast<float>(myTimeManager.GetElapsedTime().GetTime());

@@ -310,6 +310,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Factories.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Factories.h"
 				>
 			</File>

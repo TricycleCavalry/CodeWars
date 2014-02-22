@@ -19,6 +19,7 @@ public:
 	
 	void Move(const Vector2<float>& aMovementVector);
 	void AddAttribute(BlockAttribute* aAttribute);
+	void AddAttributes(GrowingArray<Block*>& someAttributes);
 
 	StaticArray<BlockAttribute*,BAT_NUM>& GetAttributes();
 
