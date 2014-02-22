@@ -3,4 +3,5 @@
 	<Level ID = "SecondLevel" FilePath = "Data/XML/Levels/level02.xml"/>
 	<Level ID = "ThirdLevel" FilePath = "Data/XML/Levels/level03.xml"/>
 	<Level ID = "FourthOfJuly" FilePath = "Data/XML/Levels/level04.xml"/>
+	<Level ID = "Fifth" FilePath = "Data/XML/Levels/level05.xml"/>
 </Levels>
