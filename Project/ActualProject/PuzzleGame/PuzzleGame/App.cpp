@@ -28,6 +28,8 @@ bool App::Init()
 	srand(static_cast<unsigned int>(time(NULL))); 
 	DL_Debug::Create();
 	myTimeManager.InitDefaults();
+
+	myGame.Init();
 	return(true);
 };
 

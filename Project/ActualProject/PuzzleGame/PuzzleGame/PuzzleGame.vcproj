@@ -210,6 +210,50 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Game"
+			>
+			<File
+				RelativePath=".\Game.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Game.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Level"
+			>
+			<File
+				RelativePath=".\Level.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Level.h"
+				>
+			</File>
+			<Filter
+				Name="Tile"
+				>
+				<File
+					RelativePath=".\Tile.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Tile.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="TileInfo"
+				>
+				<File
+					RelativePath=".\TileInfo.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
 		<File
 			RelativePath=".\main.cpp"
 			>

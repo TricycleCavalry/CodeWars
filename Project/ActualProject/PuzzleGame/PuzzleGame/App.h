@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "InputThreadHandler.h"
 #include "InputHandler.h"
+#include "Game.h"
 
 class HGE;
 class hgeFont;
@@ -25,6 +26,8 @@ private:
 	InputHandler myInputHandler;
 	HGE& myHGE;
 	TimeManager myTimeManager;
+
+	Game myGame;
 };
 
 #endif
