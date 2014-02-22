@@ -90,6 +90,20 @@ bool Editor::Update()
 		}
 	}
 
+	if( InputMouseState(DIK_RMB,DIKS_CLICKED) == true )
+	{
+		Vector2f mousePos = InputGetMousePos();
+
+		if(	mousePos.y >= 0 && mousePos.y <= myHeight * 32 )
+		{
+			if(	mousePos.x >= 0 && mousePos.x <= myWidth * 32 )
+			{
+				int tileId = (static_cast<int>(mousePos.x)/32)+((static_cast<int>(mousePos.y)/32)*myWidth);
+				myTiles[tileId].myBlockId = -1;
+			}
+		}
+	}
+
 	CheckInputOnTile(DIK_UPARROW,1);
 	CheckInputOnTile(DIK_DOWNARROW,-1);
 	return true;
@@ -99,8 +113,11 @@ void Editor::Render()
 {
 	for( int i = 0, count = myTiles.Count(); i < count; ++i )
 	{
-		myTileSprite->SetColor(myBlocks[myTiles[i].myBlockId].first);
-		myTileSprite->Render(myTiles[i].myX,myTiles[i].myY);
+		if(myTiles[i].myBlockId!=-1)
+		{
+			myTileSprite->SetColor(myBlocks[myTiles[i].myBlockId].first);
+			myTileSprite->Render(myTiles[i].myX,myTiles[i].myY);
+		}
 	}
 	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, 0xFF00FF00);
 	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 1, 0xFF00FF00);
@@ -196,14 +213,17 @@ void Editor::SaveFile( const std::string &aFile )
 
 	for(int i = 0, count = myTiles.Count(); i < count; ++i )
 	{
-		tileElement = doc->NewElement("Block");
-		tileElement->SetAttribute("BlockId",myBlocks[myTiles[i].myBlockId].second.c_str());
+		if(myTiles[i].myBlockId!=-1)
+		{
+			tileElement = doc->NewElement("Block");
+			tileElement->SetAttribute("BlockId",myBlocks[myTiles[i].myBlockId].second.c_str());
 
-		std::string tile = CommonUtilities::GetString("%i",myTiles[i].myX/32) + " " + CommonUtilities::GetString("%i",myTiles[i].myY/32);
+			std::string tile = CommonUtilities::GetString("%i",myTiles[i].myX/32) + " " + CommonUtilities::GetString("%i",myTiles[i].myY/32);
 
-		tileElement->SetAttribute("Tile",tile.c_str());
+			tileElement->SetAttribute("Tile",tile.c_str());
 
-		levelElement->InsertEndChild(tileElement);
+			levelElement->InsertEndChild(tileElement);
+		}
 	}
 
 	doc->InsertEndChild(levelElement);
