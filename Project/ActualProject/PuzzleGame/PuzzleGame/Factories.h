@@ -10,7 +10,8 @@ class Factories
 public:
 	Factories();
 	~Factories();
-	void Init();
+
+	void Load();
 public:
 
 	LevelFactory myLevelFactory;

@@ -10,8 +10,12 @@ public:
 	BlockAttributeControllable(void);
 	~BlockAttributeControllable(void);
 
+	void Init();
 	void Update(const float anElapsedTime);
 	void Move(const MovementDirectionType& aMovementDirection);
+
+protected:
+	BlockAttribute* SubCopy();
 
 private:
 	bool myIsMoving;

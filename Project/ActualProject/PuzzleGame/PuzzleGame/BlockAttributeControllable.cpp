@@ -3,6 +3,7 @@
 #include "MovementDirectionType.h"
 
 #include "Block.h"
+#include "Root.h"
 
 BlockAttributeControllable::BlockAttributeControllable(void)
 :	BlockAttribute(BAT_CONTROLLABLE)
@@ -13,6 +14,10 @@ BlockAttributeControllable::~BlockAttributeControllable(void)
 {
 }
 
+void BlockAttributeControllable::Init()
+{
+	ROOT->GetManagers().myControllManager.AddControllableBlock(myOwner);
+}
 void BlockAttributeControllable::Update(const float anElapsedTime)
 {
 
@@ -41,4 +46,11 @@ void BlockAttributeControllable::Move(const MovementDirectionType& aMovementDire
 {
 	myIsMoving = true;
 	myMovementDirectionType = aMovementDirection;
+}
+
+BlockAttribute* BlockAttributeControllable::SubCopy()
+{
+	BlockAttributeControllable* returnAttribute = new BlockAttributeControllable();
+	returnAttribute->myType = myType;
+	return returnAttribute;
 }

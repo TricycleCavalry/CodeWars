@@ -21,7 +21,10 @@ void BlockAttribute::SetOwner(Block* aBlock)
 {
 	myOwner = aBlock;
 }
+void BlockAttribute::Init()
+{
 
+}
 void BlockAttribute::Update(const float anElapsedTime)
 {
 }
@@ -34,3 +37,11 @@ void BlockAttribute::Update(const float anElapsedTime)
 //void BlockAttribute::Clear()
 //{
 //}
+BlockAttribute* BlockAttribute::Copy()
+{
+	BlockAttribute* returnAttribute = SubCopy();
+	returnAttribute->myType = myType;
+	returnAttribute->myOwner = NULL;
+
+	return returnAttribute;
+}

@@ -22,7 +22,7 @@ BlockAttributeFactory::~BlockAttributeFactory()
 void BlockAttributeFactory::CreateAttributeList(tinyxml2::XMLElement* anAttributeListXML, GrowingArray<BlockAttribute*>& someAttributes)
 {
 	//someAttributes.RemoveAll();
-	tinyxml2::XMLElement* attributes = anAttributeListXML;
+	tinyxml2::XMLElement* attributes = anAttributeListXML->FirstChildElement();
 	tinyxml2::XMLElement* attribute = attributes->FirstChildElement();
 	while(attribute != NULL)
 	{
@@ -56,7 +56,7 @@ BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(tinyxml2
 	BlockAttributeControllable* controllableAttribute = new BlockAttributeControllable();
 	
 	
-	BlockAttribute* attribute = NULL;
+	//BlockAttribute* attribute = NULL;
 	//init shizzle
 	
 	return controllableAttribute;

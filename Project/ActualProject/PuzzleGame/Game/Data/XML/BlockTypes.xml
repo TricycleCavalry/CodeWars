@@ -1,10 +1,12 @@
-<BlockType Id = "BlockingBlock" Color = "1 1 1 1">	
-	<Attributes>
-		<Blocking/>
-	</Attributes>	
-</BlockType>
-<BlockType Id = "ControllableBlock" Color = "1 1 1 1">	
-	<Attributes>
-		<Controllable/>
-	</Attributes>	
-</BlockType>
+<BlockTypes>
+	<BlockType Id = "BlockingBlock" Color = "1 1 1 1">	
+		<Attributes>
+			<Blocking/>
+		</Attributes>	
+	</BlockType>
+	<BlockType Id = "ControllableBlock" Color = "1 1 1 1">	
+		<Attributes>
+			<Controllable/>
+		</Attributes>	
+	</BlockType>
+</BlockTypes>

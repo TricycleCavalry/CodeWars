@@ -32,7 +32,7 @@ bool App::Init()
 	Root::Create();
 	Root::GetInstance()->GetManagers().mySpriteManager.SetHGE(&myHGE);
 	myTimeManager.InitDefaults();
-	//ROOT->GetFactories().Load();
+	ROOT->GetFactories().Load();
 
 	myGame.Init();
 	return(true);
@@ -56,6 +56,7 @@ bool App::Update()
 	}
 
 	float elapsedTime = static_cast<float>(myTimeManager.GetElapsedTime().GetTime());
+	myGame.Update(elapsedTime);
 
 	Render();
 	return(true);
@@ -67,7 +68,7 @@ bool App::Render()
 	myHGE.Gfx_BeginScene();
 	myHGE.Gfx_Clear(0);
 	// DO HGE render stuff
-
+	myGame.Render();
 	myHGE.Gfx_EndScene();
 
 	return true;

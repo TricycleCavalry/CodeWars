@@ -1,4 +1,14 @@
-<Level GridDimensions = "16 16"  >
-	<Block BlockId = "A" Tile = "5 5"/>
+<Level GridDimensions = "10 10"  >
+	<Block BlockId = "BlockingBlock" Tile = "0 0"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 1"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 2"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 3"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 4"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 5"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 6"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 7"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 8"/>
+	<Block BlockId = "BlockingBlock" Tile = "0 9"/>
+	<Block BlockId = "ControllableBlock" Tile = "1 5"/>
 	
 </Level>

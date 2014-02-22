@@ -14,11 +14,17 @@ public:
 
 	BlockAttributeType GetType();
 	void SetOwner(Block* aBlock);
-	
+
+	virtual void Init();
 	virtual void Update(const float anElapsedTime);
 	/*virtual void OnEnter();
 	virtual void OnExit();
 	virtual void Clear();*/
+
+	BlockAttribute* Copy();
+
+protected:	
+	virtual BlockAttribute* SubCopy() = 0;
 
 protected:
 	Block* myOwner;

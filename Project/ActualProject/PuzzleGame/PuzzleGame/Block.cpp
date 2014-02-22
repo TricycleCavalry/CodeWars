@@ -1,7 +1,9 @@
 #include "StdAfx.h"
 #include "Block.h"
 
+
 #include "BlockAttribute.h"
+#include "Root.h"
 
 Block::Block(void)
 :	myIntersectingBlocks(4)
@@ -16,6 +18,12 @@ void Block::Init(const Vector2<float>& aPosition, const Vector2<float>& someExte
 {
 	myPosition = aPosition;
 	myExtents = someExtents;
+
+	for(int i = 0; i < BAT_NUM; ++i)
+	{
+		myAttributes[i]->Init();
+	}
+	
 }
 
 void Block::Update(const float anElapsedTime)
@@ -35,6 +43,7 @@ void Block::AddAttribute(BlockAttribute* aAttribute)
 {
 	BlockAttributeType type = aAttribute->GetType();
 	myAttributes[type] = aAttribute;
+	aAttribute->SetOwner(this);
 }
 void Block::AddAttributes(GrowingArray<Block*>& someAttributes)
 {
@@ -74,4 +83,16 @@ void Block::Clear()
 	{
 //		myAttributes[i]->Clear();
 	}
+}
+
+
+Block* Block::Copy()
+{
+	Block* returnBlock = CONTAINERS.myBlockContainer.GetNewBlock();
+	for(int i = 0; i < BAT_NUM; ++i)
+	{
+		returnBlock->AddAttribute(myAttributes[i]->Copy());
+		//returnBlock->GetAttribute<BlockAttribute*>(static_cast<BlockAttributeType>(i)) ->SetOwner(returnBlock);
+	}	
+	return returnBlock;
 }

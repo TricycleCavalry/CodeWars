@@ -34,6 +34,10 @@ public:
 	void OnExit();
 	void Clear();
 
+	Block* Copy();
+
+private:
+
 
 private:
 	Vector2<float> myPosition;

@@ -8,8 +8,13 @@ public:
 	BlockAttributeBlockin(void);
 	~BlockAttributeBlockin(void);
 
+	void Init();
 
-private:
+	void Clear();
+
+
+protected:
+	BlockAttribute* SubCopy();
 
 };
 

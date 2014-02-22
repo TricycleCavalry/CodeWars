@@ -6,6 +6,7 @@
 #include "Block.h"
 
 BlockFactory::BlockFactory()
+:	myCurrentBlockBlockAttributes(16)
 {
 
 }
@@ -29,9 +30,9 @@ void BlockFactory::LoadTypes(const std::string& aFilepath)
 	}
 }
 
-Block* GetBlock(const char* aTypeId)
+Block* BlockFactory::GetBlock(const char* aTypeId)
 {
-	return NULL;
+	return myTypes[aTypeId]->Copy();
 }
 
 void BlockFactory::CreateBlockType(tinyxml2::XMLElement* anXMLElement)
