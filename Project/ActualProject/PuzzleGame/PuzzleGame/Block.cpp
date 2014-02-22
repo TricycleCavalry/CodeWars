@@ -30,6 +30,10 @@ void Block::Update(const float anElapsedTime)
 		myAttributes[i]->Update(anElapsedTime);
 	}
 }
+Vector2<float>& Block::GetPosition()
+{
+	return myPosition;
+}
 void Block::Move(const Vector2<float>& aMovementVector)
 {
 	myPosition += aMovementVector;

@@ -3,6 +3,7 @@
 
 #include "GrowingArray.h"
 #include "StaticArray.h"
+#include "Camera.h"
 
 enum MovementDirectionType;
 class Block;
@@ -29,6 +30,9 @@ public:
 	void Update(const float anElapsedTime);
 
 	void AddControllableBlock(Block* aBlock);
+	void RemoveControllableBlock(Block* aBlock);
+
+	void SetCamera(Camera* aCamera);
 
 private:
 	void UpdateInput();
@@ -38,9 +42,11 @@ private:
 private:
 	GrowingArray<BlockAttributeControllable*> myControllableBlockAttributes;
 	GrowingArray<Block*> myControllableBlocks;
-	int myNumControllableBlocks;
 
+	int myNumControllableBlocks;
 	int myActiveControllableBlockIndex;
+
+	Camera* myCamera;
 
 	StaticArray<int,CIT_NUM> myInputKeys;
 

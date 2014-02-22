@@ -4,12 +4,14 @@
 #include "Tile.h"
 #include "Block.h"
 #include "Root.h"
+#include "hge.h"
 
 #define TILE_WIDTH 32
 #define TILE_HEIGHT 32
 
 Level::Level(void)
 :	myTiles(256)
+,	myHGE(NULL)
 {
 }
 
@@ -43,12 +45,19 @@ void Level::Update(const float& anElapsedTime)
 	}
 }
 
-void Level::Render(const Vector2<float> &aCameraPosition)
+void Level::Render(const Vector2<float>& aCameraPosition)
 {
 	for(int i=0,count=myTiles.Count();i<count;i++)
 	{
 		myTiles[i].Render(aCameraPosition);
 	}
+	/*for(int x = 0; x < myDimensions.x; ++x)
+	{
+		for(int  y = 0; y < myDimensions.y; ++y)
+		{
+			RenderLine(0,
+		}
+	}*/
 }
 
 Tile* Level::GetTile(const Vector2<int>& aTilePosition)
@@ -61,7 +70,16 @@ Tile* Level::GetTile(const Vector2<int>& aTilePosition)
 	}
 	return returnTile;
 }
+void Level::SetHGE(HGE* aHGE)
+{
+	myHGE = aHGE;
+}
+void Level::RenderLine(const float aX1,const float aY1,const float aX2,const float aY2 ,const Vector4<float>& aColor)
+{
+	DWORD color = ARGB(aColor.a,aColor.r,aColor.g,aColor.b);
+	myHGE->Gfx_RenderLine(aX1,aY1,aX2,aY2,color);
 
+}
 int Level::GetIndexForPosition(const Vector2<int>& aPosition)
 {
 	int indexToReturn = -1;

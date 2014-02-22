@@ -53,7 +53,7 @@ BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(tinyxml2
 {
 	//TODO
 	//ControllableBlockAttribute* attribute = ROOT->CONTAINERS->BLOCK_ATTRIBUTE->GetNewControllableBlockAttribute();
-	BlockAttributeControllable* controllableAttribute = new BlockAttributeControllable();
+	BlockAttributeControllable* controllableAttribute = CONTAINERS.myBlockAttributeContainer.GetNewBlockAttributeType<BlockAttributeControllable>();
 	
 	
 	//BlockAttribute* attribute = NULL;
@@ -64,7 +64,7 @@ BlockAttribute* BlockAttributeFactory::CreateControllableBlockAttribute(tinyxml2
 
 BlockAttribute* BlockAttributeFactory::CreateBlockingBlockAttribute(tinyxml2::XMLElement* anAttribute)
 {
-	BlockAttributeBlockin* blockblockAttribute = new BlockAttributeBlockin();
+	BlockAttributeBlockin* blockblockAttribute = CONTAINERS.myBlockAttributeContainer.GetNewBlockAttributeType<BlockAttributeBlockin>();
 
 	return blockblockAttribute;
 }

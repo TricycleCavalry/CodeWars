@@ -17,6 +17,7 @@ public:
 	void Init(const Vector2<float>& aPosition, const Vector2<float>& someExtents);
 	void Update(const float anElapsedTime);
 	
+	Vector2<float>& GetPosition();
 	void Move(const Vector2<float>& aMovementVector);
 	void AddAttribute(BlockAttribute* aAttribute);
 	void AddAttributes(GrowingArray<Block*>& someAttributes);

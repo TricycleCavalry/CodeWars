@@ -34,7 +34,7 @@ bool App::Init()
 	myTimeManager.InitDefaults();
 	ROOT->GetFactories().Load();
 
-	myGame.Init();
+	myGame.Init(&myHGE);
 	return(true);
 };
 
@@ -68,7 +68,7 @@ bool App::Update()
 bool App::Render()
 {	
 	myHGE.Gfx_BeginScene();
-	myHGE.Gfx_Clear(0);
+	myHGE.Gfx_Clear(ARGB(1,1,1,1));
 	// DO HGE render stuff
 	myGame.Render();
 	myHGE.Gfx_EndScene();

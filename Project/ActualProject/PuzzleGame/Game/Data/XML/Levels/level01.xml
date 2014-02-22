@@ -9,6 +9,7 @@
 	<Block BlockId = "BlockingBlock" Tile = "0 7"/>
 	<Block BlockId = "BlockingBlock" Tile = "0 8"/>
 	<Block BlockId = "BlockingBlock" Tile = "0 9"/>
+	
 	<Block BlockId = "ControllableBlock" Tile = "1 5"/>
 	
 </Level>

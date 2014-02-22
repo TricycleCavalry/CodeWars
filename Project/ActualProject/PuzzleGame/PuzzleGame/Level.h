@@ -14,14 +14,18 @@ public:
 	~Level(void);
 
 	void Init(const Vector2<int>& someDimensions);
-
 	void Update(const float& anElapsedTime);
-	void Render(const Vector2<float> &aCameraPosition);
+	void Render(const Vector2<float>& aCameraPosition);
 
 	Tile* GetTile(const Vector2<int>& aTilePosition);
 
+	void SetHGE(HGE* aHGE);
+
 private:
+	void RenderLine(const float aX1,const float aY1,const float aX2,const float aY2 ,const Vector4<float>& aColor);
 	int GetIndexForPosition(const Vector2<int>& aPosition);
+private:
+	HGE* myHGE;
 
 	Vector2<int> myDimensions;
 

@@ -14,6 +14,8 @@ public:
 	void Update(const float anElapsedTime);
 	void Move(const MovementDirectionType& aMovementDirection);
 
+	void Clear();
+
 protected:
 	BlockAttribute* SubCopy();
 

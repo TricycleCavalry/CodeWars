@@ -16,6 +16,10 @@ BlockAttributeControllable::~BlockAttributeControllable(void)
 
 void BlockAttributeControllable::Init()
 {
+	if(myOwner == NULL)
+	{
+		DL_ASSERT("ControllManager::AddControllableBlock() has failed Owner is nullptr");
+	}
 	ROOT->GetManagers().myControllManager.AddControllableBlock(myOwner);
 }
 void BlockAttributeControllable::Update(const float anElapsedTime)
@@ -48,9 +52,13 @@ void BlockAttributeControllable::Move(const MovementDirectionType& aMovementDire
 	myMovementDirectionType = aMovementDirection;
 }
 
+void BlockAttributeControllable::Clear()
+{
+	ROOT->GetManagers().myControllManager.RemoveControllableBlock(myOwner);
+}
 BlockAttribute* BlockAttributeControllable::SubCopy()
 {
-	BlockAttributeControllable* returnAttribute = new BlockAttributeControllable();
+	BlockAttributeControllable* returnAttribute = CONTAINERS.myBlockAttributeContainer.GetNewBlockAttribute<BlockAttributeControllable>();	
 	returnAttribute->myType = myType;
 	return returnAttribute;
 }
