@@ -24,9 +24,8 @@ void Game::Init(HGE* aHGE)
 	LoadFirstLevel();
 }
 
-void Game::Update(const float& anElapsedTime)
+bool Game::Update(const float& anElapsedTime)
 {
-	myCamera.SetPosition(camPos);
 	myCamera.Update(anElapsedTime);
 	ROOT->GetManagers().myBlockManager.Update(anElapsedTime);
 	ROOT->GetManagers().myControllManager.Update(anElapsedTime);
@@ -41,9 +40,10 @@ void Game::Update(const float& anElapsedTime)
 		myLevel = NULL;
 		if(GetNextLevel() == false)
 		{
-			return; //false; ?
+			return false;
 		}
 	}
+	return true;
 }
 
 void Game::Render()
@@ -69,7 +69,10 @@ bool Game::GetNextLevel()
 		if(XMLUTIL::GetString(levelElement,"ID") == myCurrentLevel)
 		{
 			levelElement = levelElement->NextSiblingElement();
-			nextLevel = XMLUTIL::GetString(levelElement,"ID");
+			if(levelElement != NULL)
+			{
+				nextLevel = XMLUTIL::GetString(levelElement,"ID");
+			}
 			break;
 		}
 		levelElement = levelElement->NextSiblingElement();

@@ -60,7 +60,10 @@ bool App::Update()
 	{
 		elapsedTime = 0.1;
 	} 
-	myGame.Update(elapsedTime);
+	if(myGame.Update(elapsedTime) == false)
+	{
+		return false;
+	}
 
 
 	Render();

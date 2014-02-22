@@ -14,7 +14,7 @@ public:
 	~Game(void);
 
 	void Init(HGE* aHGE);
-	void Update(const float& anElapsedTime);
+	bool Update(const float& anElapsedTime);
 	void Render();
 
 	
