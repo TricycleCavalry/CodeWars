@@ -65,6 +65,10 @@ void Block::SnapToGrid()
 	//TODO:
 	//ROOT->myBlockManager->SnapBlockToGrid(this);
 }
+void Block::SetZ(float aZ)
+{
+	mySprite.SetZ(aZ);
+}
 void Block::SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor)
 {
 	mySprite = Root::GetInstance()->GetManagers().mySpriteManager.GetSprite(aFilePath);
@@ -73,6 +77,7 @@ void Block::SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor)
 	{
 		mySprite.SetColor(ARGB(myBlockColor.a,myBlockColor.r,myBlockColor.g,myBlockColor.b));
 	}
+	mySprite.SetZ(0.75f);
 }
 void Block::OnEnter()
 {

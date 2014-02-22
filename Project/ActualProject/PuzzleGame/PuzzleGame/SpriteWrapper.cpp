@@ -3,16 +3,18 @@
 
 SpriteWrapper::SpriteWrapper(void)
 :	mySprite(NULL)
-,	myColor(ARGB(1,1,1,1))
+,	myColor(ARGB(255,255,255,255))
 ,	myHotSpot(Vector2f(0,0))
 ,	myBlendMode(BLEND_DEFAULT)
+,	myZ(0.f)
 {
 }
 SpriteWrapper::SpriteWrapper(hgeSprite *aSprite)
 :	mySprite(aSprite)
-,	myColor(ARGB(1,1,1,1))
+,	myColor(ARGB(255,255,255,255))
 ,	myHotSpot(Vector2f(0,0))
 ,	myBlendMode(BLEND_DEFAULT)
+,	myZ(0.f)
 {
 }
 
@@ -21,6 +23,7 @@ SpriteWrapper::SpriteWrapper(const SpriteWrapper& aSpriteWrapper)
 ,	myColor(aSpriteWrapper.myColor)
 ,	myHotSpot(aSpriteWrapper.myHotSpot)
 ,	myBlendMode(aSpriteWrapper.myBlendMode)
+,	myZ(aSpriteWrapper.myZ)
 {
 }
 
@@ -63,6 +66,14 @@ void SpriteWrapper::SetBlendMode(const int aBlendMode)
 {
 	myBlendMode = aBlendMode;
 }
+void SpriteWrapper::SetZ(const float& aZ)
+{
+	myZ = aZ;
+}
+float SpriteWrapper::GetZ()
+{
+	return myZ;
+}
 int SpriteWrapper::GetBlendMode()
 {
 	return myBlendMode;
@@ -85,4 +96,5 @@ void SpriteWrapper::PreRender()
 	mySprite->SetColor(myColor);
 	mySprite->SetHotSpot(myHotSpot.myX, myHotSpot.myY);
 	mySprite->SetBlendMode(myBlendMode);
+	mySprite->SetZ(myZ);
 }

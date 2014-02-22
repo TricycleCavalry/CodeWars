@@ -30,6 +30,7 @@ void Tile::SetTileType(const TileType& aTileType)
 void Tile::SetSprite(SpriteWrapper aSpriteWrapper)
 {
 	mySprite = aSpriteWrapper;
+	mySprite.SetZ(1.f);
 }
 
 void Tile::Update(const float& anElapsedTime)
@@ -40,7 +41,7 @@ void Tile::Update(const float& anElapsedTime)
 void Tile::Render(const Vector2<float> &aCameraPosition)
 {
 	Vector2<int> camPos(aCameraPosition.myX, aCameraPosition.myY);
-	mySprite.Render(myPosition - camPos);
+	//mySprite.Render(myPosition - camPos);
 	for(int i=0,count=myBlocks.Count();i<count;i++)
 	{
 		myBlocks[i]->Render(aCameraPosition);

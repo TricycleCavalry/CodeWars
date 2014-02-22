@@ -23,11 +23,14 @@ public:
 	void SetColor(DWORD aColor);
 	void SetHotSpot(Vector2<float> aHotSpotPosition);
 	void SetBlendMode(const int aBlendMode);
+	void SetZ(const float& aZ);
 
+	float GetZ();
 	int GetBlendMode();
 	DWORD GetColor();
 	float GetWidth();
 	float GetHeight();
+
 
 private:
 	void PreRender();
@@ -36,6 +39,7 @@ private:
 	DWORD myColor;
 	Vector2f myHotSpot;
 	int myBlendMode;
+	float myZ;
 };
 
 #endif

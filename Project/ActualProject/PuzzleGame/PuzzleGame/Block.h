@@ -30,6 +30,8 @@ public:
 
 	GrowingArray<Block*>& GetIntersectingBlocks();
 	void SnapToGrid();
+
+	void SetZ(float aZ);
 	
 	template<typename TYPE>
 	TYPE* GetAttribute(const BlockAttributeType aType);

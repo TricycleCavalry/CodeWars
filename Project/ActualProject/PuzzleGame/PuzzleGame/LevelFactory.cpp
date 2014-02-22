@@ -3,6 +3,7 @@
 #include "Level.h"
 #include "XMLUtil.h"
 #include "Root.h"
+#include "Block.h"
 
 LevelFactory::LevelFactory()
 {
@@ -51,7 +52,9 @@ void LevelFactory::CreateBlocks(Level* aLevel, tinyxml2::XMLElement* aBlockEleme
 		}
 		else
 		{
-			currentTile->GetBlocks().Add(FACTORIES.myBlockFactory.GetBlock(blockId.c_str()));
+			Block* block = FACTORIES.myBlockFactory.GetBlock(blockId.c_str());
+			block->Init(blockTilePosF*32.f,Vector2f(32.f,32.f));
+			currentTile->GetBlocks().Add(block);
 		}
 
 		blockIterator = blockIterator->NextSiblingElement();
