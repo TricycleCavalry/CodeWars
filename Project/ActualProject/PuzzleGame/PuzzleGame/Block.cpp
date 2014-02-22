@@ -4,11 +4,13 @@
 
 #include "BlockAttribute.h"
 #include "Root.h"
+#include "Level.h"
 
 Block::Block(void)
 :	myIntersectingBlocks(4)
 ,	myAttributes(64)
 ,	myDictionary(2048)
+,	myCurrentTile(NULL)
 {
 }
 
@@ -51,6 +53,25 @@ void Block::SetPosition(const Vector2<float>& aPosition)
 void Block::Move(const Vector2<float>& aMovementVector)
 {
 	myPosition += aMovementVector;
+	bool* moving;
+	if(myDictionary.Lookup<bool>(BlockVariables::Moving,moving) == true)
+	{
+		if(*moving == true)
+		{
+			Vector2f tilePos = myCurrentTile->GetPosition();
+			Vector2f difference = myPosition - tilePos;
+			if(difference.Length() > 16.f)
+			{
+				Vector2<int> indexedPos(static_cast<int>(tilePos.x/32.f),static_cast<int>(tilePos.y/32.f));
+				Vector2<float> differenceF = difference.GetNormalize();
+				indexedPos += Vector2<int>(differenceF.x,differenceF.y);
+				myCurrentTile->GetBlocks().RemoveCyclic(this);
+				OnExit();
+				OnEnter(ROOT->GetLevel()->GetTile(indexedPos));
+				myCurrentTile->GetBlocks().Add(this);
+			}
+		}
+	}
 }
 void Block::AddAttribute(BlockAttribute* aAttribute)
 {
@@ -89,8 +110,9 @@ void Block::SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor)
 	}
 	mySprite.SetZ(0.75f);
 }
-void Block::OnEnter()
+void Block::OnEnter(Tile* aTile)
 {
+	myCurrentTile = aTile;
 	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 //		myAttributes[i]->OnEnter();
@@ -98,6 +120,7 @@ void Block::OnEnter()
 }
 void Block::OnExit()
 {
+	myCurrentTile = NULL;
 	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 //		myAttributes[i]->OnExit();
@@ -107,6 +130,7 @@ void Block::OnExit()
 void Block::Clear()
 {
 	//TODO
+	myCurrentTile = NULL;
 	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 //		myAttributes[i]->Clear();

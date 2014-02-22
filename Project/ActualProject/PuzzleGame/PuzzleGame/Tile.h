@@ -3,6 +3,7 @@
 
 #include "GrowingArray.h"
 #include "SpriteWrapper.h"
+#include "Vector2.h"
 
 class Block;
 

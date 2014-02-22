@@ -21,7 +21,7 @@ protected:
 	BlockAttribute* SubCopy();
 
 private:
-	bool myIsMoving;
+	bool* myIsMoving;
 	MovementDirectionType myMovementDirectionType;
 	Vector2<float> myEndPosition;
 

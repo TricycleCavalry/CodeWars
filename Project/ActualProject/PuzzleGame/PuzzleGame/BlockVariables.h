@@ -6,6 +6,7 @@
 namespace BlockVariables
 {
 	static const char* Blocked = "Blocked";
+	static const char* Moving = "Moving";
 }
 
 #endif

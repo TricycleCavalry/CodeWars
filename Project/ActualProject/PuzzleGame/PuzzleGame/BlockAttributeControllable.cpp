@@ -22,13 +22,14 @@ void BlockAttributeControllable::Init()
 		DL_ASSERT("ControllManager::AddControllableBlock() has failed Owner is nullptr");
 	}
 	ROOT->GetManagers().myControllManager.AddControllableBlock(myOwner);
+	myIsMoving = &myOwner->myDictionary.SetDefault<bool>(BlockVariables::Moving,false);
 }
 void BlockAttributeControllable::Update(const float anElapsedTime)
 {
 	//GrowingArray<Block*> intersectingBlocks = myOwner->GetIntersectingBlocks();
 	
 	
-	if(myIsMoving == true)
+	if(*myIsMoving == true)
 	{		
 		Vector2<float> movementDirection;
 		GetDirection(myMovementDirectionType,movementDirection);
@@ -38,20 +39,20 @@ void BlockAttributeControllable::Update(const float anElapsedTime)
 		if( (myOwner->GetPosition()- myEndPosition).Length() < 2.f)
 		{
 			myOwner->SetPosition(myEndPosition);
-			myIsMoving = false;
+			*myIsMoving = false;
 		}
 	}
 }
 
 void BlockAttributeControllable::Move(const MovementDirectionType& aMovementDirection,const Vector2<float>& aEndPosition)
 {
-	myIsMoving = true;
+	*myIsMoving = true;
 	myMovementDirectionType = aMovementDirection;
 	myEndPosition = aEndPosition;
 }
 bool BlockAttributeControllable::IsMoving()
 {
-	return myIsMoving;
+	return *myIsMoving;
 }
 void BlockAttributeControllable::Clear()
 {

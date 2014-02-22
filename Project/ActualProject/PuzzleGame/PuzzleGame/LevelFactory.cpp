@@ -55,6 +55,7 @@ void LevelFactory::CreateBlocks(Level* aLevel, tinyxml2::XMLElement* aBlockEleme
 			Block* block = FACTORIES.myBlockFactory.GetBlock(blockId.c_str());
 			block->Init(blockTilePosF*32.f,Vector2f(32.f,32.f));
 			currentTile->GetBlocks().Add(block);
+			block->OnEnter(currentTile);
 		}
 
 		blockIterator = blockIterator->NextSiblingElement();

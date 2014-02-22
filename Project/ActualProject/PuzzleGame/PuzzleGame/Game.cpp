@@ -21,7 +21,6 @@ void Game::Init(HGE* aHGE)
 	ROOT->GetManagers().myControllManager.SetCamera(&myCamera);
 	myHGE = aHGE;
 	LoadLevel();
-
 }
 
 void Game::Update(const float& anElapsedTime)
@@ -85,5 +84,5 @@ void Game::LoadLevel()
 
 	myLevel = FACTORIES.myLevelFactory.CreateLevel(filePath);
 	ROOT->GetManagers().myControllManager.SetLvel(myLevel);
-	
+	ROOT->SetLevel(myLevel);
 }

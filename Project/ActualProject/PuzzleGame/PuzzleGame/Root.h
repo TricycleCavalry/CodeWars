@@ -18,6 +18,9 @@ public:
 	Containers& GetContainers(){return myContainers;};
 	Factories& GetFactories(){return myFactories;};
 	Managers& GetManagers(){return myManagers;};
+
+	void SetLevel(Level* aLevel);
+	Level* GetLevel();
 private:
 	Root();
 	~Root();
@@ -30,7 +33,7 @@ private:
 	Factories myFactories;
 	Managers myManagers;
 
-
+	Level* myLevel;
 };
 
 #endif

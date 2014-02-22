@@ -12,6 +12,7 @@
 #include "SpriteWrapper.h"
 
 class BlockAttribute;
+class Tile;
 
 class Block
 {
@@ -41,7 +42,7 @@ public:
 	
 	void SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor);
 
-	void OnEnter();
+	void OnEnter(Tile* aTile);
 	void OnExit();
 	void Clear();
 
@@ -59,7 +60,7 @@ private:
 	
 	SpriteWrapper mySprite;
 	Vector4f myBlockColor;
-
+	Tile* myCurrentTile;
 };
 
 template<typename TYPE>
