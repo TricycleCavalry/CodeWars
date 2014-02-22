@@ -20,8 +20,7 @@ void BlockFactory::LoadTypes(const std::string& aFilepath)
 {
 	tinyxml2::XMLElement* typeDoc = XMLUTIL::LoadFile(aFilepath);
 
-	tinyxml2::XMLElement* blockTypesList = typeDoc->FirstChildElement();
-	tinyxml2::XMLElement* blockTypeIterator = blockTypesList->FirstChildElement();
+	tinyxml2::XMLElement* blockTypeIterator = typeDoc->FirstChildElement();
 
 	while(blockTypeIterator!=NULL)
 	{
