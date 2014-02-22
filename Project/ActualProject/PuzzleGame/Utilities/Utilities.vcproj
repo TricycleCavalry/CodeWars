@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="Utilities"
 	ProjectGUID="{43884794-3158-4103-942A-E20137CC8571}"
 	RootNamespace="Utilities"
@@ -60,7 +60,9 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="dinput.lib;dxguid.lib;"
 				OutputFile="$(OutDir)\$(ProjectName)_$(ConfigurationName).lib"
+				AdditionalLibraryDirectories="$(WindowsSDK_IncludePath)"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -319,6 +321,26 @@
 		</File>
 		<File
 			RelativePath=".\FixedArray.h"
+			>
+		</File>
+		<File
+			RelativePath=".\InputData.h"
+			>
+		</File>
+		<File
+			RelativePath=".\InputHandler.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\InputHandler.h"
+			>
+		</File>
+		<File
+			RelativePath=".\InputReader.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\InputReader.h"
 			>
 		</File>
 		<File
