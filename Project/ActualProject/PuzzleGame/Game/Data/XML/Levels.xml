@@ -1,3 +1,5 @@
 <Levels StartLevelId = "FirstLevel">
-	<Level ID = "FirstLevel" FilePath = "Data/XML/Levels/level03.xml"/>
+	<Level ID = "FirstLevel" FilePath = "Data/XML/Levels/level01.xml"/>
+	<Level ID = "SecondLevel" FilePath = "Data/XML/Levels/level02.xml"/>
+	<Level ID = "ThirdLevel" FilePath = "Data/XML/Levels/level03.xml"/>
 </Levels>
