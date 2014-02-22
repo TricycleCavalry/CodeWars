@@ -4,6 +4,8 @@
 #include "Root.h"
 #include "Factories.h"
 
+#include "InputHandler.h"
+
 Game::Game(void)
 {
 }
@@ -19,6 +21,28 @@ void Game::Init()
 
 void Game::Update(const float& anElapsedTime)
 {
+	Vector2<float> camPos = myCamera.GetPosition();
+	if(InputKeyState(DIK_UPARROW,DIKS_PRESSED) == true)
+	{
+		camPos.myY -= 500 * anElapsedTime;
+		
+	}
+	if(InputKeyState(DIK_DOWN,DIKS_PRESSED) == true)
+	{
+		camPos.myY += 500 * anElapsedTime;
+		
+	}
+	if(InputKeyState(DIK_RIGHTARROW,DIKS_PRESSED) == true)
+	{
+		camPos.myX += 500 * anElapsedTime;
+		
+	}
+	if(InputKeyState(DIK_LEFTARROW,DIKS_PRESSED) == true)
+	{
+		camPos.myX -= 500 * anElapsedTime;
+		
+	}
+	myCamera.SetPosition(camPos);
 	myCamera.Update(anElapsedTime);
 	ROOT->GetManagers().myControllManager.Update(anElapsedTime);
 	myLevel->Update(anElapsedTime);
@@ -26,7 +50,7 @@ void Game::Update(const float& anElapsedTime)
 
 void Game::Render()
 {
-	myLevel->Render();
+	myLevel->Render(myCamera.GetPosition());
 }
 
 void Game::LoadLevel()
