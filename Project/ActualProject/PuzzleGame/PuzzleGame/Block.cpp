@@ -104,10 +104,9 @@ void Block::SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor)
 {
 	mySprite = Root::GetInstance()->GetManagers().mySpriteManager.GetSprite(aFilePath);
 	myBlockColor = aColor;
-	if(aFilePath == "")
-	{
+	
 		mySprite.SetColor(ARGB(myBlockColor.a,myBlockColor.r,myBlockColor.g,myBlockColor.b));
-	}
+	
 	mySprite.SetZ(0.75f);
 }
 void Block::OnEnter(Tile* aTile)

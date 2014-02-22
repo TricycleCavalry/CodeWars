@@ -25,6 +25,7 @@ public:
 	void SetPosition(const Vector2<int>& aPosition);
 	void SetTileType(const TileType& aTileType);
 	void SetSprite(SpriteWrapper aSpriteWrapper);
+	SpriteWrapper& GetSprite();
 
 	void Update(const float& anElapsedTime);
 	void Render(const Vector2<float> &aCameraPosition);

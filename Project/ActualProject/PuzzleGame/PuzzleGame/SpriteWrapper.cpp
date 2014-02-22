@@ -5,7 +5,7 @@ SpriteWrapper::SpriteWrapper(void)
 :	mySprite(NULL)
 ,	myColor(ARGB(255,255,255,255))
 ,	myHotSpot(Vector2f(0,0))
-,	myBlendMode(BLEND_DEFAULT)
+,	myBlendMode(BLEND_ALPHABLEND)
 ,	myZ(0.f)
 {
 }
@@ -13,7 +13,7 @@ SpriteWrapper::SpriteWrapper(hgeSprite *aSprite)
 :	mySprite(aSprite)
 ,	myColor(ARGB(255,255,255,255))
 ,	myHotSpot(Vector2f(0,0))
-,	myBlendMode(BLEND_DEFAULT)
+,	myBlendMode(BLEND_ALPHABLEND)
 ,	myZ(0.f)
 {
 }

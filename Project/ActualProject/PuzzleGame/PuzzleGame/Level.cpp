@@ -30,6 +30,7 @@ void Level::Init(const Vector2<int>& someDimensions)
 			myTiles[counter].Init();
 			myTiles[counter].SetTileType(TT_NORMAL);
 			myTiles[counter].SetSprite(ROOT->GetManagers().mySpriteManager.GetSprite("Data\\GFX\\Tiles\\tile01.png"));
+			myTiles[counter].GetSprite().SetColor(ARGB(255,255,255,0));
 			myTiles[counter].SetPosition(Vector2<int>(x*TILE_WIDTH,y*TILE_HEIGHT));
 			counter++;
 		}

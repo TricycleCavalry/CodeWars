@@ -32,6 +32,10 @@ void Tile::SetSprite(SpriteWrapper aSpriteWrapper)
 	mySprite = aSpriteWrapper;
 	mySprite.SetZ(1.f);
 }
+SpriteWrapper& Tile::GetSprite()
+{
+	return mySprite;
+}
 
 void Tile::Update(const float& anElapsedTime)
 {

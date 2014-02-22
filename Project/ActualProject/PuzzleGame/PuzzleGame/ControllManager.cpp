@@ -105,6 +105,10 @@ void ControllManager::UpdateInput()
 }
 void ControllManager::SwitchBlock(const int aDirection)
 {
+	if(myControllableBlockAttributes[myActiveControllableBlockIndex]->IsMoving() == true)
+	{
+		return;
+	}
 	myActiveControllableBlockIndex += aDirection;
 
 	if(myActiveControllableBlockIndex < 0)
@@ -127,6 +131,7 @@ void ControllManager::MoveBlock(const MovementDirectionType aDirection)
 	GetDirection(aDirection,direction);
 	direction *= TILE_SIZE;
 	Vector2<float> currentTilePos(myControllableBlocks[myActiveControllableBlockIndex]->GetPosition());
+	currentTilePos += direction;
 	Tile* currentTile = myLevel->GetTile(currentTilePos);
 	Tile* prevTile = NULL;
 	
@@ -165,8 +170,10 @@ void ControllManager::MoveBlock(const MovementDirectionType aDirection)
 		
 	}
 	//if(currentTile->Get
-	
-	myControllableBlockAttributes[myActiveControllableBlockIndex]->Move(aDirection,prevTile->GetPosition());
+	if(prevTile != NULL)
+	{
+		myControllableBlockAttributes[myActiveControllableBlockIndex]->Move(aDirection,prevTile->GetPosition());
+	}
 }
 
 
