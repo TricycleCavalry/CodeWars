@@ -38,6 +38,10 @@ const Vector2<float>& Camera::GetPosition() const
 }
 void Camera::MoveToPosition(const Vector2<float> &aPositionToMoveTo, const float aTimeToMove)
 {
+	if(myTargetPosition == myPosition)
+	{
+		return;
+	}
 	myStartPosition = myPosition;
 	myTargetPosition = aPositionToMoveTo;
 	myIsLerping = true;
