@@ -84,15 +84,15 @@ void Editor::Render()
 		myTileSprite->SetColor(myBlocks[myTiles[i].myBlockId].first);
 		myTileSprite->Render(myTiles[i].myX,myTiles[i].myY);
 	}
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, 0xFFFF0000);
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 1, 0xFFFF0000);
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32 + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32 + 1, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, 0xFF00FF00);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 1, 0xFF00FF00);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFF00FF00);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32 + 1, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32 + 1, 0xFF00FF00);
 
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 1, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
-	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize + 32, 0xFFFF0000);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize, myPositionInGridY * myTileSize + 32, 0xFF00FF00);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 1, myPositionInGridY * myTileSize + 32, 0xFF00FF00);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32, myPositionInGridY * myTileSize + 32, 0xFF00FF00);
+	myHGE->Gfx_RenderLine(myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize, myPositionInGridX * myTileSize + 32 + 1, myPositionInGridY * myTileSize + 32, 0xFF00FF00);
 	/*myPositionInGridSprite->Render(myPositionInGridX*myTileSize,myPositionInGridY*myTileSize);*/
 	myFont->Render( 500, 75, HGETEXT_LEFT, "Current tile type:" );
 	myFont->Render( 500, 100, HGETEXT_LEFT, myBlocks[myTiles[myPositionInGridX + myPositionInGridY*myHeight].myBlockId].second.c_str() );
@@ -111,7 +111,7 @@ void Editor::LoadBlockTypes()
 	while(block!=NULL)
 	{
 		std::string blockType = block->Attribute("Id");
-		Vector4f spriteColor = XMLUTIL::GetVector4(block->Attribute("Color"),Vector4f(1,1,1,1));;
+		Vector4f spriteColor = XMLUTIL::GetVector4(block->Attribute("Color"),Vector4f(1,1,1,1));
 
 		myBlocks.Add(std::pair<DWORD,std::string>(ARGB(spriteColor.a,spriteColor.r,spriteColor.g,spriteColor.b),blockType));
 		block = block->NextSiblingElement();
