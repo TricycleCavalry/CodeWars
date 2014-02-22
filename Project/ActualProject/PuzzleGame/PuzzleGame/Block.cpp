@@ -136,6 +136,10 @@ void Block::Clear()
 	}
 }
 
+Tile* Block::GetCurrentTile()
+{
+	return myCurrentTile;
+}
 
 Block* Block::Copy()
 {

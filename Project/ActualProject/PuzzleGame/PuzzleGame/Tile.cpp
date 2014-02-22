@@ -55,3 +55,7 @@ GrowingArray<Block*>& Tile::GetBlocks()
 {
 	return myBlocks;
 }
+TileType Tile::GetTileType()
+{
+	return myType;
+}

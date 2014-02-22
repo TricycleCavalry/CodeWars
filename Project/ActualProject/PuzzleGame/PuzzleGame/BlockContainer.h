@@ -12,6 +12,7 @@ public:
 	
 	Block* GetNewBlock();
 	void ReturnBlock(Block* aBlock);
+	void Clear();
 private:
 	MemoryContainer<Block,1024> myBlocks;
 };

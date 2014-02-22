@@ -11,6 +11,7 @@ enum TileType
 {
 	TT_NULL = -1,
 	TT_NORMAL,
+	TT_WIN,
 	TT_NR_OF_TYPES,
 };
 
@@ -33,6 +34,8 @@ public:
 	Vector2<float> GetPosition();
 
 	GrowingArray<Block*>& GetBlocks();
+
+	TileType GetTileType();
 private:
 	TileType myType;
 	GrowingArray<Block*> myBlocks;

@@ -11,6 +11,7 @@
 Level::Level(void)
 :	myTiles(256)
 ,	myHGE(NULL)
+,	myLevelIsActive(true)
 {
 }
 
@@ -36,13 +37,20 @@ void Level::Init(const Vector2<int>& someDimensions)
 		}
 	}
 }
+void Level::SetWinningTile(const Vector2<int> &aWinningTilePosition)
+{
+	int index = GetIndexForPosition(aWinningTilePosition);
+	myTiles[index].SetTileType(TT_WIN);
+	myTiles[index].SetSprite(ROOT->GetManagers().mySpriteManager.GetSprite("Data\\GFX\\Tiles\\winTile.png"));
+}
 
-void Level::Update(const float& anElapsedTime)
+bool Level::Update(const float& anElapsedTime)
 {
 	for(int i=0,count=myTiles.Count();i<count;i++)
 	{
 		myTiles[i].Update(anElapsedTime);
 	}
+	return myLevelIsActive;
 }
 
 void Level::Render(const Vector2<float>& aCameraPosition)
@@ -111,4 +119,9 @@ int Level::GetIndexForPosition(const Vector2<int>& aPosition)
 		return -1;
 	}
 	return indexToReturn;
+}
+
+void Level::FinishLevel()
+{
+	myLevelIsActive = false;
 }

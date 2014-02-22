@@ -46,6 +46,8 @@ public:
 	void OnExit();
 	void Clear();
 
+	Tile* GetCurrentTile();
+
 	Block* Copy();
 
 public:

@@ -176,5 +176,8 @@ void ControllManager::MoveBlock(const MovementDirectionType aDirection)
 		myControllableBlockAttributes[myActiveControllableBlockIndex]->Move(aDirection,prevTile->GetPosition());
 	}
 }
-
-
+void ControllManager::Clear()
+{
+	myControllableBlockAttributes.RemoveAll();
+	myControllableBlocks.RemoveAll();
+}

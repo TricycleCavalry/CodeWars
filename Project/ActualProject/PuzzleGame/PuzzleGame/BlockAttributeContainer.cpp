@@ -16,3 +16,11 @@ void BlockAttributeContainer::ReturnAttribute(BlockAttribute* anAttribute)
 {
 
 }
+void BlockAttributeContainer::ClearAttributeTypes()
+{
+	myBlockAttributeTypes.Clear();
+}
+void BlockAttributeContainer::ClearAttribute()
+{
+	myBlockAttributes.Clear();
+}

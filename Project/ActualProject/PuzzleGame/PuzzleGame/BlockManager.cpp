@@ -41,3 +41,7 @@ void BlockManager::SnapBlockToGrid(Block* aBlock)
 {
 	//TODO: get closest tile and snap block
 }
+void BlockManager::Clear()
+{
+	myBlocks.RemoveAll();
+}

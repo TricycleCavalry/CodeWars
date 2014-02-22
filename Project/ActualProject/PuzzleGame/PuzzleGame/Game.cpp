@@ -9,6 +9,7 @@
 
 Game::Game(void)
 :	myHGE(NULL)
+,	myLevel(NULL)
 {
 }
 
@@ -20,37 +21,29 @@ void Game::Init(HGE* aHGE)
 {
 	ROOT->GetManagers().myControllManager.SetCamera(&myCamera);
 	myHGE = aHGE;
-	LoadLevel();
+	LoadFirstLevel();
 }
 
 void Game::Update(const float& anElapsedTime)
 {
-	Vector2<float> camPos = myCamera.GetPosition();
-	if(InputKeyState(DIK_W,DIKS_PRESSED) == true)
-	{
-		camPos.myY -= 500 * anElapsedTime;
-		
-	}
-	if(InputKeyState(DIK_S,DIKS_PRESSED) == true)
-	{
-		camPos.myY += 500 * anElapsedTime;
-		
-	}
-	if(InputKeyState(DIK_D,DIKS_PRESSED) == true)
-	{
-		camPos.myX += 500 * anElapsedTime;
-		
-	}
-	if(InputKeyState(DIK_A,DIKS_PRESSED) == true)
-	{
-		camPos.myX -= 500 * anElapsedTime;
-		
-	}
 	myCamera.SetPosition(camPos);
 	myCamera.Update(anElapsedTime);
 	ROOT->GetManagers().myBlockManager.Update(anElapsedTime);
 	ROOT->GetManagers().myControllManager.Update(anElapsedTime);
-	myLevel->Update(anElapsedTime);
+	if(myLevel->Update(anElapsedTime) == false)
+	{
+		Root::GetInstance()->GetContainers().myBlockContainer.Clear();
+		Root::GetInstance()->GetContainers().myBlockAttributeContainer.ClearAttribute();
+		Root::GetInstance()->GetManagers().myBlockManager.Clear();
+		Root::GetInstance()->GetManagers().myControllManager.Clear();
+		
+		delete myLevel;
+		myLevel = NULL;
+		if(GetNextLevel() == false)
+		{
+			return; //false; ?
+		}
+	}
 }
 
 void Game::Render()
@@ -59,17 +52,47 @@ void Game::Render()
 	myLevel->Render(cameraPos);
 	ROOT->GetManagers().myBlockManager.Render(cameraPos);
 }
-
-void Game::LoadLevel()
+void Game::LoadFirstLevel()
 {
 	tinyxml2::XMLElement* levelElement = XMLUTIL::LoadFile("Data/XML/Levels.xml");
-	std::string startLevelId = levelElement->Attribute("StartLevelId");
+	std::string levelId = levelElement->Attribute("StartLevelId");
+	LoadLevel(levelId);
+}
+bool Game::GetNextLevel()
+{
+	tinyxml2::XMLElement* levelElement = XMLUTIL::LoadFile("Data/XML/Levels.xml");
+	levelElement = levelElement->FirstChildElement("Level");
+
+	std::string nextLevel = "None";
+	while(levelElement != NULL)
+	{
+		if(XMLUTIL::GetString(levelElement,"ID") == myCurrentLevel)
+		{
+			levelElement = levelElement->NextSiblingElement();
+			nextLevel = XMLUTIL::GetString(levelElement,"ID");
+			break;
+		}
+		levelElement = levelElement->NextSiblingElement();
+	}
+	if(nextLevel != "None")
+	{
+		LoadLevel(nextLevel);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+void Game::LoadLevel(const std::string &aLevelId)
+{
+	tinyxml2::XMLElement* levelElement = XMLUTIL::LoadFile("Data/XML/Levels.xml");
 	levelElement = levelElement->FirstChildElement("Level");
 
 	std::string filePath = "None";
 	while(levelElement != NULL)
 	{
-		if(XMLUTIL::GetString(levelElement,"ID") == startLevelId)
+		if(XMLUTIL::GetString(levelElement,"ID") == aLevelId)
 		{
 			filePath = XMLUTIL::GetString(levelElement,"FilePath");
 			break;
@@ -79,9 +102,10 @@ void Game::LoadLevel()
 
 	if(filePath == "None")
 	{
-		DL_ASSERT("No level with the Id: %s was found",startLevelId.c_str());
+		DL_ASSERT("No level with the Id: %s was found",aLevelId.c_str());
 	}
 
+	myCurrentLevel = aLevelId;
 	myLevel = FACTORIES.myLevelFactory.CreateLevel(filePath);
 	ROOT->GetManagers().myControllManager.SetLvel(myLevel);
 	ROOT->SetLevel(myLevel);

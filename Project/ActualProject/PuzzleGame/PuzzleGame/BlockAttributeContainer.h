@@ -18,6 +18,8 @@ public:
 	TYPE* GetNewBlockAttribute();
 
 	void ReturnAttribute(BlockAttribute* anAttribute);
+	void ClearAttributeTypes();
+	void ClearAttribute();
 
 private:
 	MemoryBucket myBlockAttributeTypes;

@@ -5,6 +5,8 @@
 #include "Block.h"
 #include "Root.h"
 #include "OpaqueDictionary.h"
+#include "Tile.h"
+#include "Level.h"
 #include "CommonMacros.h"
 
 BlockAttributeControllable::BlockAttributeControllable(void)
@@ -48,6 +50,14 @@ void BlockAttributeControllable::Update(const float anElapsedTime)
 	else
 	{
 		myTimeMoved = 0.f;
+	}
+	Tile *ownerTile = myOwner->GetCurrentTile();
+	if(ownerTile != NULL)
+	{
+		if(ownerTile->GetTileType() == TT_WIN)
+		{
+			Root::GetInstance()->GetLevel()->FinishLevel();
+		}
 	}
 }
 

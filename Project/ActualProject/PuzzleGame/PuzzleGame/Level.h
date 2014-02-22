@@ -18,13 +18,16 @@ public:
 	~Level(void);
 
 	void Init(const Vector2<int>& someDimensions);
-	void Update(const float& anElapsedTime);
+	void SetWinningTile(const Vector2<int> &aWinningTilePosition);
+	bool Update(const float& anElapsedTime);
 	void Render(const Vector2<float>& aCameraPosition);
 
 	Tile* GetTile(const Vector2<int>& aTilePosition);
 	Tile* GetTile(const Vector2<float>& aPosition);
 
 	void SetHGE(HGE* aHGE);
+
+	void FinishLevel(); //temp- do not keep
 
 private:
 	void RenderLine(const float aX1,const float aY1,const float aX2,const float aY2 ,const Vector4<float>& aColor);
@@ -35,6 +38,7 @@ private:
 	Vector2<int> myDimensions;
 
 	GrowingArray<Tile> myTiles;
+	bool myLevelIsActive;
 };
 
 #endif

@@ -17,3 +17,7 @@ void BlockContainer::ReturnBlock(Block* aBlock)
 {
 	myBlocks.RemoveObject(aBlock);
 }
+void BlockContainer::Clear()
+{
+	myBlocks.Clear();
+}

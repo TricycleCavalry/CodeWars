@@ -2,6 +2,7 @@
 #define _GAME_HEADER_
 
 #include "Camera.h"
+#include <string>
 
 class Level;
 class HGE;
@@ -18,11 +19,14 @@ public:
 
 	
 private:
-	void LoadLevel();
+	void LoadFirstLevel();
+	bool GetNextLevel();
+	void LoadLevel(const std::string &aLevelId);
 
 private:
 	HGE* myHGE;
 	Level* myLevel;
+	std::string myCurrentLevel;
 	Camera myCamera;
 	
 };

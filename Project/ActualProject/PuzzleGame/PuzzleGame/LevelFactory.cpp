@@ -25,6 +25,12 @@ Level* LevelFactory::CreateLevel(const std::string& aFilepath)
 	Vector2f gridDimensionsF = XMLUTIL::GetVector2(levelElement,"GridDimensions");
 	Vector2<int> gridDimenions(static_cast<int>(gridDimensionsF.x),static_cast<int>(gridDimensionsF.y));
 	newLevel->Init(gridDimenions);
+	if(levelElement->Attribute("WinningTile") != NULL)
+	{
+		Vector2<float> winningTileFloat = XMLUTIL::GetVector2(levelElement, "WinningTile");
+		Vector2<int> winningTileInt(static_cast<int>(winningTileFloat.myX), static_cast<int>(winningTileFloat.myY));
+		newLevel->SetWinningTile(winningTileInt);
+	}
 
 	CreateBlocks(newLevel,levelElement->FirstChildElement("Block"));
 	

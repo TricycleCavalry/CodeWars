@@ -36,6 +36,7 @@ public:
 
 	void SetCamera(Camera* aCamera);
 	void SetLvel(Level* aLevel);
+	void Clear();
 
 private:
 	void UpdateInput();

@@ -23,6 +23,8 @@ public:
 
 	void SnapBlockToGrid(Block* aBlock);
 
+	void Clear();
+
 	
 
 
