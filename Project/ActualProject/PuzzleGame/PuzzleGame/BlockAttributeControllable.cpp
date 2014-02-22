@@ -5,6 +5,7 @@
 #include "Block.h"
 #include "Root.h"
 #include "OpaqueDictionary.h"
+#include "CommonMacros.h"
 
 BlockAttributeControllable::BlockAttributeControllable(void)
 :	BlockAttribute(BAT_CONTROLLABLE)
@@ -23,6 +24,7 @@ void BlockAttributeControllable::Init()
 	}
 	ROOT->GetManagers().myControllManager.AddControllableBlock(myOwner);
 	myIsMoving = &myOwner->myDictionary.SetDefault<bool>(BlockVariables::Moving,false);
+	myTimeMoved = 0.f;
 }
 void BlockAttributeControllable::Update(const float anElapsedTime)
 {
@@ -30,10 +32,11 @@ void BlockAttributeControllable::Update(const float anElapsedTime)
 	
 	
 	if(*myIsMoving == true)
-	{		
+	{
+		myTimeMoved = MIN(myTimeMoved+(anElapsedTime*5.f),5.f);
 		Vector2<float> movementDirection;
 		GetDirection(myMovementDirectionType,movementDirection);
-		myOwner->Move(movementDirection * anElapsedTime * 100);
+		myOwner->Move(movementDirection * (anElapsedTime * 100) *myTimeMoved);
 
 		
 		if( (myOwner->GetPosition()- myEndPosition).Length() < 2.f)
@@ -41,6 +44,10 @@ void BlockAttributeControllable::Update(const float anElapsedTime)
 			myOwner->SetPosition(myEndPosition);
 			*myIsMoving = false;
 		}
+	}
+	else
+	{
+		myTimeMoved = 0.f;
 	}
 }
 

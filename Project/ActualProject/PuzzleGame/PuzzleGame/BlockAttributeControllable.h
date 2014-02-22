@@ -24,7 +24,7 @@ private:
 	bool* myIsMoving;
 	MovementDirectionType myMovementDirectionType;
 	Vector2<float> myEndPosition;
-
+	float myTimeMoved;
 
 };
 #endif
