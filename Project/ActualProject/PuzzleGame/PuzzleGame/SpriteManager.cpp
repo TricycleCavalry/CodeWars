@@ -1,17 +1,24 @@
 #include "StdAfx.h"
 #include "SpriteManager.h"
 
-SpriteManager::SpriteManager(HGE &aHGE)
-:myHGE(aHGE)
+SpriteManager::SpriteManager(void)
+:myHGE(NULL)
 {
 }
 
 SpriteManager::~SpriteManager(void)
 {
-	
-		
+	int spriteCount = mySprites.Count();
+	for(int index = 0; index < spriteCount; ++index)
+	{
+		delete mySprites.GetWithIndex(index);
+	}
+	mySprites.Clear();
 }
-
+void SpriteManager::SetHGE(HGE *aHGEInstance)
+{
+	myHGE = aHGEInstance;
+}
 SpriteWrapper SpriteManager::GetSprite(const std::string &aFilePath)
 {
 	StringId spriteId(aFilePath);
@@ -30,7 +37,7 @@ SpriteWrapper SpriteManager::GetSprite(StringId &aSpriteId)
 hgeSprite* SpriteManager::LoadSprite(const std::string &aFilePath)
 {
 	StringId spriteId(aFilePath);
-	HTEXTURE texture = myHGE.Texture_Load(aFilePath.c_str());
-	mySprites.Add(new hgeSprite(texture, 0,0, static_cast<float>(myHGE.Texture_GetWidth(texture)), static_cast<float>(myHGE.Texture_GetHeight(texture))), spriteId);
+	HTEXTURE texture = myHGE->Texture_Load(aFilePath.c_str());
+	mySprites.Add(new hgeSprite(texture, 0,0, static_cast<float>(myHGE->Texture_GetWidth(texture)), static_cast<float>(myHGE->Texture_GetHeight(texture))), spriteId);
 	return mySprites[spriteId];
 }

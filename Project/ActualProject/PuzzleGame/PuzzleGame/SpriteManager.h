@@ -9,14 +9,15 @@
 class SpriteManager
 {
 public:
-	SpriteManager(HGE &aHGE);
+	SpriteManager(void);
 	~SpriteManager(void);
 
+	void SetHGE(HGE *aHGEInstance);
 	SpriteWrapper GetSprite(const std::string &aFilePath);
 	SpriteWrapper GetSprite(StringId &aSpriteId);
 
 private:
-	HGE &myHGE;
+	HGE *myHGE;
 	hgeSprite* LoadSprite(const std::string &aFilePath);
 	WrappedMap<StringId, hgeSprite*> mySprites;
 	
