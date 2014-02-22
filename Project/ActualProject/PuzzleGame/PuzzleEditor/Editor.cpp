@@ -72,6 +72,24 @@ bool Editor::Update()
 	{
 		SaveFile("Data\\XML\\Levels\\newLevel.xml");
 	}
+
+	if( InputMouseState(DIK_LMB,DIKS_CLICKED) == true )
+	{
+		Vector2f mousePos = InputGetMousePos();
+
+		if(	mousePos.y >= 0 && mousePos.y <= myHeight * 32 )
+		{
+			if(	mousePos.x >= 0 && mousePos.x <= myWidth * 32 )
+			{
+				int tileId = (static_cast<int>(mousePos.x)/32)+((static_cast<int>(mousePos.y)/32)*myWidth);
+				int type = myTiles[tileId].myBlockId+1;
+				type = type >= myBlocks.Count() ? 0 : type;
+
+				myTiles[tileId].myBlockId = type;
+			}
+		}
+	}
+
 	CheckInputOnTile(DIK_UPARROW,1);
 	CheckInputOnTile(DIK_DOWNARROW,-1);
 	return true;
