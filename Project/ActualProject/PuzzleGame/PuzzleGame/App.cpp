@@ -47,17 +47,12 @@ bool App::Destroy()
 
 bool App::Update()
 {
-	myInputThread.Update();
-	GrowingArray<InputData>& inputData = myInputThread.GetInputDataArray();
-	if(inputData.Count() > 0)
-	{
-		//myInputHandler.Update(inputData.GetLast());
-	}
+	InputHandler::GetInstance()->Update();
 	myTimeManager.Update();
 
-	//if(myInputHandler.IsKeyClicked(DIK_ESCAPE) == true)
+	if(InputKeyState(DIK_ESCAPE,DIKS_CLICKED) == true)
 	{
-	//	return false;
+		return false;
 	}
 
 	float elapsedTime = static_cast<float>(myTimeManager.GetElapsedTime().GetTime());
