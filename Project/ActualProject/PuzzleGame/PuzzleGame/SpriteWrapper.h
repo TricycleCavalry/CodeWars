@@ -14,6 +14,7 @@ public:
 
 	void SetSprite(hgeSprite *aHgeSprite);
 
+	void Render(Vector2<int> aPosition);
 	void Render(Vector2<float> aPosition);
 	void Render(Vector2<float> aPosition, const float aRotation);
 	void Render(Vector2<float> aPosition, const float aRotation, const float anXScale, const float anYScale);

@@ -2,6 +2,7 @@
 #define _TILE_HEADER_
 
 #include "GrowingArray.h"
+#include "SpriteWrapper.h"
 
 class Block;
 
@@ -20,7 +21,9 @@ public:
 
 	void Init();
 
+	void SetPosition(const Vector2<int>& aPosition);
 	void SetTileType(const TileType& aTileType);
+	void SetSprite(SpriteWrapper aSpriteWrapper);
 
 	void Update(const float& anElapsedTime);
 	void Render();
@@ -29,6 +32,8 @@ public:
 private:
 	TileType myType;
 	GrowingArray<Block*> myBlocks;
+	Vector2<int> myPosition;
+	SpriteWrapper mySprite;
 };
 
 #endif
