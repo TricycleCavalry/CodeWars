@@ -29,3 +29,7 @@ void LevelFactory::CreateTiles(GrowingArray<Tile*>& someTiles, XmlElement& anXML
 {
 	//TODO
 }
+void LevelFactory::CreateBlocks(GrowingArray<Block*>& someBlocks, XmlElement& anXMLListElement)
+{
+	//TODO
+}

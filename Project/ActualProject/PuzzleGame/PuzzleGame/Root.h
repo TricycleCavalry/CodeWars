@@ -3,6 +3,7 @@
 
 #include "Containers.h"
 #include "Factories.h"
+#include "Managers.h"
 
 #define ROOT Root::GetInstance()
 #define CONTAINERS Root::GetInstance()->GetContainers()
@@ -16,6 +17,7 @@ public:
 
 	Containers& GetContainers(){return myContainers;};
 	Factories& GetFactories(){return myFactories;};
+	Managers& GetManagers(){return myManagers;};
 private:
 	Root();
 	~Root();
@@ -26,6 +28,9 @@ private:
 	
 	Containers myContainers;
 	Factories myFactories;
+	Managers myManagers;
+
+
 };
 
 #endif

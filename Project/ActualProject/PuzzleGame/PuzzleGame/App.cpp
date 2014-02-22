@@ -8,6 +8,7 @@
 #include "time.h"
 #include "hgeSprite.h"
 #include "Vector2.h"
+#include "ROOT.h"
 
 
 App::App(HGE& aHGE)
@@ -27,6 +28,7 @@ bool App::Init()
 	
 	srand(static_cast<unsigned int>(time(NULL))); 
 	DL_Debug::Create();
+	Root::Create();
 	myTimeManager.InitDefaults();
 
 	myGame.Init();

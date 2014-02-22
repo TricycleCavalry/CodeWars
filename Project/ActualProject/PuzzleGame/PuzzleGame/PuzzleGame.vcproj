@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="PuzzleGame"
 	ProjectGUID="{346E660B-967B-4AA2-ADD8-CCEC7335D6C5}"
 	RootNamespace="PuzzleGame"
@@ -211,6 +211,126 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Block"
+			>
+			<File
+				RelativePath=".\Block.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Block.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttribute.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttribute.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeBlockin.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeBlockin.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeControllable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeControllable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeType.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ControllManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ControllManager.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Root"
+			>
+			<File
+				RelativePath=".\BlockAttributeContainer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeContainer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockAttributeFactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockContainer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockContainer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlockFactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Containers.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Containers.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Factories.h"
+				>
+			</File>
+			<File
+				RelativePath=".\LevelFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\LevelFactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Root.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Root.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="Game"
 			>
 			<File
@@ -283,6 +403,14 @@
 					CompileAsManaged="1"
 				/>
 			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\Managers.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Managers.h"
+			>
 		</File>
 	</Files>
 	<Globals>

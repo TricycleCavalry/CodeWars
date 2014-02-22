@@ -14,8 +14,8 @@ HGE* HGE_Init()
 //	hgeInstance->System_SetState(HGE_GFXRESTOREFUNC, GfxRestoreFunc);
 	hgeInstance->System_SetState(HGE_TITLE, "Project Random");
 	hgeInstance->System_SetState(HGE_WINDOWED, true);
-	hgeInstance->System_SetState(HGE_SCREENWIDTH, 1280);
-	hgeInstance->System_SetState(HGE_SCREENHEIGHT, 1024);
+	hgeInstance->System_SetState(HGE_SCREENWIDTH, 800);
+	hgeInstance->System_SetState(HGE_SCREENHEIGHT, 600);
 	hgeInstance->System_SetState(HGE_SCREENBPP, 32);
 	hgeInstance->System_SetState(HGE_SHOWSPLASH, false);
 	if(!hgeInstance->System_Initiate())

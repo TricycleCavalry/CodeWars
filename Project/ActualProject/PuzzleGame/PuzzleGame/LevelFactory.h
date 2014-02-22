@@ -16,9 +16,10 @@ public:
 	~LevelFactory();
 	
 	Level* CreateLevel(const std::string& aFilepath);
+
 private:
 	void CreateTiles(GrowingArray<Tile*>& someTiles, XmlElement& anXMLListElement);
-	void CreateBlocks(GrowingArray<Block*>& someBlocks);
+	void CreateBlocks(GrowingArray<Block*>& someBlocks, XmlElement& anXMLListElement);
 private:
 	std::string myCurrentLevelpath;
 };

@@ -52,5 +52,5 @@ void BlockFactory::CreateBlockType(XmlElement& anXMLElement)
 void BlockFactory::CreateBlockAttributes(XmlElement& anXMLElement, Block* aBlock)
 {
 	XmlElement& attributesList = *anXMLElement.FirstChildElement("Attributes");
-	FACTORIES.myBlockAttributeFactory.CreateAttributeList(attributesList,aBlock->myAttributeList);
+	//FACTORIES.myBlockAttributeFactory.CreateAttributeList(attributesList,aBlock->GetAttributes());
 }
