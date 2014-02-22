@@ -1,21 +1,32 @@
 #ifndef _INPUT_HANDLER_HEADER_
 #define _INPUT_HANDLER_HEADER_
 
-#include "InputData.h"
-#include "Vector2.h"
+#include "InputReader.h"
 #include <bitset>
 
-#define LMB 0
-#define RMB 1
-#define MMB 2
-
-enum INPUT_CLICKS
+#define InputKeyState(aKey, aKeyState) InputHandler::GetInstance()->KeyState(aKey,aKeyState)
+#define InputMouseState(aKey, aKeyState) InputHandler::GetInstance()->MouseKeyState(aKey,aKeyState)
+#define InputGetMousePos() InputHandler::GetInstance()->GetMousePos()
+#define InputGetMouseMovement() InputHandler::GetInstance()->GetMouseMovement()
+#define InputGetMousePos3DRelative() InputHandler::GetInstance()->GetMousePosition3DRelative()
+#define InputGetMousePositionFromCenter()  InputHandler::GetInstance()->GetMousePositionFromCenter()
+#define InputGetKeyboardState() InputHandler::GetInstance()->GetKeyboardState();
+#define InputGetMouseState() InputHandler::GetInstance()->GetMouseState();
+enum : unsigned int
 {
-	IS_NOT_CLICKED,
-	IS_CLICKED,
+	DIK_LMB = 256,
+	DIK_RMB,
+	DIK_MMB,
 };
 
-class Camera;
+enum DIKeyState
+{
+	DIKS_UP,
+	DIKS_DOWN,
+	DIKS_CLICKED,
+	DIKS_PRESSED,
+	DIKS_RELEASED,
+};
 
 class InputHandler
 {
@@ -23,36 +34,61 @@ public:
 	InputHandler(void);
 	~InputHandler(void);
 
-	void Update(const InputData& anInputUpdate);
+	static void Create(HINSTANCE hInstance, HWND hWnd, int aScreenWidth, int aScreenHeight, bool anExclusiveFlag);
+	static void Destroy();
+	static InputHandler* GetInstance();
 
-	bool IsKeyPressed(BYTE aKey);
-	bool IsKeyClicked(BYTE aKey);
+	bool Init(HINSTANCE hInstance, HWND hWnd, int aScreenWidth, int aScreenHeight, bool anExclusiveFlag);
 
-	int GetClickedKey();
+	void Update();
 
-	bool IsMouseButtonPressed(BYTE aButton);
-	bool IsMouseButtonClicked(BYTE aButton);
+	void OnResize(int aScreenWidth, int aScreenHeight);
 
-	int GetMouseWheelChange();
+	void RecaptureDevices();
+	void SetExclusiveAccess(const bool& anExclusiveFlag);
 
-	Vector2<float> GetMousePos();
+	//void 
 
-	void SetKeyState(BYTE aKey, const bool& aBoolFlag);
-	void SetMouseButtonState(BYTE aButton, const bool& aBoolFlag);
-	void SetMousePos(const Vector2<float>& aNewPos);
+	bool KeyState(const BYTE& aKey, const DIKeyState& aKeyState);
+	BYTE GetClickedKey();
+	bool MouseKeyState(const BYTE& aKey, const DIKeyState& aKeyState);
 
-	DIMOUSESTATE2 GetMouseState() { return myMouseState; }
+	Vector2<float> GetMousePos() const;
+	void SetMousePos(const Vector2<int>& aPos);
+
+	Vector2<float> GetMouseMovement() const;
+
+	Vector2<float> GetMousePositionFromCenter() const;
+	
+	Vector2<float> GetMousePosition3DRelative() const;
+
+	std::bitset<256> GetKeyboardState();
+	std::bitset<8> GetMouseState();
 
 private:
 
+	bool IsKeyPressed(const BYTE& aKey);
+	bool IsKeyClicked(const BYTE& aKey);
+	bool IsKeyReleased(const BYTE& aKey);
+
+	bool IsMousePressed(const BYTE& aKey);
+	bool IsMouseClicked(const BYTE& aKey);
+	bool IsMouseReleased(const BYTE& aKey);
+
+	InputReader myInputReader;
+	
 	BYTE myKeyboardState[256];
-	std::bitset<256> myKeyboardClicks;
-	std::bitset<256> myPreviousKeyBoardClicks;
+	std::bitset<256> myKeyboardclicks;
+	std::bitset<256> myPreviousKeyboardClicks;
 
 	DIMOUSESTATE2 myMouseState;
 	Vector2<int> myMousePos;
 	std::bitset<8> myMouseClicks;
 	std::bitset<8> myPreviousMouseClicks;
+
+	Vector2<int> myScreenResolution;
+
+	static InputHandler* ourInstance;
 };
 
 #endif

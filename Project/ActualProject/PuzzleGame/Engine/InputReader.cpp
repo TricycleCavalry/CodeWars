@@ -1,216 +1,156 @@
 #include "stdafx.h"
 #include "InputReader.h"
 
+#define HR( temp )
+
 InputReader::InputReader(void)
+:	myDirectInput(NULL)
+,	myDIKeyboard(NULL)
+,	myDIMouse(NULL)
 {
-	myDirectInput = NULL;
-	myDIMouse = NULL;
-	myDIKeyboard = NULL;
 }
 
 InputReader::~InputReader(void)
 {
-}
-
-bool InputReader::Init(HINSTANCE hinstance, HWND hwnd, int aScreenWidth, int aScreenHeight, bool aCaptureMouseFlag)
-{
-	myHWnd = hwnd;
-	POINT p;
-	GetCursorPos(&p);
-	ScreenToClient(hwnd,&p);
-	myCaptureMouseFlag = aCaptureMouseFlag;
-	myScreenWidth = myOriginalScreenWidth = aScreenWidth;
-	myScreenHeight = myOriginalScreenHeight = aScreenHeight;
-	myMousePos.x = static_cast<int>(p.x);
-	myMousePos.y = static_cast<int>(p.y);
-	HRESULT result = DirectInput8Create(hinstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&myDirectInput, NULL);
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDirectInput->CreateDevice(GUID_SysKeyboard, &myDIKeyboard, NULL);
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDIKeyboard->SetDataFormat( &c_dfDIKeyboard);
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDIKeyboard->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDIKeyboard->Acquire();
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDirectInput->CreateDevice(GUID_SysMouse, &myDIMouse, NULL);
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDIMouse->SetDataFormat(&c_dfDIMouse2);
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	if(aCaptureMouseFlag == true)
-	{
-		result = myDIMouse->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
-	}
-	else
-	{
-		result = myDIMouse->SetCooperativeLevel(hwnd, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
-		ShowCursor(false);
-	}
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	result = myDIMouse->Acquire();
-	if(FAILED(result))
-	{
-		return false;
-	}
-
-	return true;
-}
-
-void InputReader::Destroy()
-{
-	if(myDIMouse)
-	{
-		myDIMouse->Unacquire();
-		myDIMouse->Release();
-		myDIMouse = NULL;
-	}
-
-	if(myDIKeyboard)
-	{
-		myDIKeyboard->Unacquire();
-		myDIKeyboard->Release();
-		myDIKeyboard = NULL;
-	}
-
-	if(myDirectInput)
+	UnacquireMouse();
+	UnacquireKeyboard();
+	if(myDirectInput != NULL)
 	{
 		myDirectInput->Release();
 		myDirectInput = NULL;
 	}
 }
 
+bool InputReader::Init(HINSTANCE hInstance, HWND hWnd, int aScreenWidth, int aScreenHeight, bool anExclusiveFlag)
+{
+	myHWND = hWnd;
+	POINT p;
+	GetCursorPos(&p);
+	ScreenToClient(myHWND, &p);
+	myExclusiveFlag = anExclusiveFlag;
+
+	myScreenWidth = aScreenWidth;
+	myScreenHeight = aScreenHeight;
+
+	myMousePos.x = static_cast<int>(p.x);
+	myMousePos.y = static_cast<int>(p.y);
+
+	HRESULT hr = DirectInput8Create(hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&myDirectInput, NULL);
+
+	if(SetupKeyboard() == false)
+		return false;
+	if(SetupMouse() == false)
+		return false;
+
+	return true;
+}
+
 bool InputReader::Update()
 {
-	bool result;
-
-	result = ReadKeyboard();
-	if(result == false)
-	{
+	if(ReadKeyboard() == false)
 		return false;
-	}
-
-	result = ReadMouse();
-	if(result == false)
-	{
+	if(ReadMouse() == false)
 		return false;
-	}
-	
+
 	ProcessInput();
 
 	return true;
 }
 
-void InputReader::ChangeScreenSize(const int& aScreenWidth, const int& aScreenHeight)
+void InputReader::ChangeScreenSize(int aScreenWidth, int aScreenHeight)
 {
-	myScreenHeight = aScreenHeight;
 	myScreenWidth = aScreenWidth;
+	myScreenHeight = aScreenHeight;
 }
 
-void InputReader::ReCaptureMouse(HWND aHWND)
+void InputReader::RecaptureKeyboard()
 {
-	myHWnd = aHWND;
-	HRESULT result = myDirectInput->CreateDevice(GUID_SysMouse, &myDIMouse, NULL);
-	if(FAILED(result))
-	{
-		return;
-	}
+	while(SetupKeyboard() == false);
+}
 
-	result = myDIMouse->SetDataFormat(&c_dfDIMouse2);
-	if(FAILED(result))
-	{
-		return;
-	}
+void InputReader::RecaptureMouse()
+{
+	while(SetupMouse() == false);
+}
 
-	if(myCaptureMouseFlag == true)
-	{
-		result = myDIMouse->SetCooperativeLevel(aHWND, DISCL_FOREGROUND | DISCL_EXCLUSIVE | DISCL_NOWINKEY);
-	}
-	else
-	{
-		result = myDIMouse->SetCooperativeLevel(aHWND, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND | DISCL_NOWINKEY);
-		ShowCursor(false);
-	}
-	if(FAILED(result))
-	{
-		return;
-	}
+void InputReader::SetExclusiveAccess(const bool& anExclusiveFlag)
+{
+	myExclusiveFlag = anExclusiveFlag;
+}
 
-	result = myDIMouse->Acquire();
-	if(FAILED(result))
+void InputReader::SetMousePos(const Vector2<int>& aPos)
+{
+	myMousePos = aPos;
+}
+
+InputData InputReader::GetData()
+{
+	InputData returnData;
+	memcpy(&returnData.myKeyboardState,&myDIKeyboardState,sizeof(BYTE)*256);
+	returnData.myMouseState = myDIMouseState;
+	returnData.myMousePos = myMousePos;
+	return returnData;
+}
+
+bool InputReader::SetupKeyboard()
+{
+	UnacquireKeyboard();
+
+	HRESULT hr = myDirectInput->CreateDevice(GUID_SysKeyboard, &myDIKeyboard, NULL);
+
+	hr = myDIKeyboard->SetDataFormat(&c_dfDIKeyboard);
+
+	hr = myDIKeyboard->SetCooperativeLevel(myHWND, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+
+	while(myDIKeyboard->Acquire() == false);
+
+	return true;
+}
+
+bool InputReader::SetupMouse()
+{
+	UnacquireMouse();
+
+	HRESULT hr = myDirectInput->CreateDevice(GUID_SysMouse, &myDIMouse, NULL);
+
+	hr = myDIMouse->SetDataFormat(&c_dfDIMouse2);
+
+	DWORD cooperativeFlags = DISCL_NONEXCLUSIVE | DISCL_BACKGROUND;
+
+	if(myExclusiveFlag == true)
 	{
-		return;
+		cooperativeFlags = DISCL_FOREGROUND | DISCL_EXCLUSIVE;
+	}
+	hr = myDIMouse->SetCooperativeLevel(myHWND,cooperativeFlags);
+
+	while(myDIMouse->Acquire() == false);
+
+	return true;
+}
+
+void InputReader::UnacquireMouse()
+{
+	if(myDIMouse != NULL)
+	{
+		myDIMouse->Unacquire();
+		myDIMouse->Release();
+		myDIMouse = NULL;
 	}
 }
 
-void InputReader::ReCaptureKeyBoard(HWND aHWND)
+void InputReader::UnacquireKeyboard()
 {
-	myHWnd = aHWND;
-	HRESULT result = myDirectInput->CreateDevice(GUID_SysKeyboard, &myDIKeyboard, NULL);
-	if(FAILED(result))
+	if(myDIKeyboard != NULL)
 	{
-		return;
+		myDIKeyboard->Unacquire();
+		myDIKeyboard->Release();
+		myDIKeyboard = NULL;
 	}
-
-	result = myDIKeyboard->SetDataFormat( &c_dfDIKeyboard);
-	if(FAILED(result))
-	{
-		return;
-	}
-
-	result = myDIKeyboard->SetCooperativeLevel(aHWND, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
-	if(FAILED(result))
-	{
-		return;
-	}
-
-	result = myDIKeyboard->Acquire();
-	if(FAILED(result))
-	{
-		return;
-	}
-}
-
-void InputReader::SetExclusiveFlag(const bool& anExclusiveFlag)
-{
-	myCaptureMouseFlag = anExclusiveFlag;
 }
 
 bool InputReader::ReadKeyboard()
 {
 	HRESULT result;
-
 	memset(&myDIKeyboardState,0,sizeof(myDIKeyboardState));
 	result = myDIKeyboard->GetDeviceState(sizeof(myDIKeyboardState), reinterpret_cast<LPVOID>(&myDIKeyboardState));
 	if(FAILED(result))
@@ -232,45 +172,12 @@ bool InputReader::ReadMouse()
 	HRESULT result;
 
 	memset(&myDIMouseState,0,sizeof(myDIMouseState));
-	while(myDIMouse == NULL)
-	{
-		result = myDirectInput->CreateDevice(GUID_SysMouse, &myDIMouse, NULL);
-		if(FAILED(result))
-		{
-			continue;
-		}
-		if(myDIMouse == NULL)
-		{
-			continue;
-		}
-		result = myDIMouse->Acquire();
-		if(FAILED(result))
-		{
-			continue;
-		}
-	}
 	result = myDIMouse->GetDeviceState(sizeof(myDIMouseState), reinterpret_cast<LPVOID>(&myDIMouseState));
 	if(FAILED(result))
 	{
 		if((result == DIERR_INPUTLOST) || (result == DIERR_NOTACQUIRED))
 		{
-			while(myDIMouse == NULL)
-			{
-				result = myDirectInput->CreateDevice(GUID_SysMouse, &myDIMouse, NULL);
-				if(FAILED(result))
-				{
-					continue;
-				}
-				if(myDIMouse == NULL)
-				{
-					continue;
-				}
-				result = myDIMouse->Acquire();
-				if(FAILED(result))
-				{
-					continue;
-				}
-			}
+			myDIKeyboard->Acquire();
 		}
 		else
 		{
@@ -282,7 +189,7 @@ bool InputReader::ReadMouse()
 
 void InputReader::ProcessInput()
 {
-	if(myCaptureMouseFlag == true)
+	if(myExclusiveFlag == true)
 	{
 		myMousePos.x += myDIMouseState.lX;
 		myMousePos.y += myDIMouseState.lY;
@@ -291,10 +198,11 @@ void InputReader::ProcessInput()
 	{
 		POINT p;
 		GetCursorPos(&p);
-		ScreenToClient(myHWnd,&p);
+		ScreenToClient(myHWND,&p);
 		myMousePos.x = static_cast<int>(p.x);
 		myMousePos.y = static_cast<int>(p.y);
 	}
+
 	if(myDIMouseState.lZ > 0)
 	{
 		myDIMouseState.lZ = 1;
@@ -304,8 +212,7 @@ void InputReader::ProcessInput()
 		myDIMouseState.lZ = -1;
 	}
 
-
-	if(myCaptureMouseFlag == true)
+	if(myExclusiveFlag == true)
 	{
 		if(myMousePos.x < 0)
 		{
@@ -325,13 +232,4 @@ void InputReader::ProcessInput()
 			myMousePos.y = myScreenHeight;
 		}
 	}
-}
-
-InputData InputReader::GetData()
-{
-	InputData returnData;
-	memcpy(&returnData.myKeyboardState,&myDIKeyboardState,sizeof(BYTE)*256);
-	returnData.myMouseState = myDIMouseState;
-	returnData.myMousePos = myMousePos;
-	return returnData;
 }

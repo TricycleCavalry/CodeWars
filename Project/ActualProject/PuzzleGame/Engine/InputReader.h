@@ -1,5 +1,5 @@
-#ifndef _DIRECT_INPUT_HEADER_
-#define _DIRECT_INPUT_HEADER_
+#ifndef _INPUT_READER_HEADER_
+#define _INPUT_READER_HEADER_
 
 #ifndef _DIRECT_INPUT_
 #define _DIRECT_INPUT_
@@ -9,12 +9,7 @@
 
 #endif
 
-
-#include "GrowingArray.h"
-#include "Vector2.h"
 #include "InputData.h"
-#include "StaticArray.h"
-
 
 class InputReader
 {
@@ -22,21 +17,29 @@ public:
 	InputReader(void);
 	~InputReader(void);
 
-	bool Init(HINSTANCE hinstance, HWND hwnd, int screenWidth, int screenHeight, bool aCaptureMouseFlag);
+	bool Init(HINSTANCE hInstance, HWND hWnd, int aScreenWidth, int aScreenHeight, bool anExclusiveFlag);
 	void Destroy();
 
 	bool Update();
 
-	void ChangeScreenSize(const int& aScreenWidth, const int& aScreenHeight);
+	void ChangeScreenSize(int aScreenWidth, int aScreenHeight);
 
-	void ReCaptureMouse(HWND aHWND);
-	void ReCaptureKeyBoard(HWND aHWND);
+	void RecaptureKeyboard();
+	void RecaptureMouse();
 
-	void SetExclusiveFlag(const bool& anExclusiveFlag);
+	void SetExclusiveAccess(const bool& anExclusiveFlag);
+
+	void SetMousePos(const Vector2<int>& aPos);
 
 	InputData GetData();
 
 private:
+	bool SetupKeyboard();
+	bool SetupMouse();
+
+	void UnacquireMouse();
+	void UnacquireKeyboard();
+
 	bool ReadKeyboard();
 	bool ReadMouse();
 	void ProcessInput();
@@ -47,16 +50,14 @@ private:
 
 	int myScreenWidth;
 	int myScreenHeight;
-	int myOriginalScreenWidth;
-	int myOriginalScreenHeight;
 
 	BYTE myDIKeyboardState[256];
 	DIMOUSESTATE2 myDIMouseState;
 	Vector2<int> myMousePos;
 
-	HWND myHWnd;
+	HWND myHWND;
 
-	bool myCaptureMouseFlag;
+	bool myExclusiveFlag;
 };
 
 #endif

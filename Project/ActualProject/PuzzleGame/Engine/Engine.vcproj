@@ -183,14 +183,10 @@
 			Name="Input"
 			>
 			<Filter
-				Name="InputReader"
+				Name="InputData"
 				>
 				<File
-					RelativePath=".\InputReader.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\InputReader.h"
+					RelativePath=".\InputData.h"
 					>
 				</File>
 			</Filter>
@@ -207,22 +203,14 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="InputThread"
+				Name="InputReader"
 				>
 				<File
-					RelativePath=".\InputThreadHandler.cpp"
+					RelativePath=".\InputReader.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\InputThreadHandler.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="InputData"
-				>
-				<File
-					RelativePath=".\InputData.h"
+					RelativePath=".\InputReader.h"
 					>
 				</File>
 			</Filter>
