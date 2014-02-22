@@ -26,7 +26,7 @@ public:
 	void SetSprite(SpriteWrapper aSpriteWrapper);
 
 	void Update(const float& anElapsedTime);
-	void Render();
+	void Render(const Vector2<float> &aCameraPosition);
 
 	GrowingArray<Block*>& GetBlocks();
 private:

@@ -35,9 +35,10 @@ void Tile::Update(const float& anElapsedTime)
 	
 }
 
-void Tile::Render()
+void Tile::Render(const Vector2<float> &aCameraPosition)
 {
-	mySprite.Render(myPosition);
+	Vector2<int> camPos(aCameraPosition.myX, aCameraPosition.myY);
+	mySprite.Render(myPosition - camPos);
 }
 
 GrowingArray<Block*>& Tile::GetBlocks()
