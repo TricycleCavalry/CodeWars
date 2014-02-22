@@ -60,9 +60,8 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="dinput.lib;dxguid.lib;"
 				OutputFile="$(OutDir)\$(ProjectName)_$(ConfigurationName).lib"
-				AdditionalLibraryDirectories="$(WindowsSDK_IncludePath)"
+				AdditionalLibraryDirectories=""
 			/>
 			<Tool
 				Name="VCALinkTool"
