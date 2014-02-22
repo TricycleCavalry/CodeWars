@@ -10,4 +10,19 @@
 			<Blocking/>
 		</Attributes>	
 	</BlockType>
+	<BlockType Id = "RightBlock" Color = "255 0 0 255">
+		<Attributes>
+			<Blocking/>
+		</Attributes>	
+	</BlockType>
+	<BlockType Id = "UpBlock" Color = "0 255 0 255">
+		<Attributes>
+			<Blocking/>
+		</Attributes>	
+	</BlockType>
+	<BlockType Id = "DownBlock" Color = "255 255 255 255">
+		<Attributes>
+			<Blocking/>
+		</Attributes>	
+	</BlockType>
 </BlockTypes>
