@@ -454,14 +454,18 @@
 				</File>
 			</Filter>
 		</Filter>
-		<File
-			RelativePath=".\Camera.cpp"
+		<Filter
+			Name="Camera"
 			>
-		</File>
-		<File
-			RelativePath=".\Camera.h"
-			>
-		</File>
+			<File
+				RelativePath=".\Camera.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Camera.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\main.cpp"
 			>
