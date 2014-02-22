@@ -38,7 +38,7 @@ void ControllManager::AddControllableBlock(Block* aBlock)
 void ControllManager::UpdateInput()
 {
 	
-	ControllInputType inputKey = CIT_SWITCH_BLOCK_FORWARD; // GetKey for frame
+	ControllInputType inputKey = CIT_MOVE_BLOCK_RIGHT; // GetKey for frame
 
 	switch(inputKey)
 	{

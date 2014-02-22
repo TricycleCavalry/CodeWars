@@ -7,6 +7,7 @@
 
 Block::Block(void)
 :	myIntersectingBlocks(4)
+,	myAttributes(64)
 {
 }
 
@@ -17,13 +18,7 @@ Block::~Block(void)
 void Block::Init(const Vector2<float>& aPosition, const Vector2<float>& someExtents)
 {
 	myPosition = aPosition;
-	myExtents = someExtents;
-
-	for(int i = 0; i < BAT_NUM; ++i)
-	{
-		myAttributes[i]->Init();
-	}
-	
+	myExtents = someExtents;	
 }
 
 void Block::Update(const float anElapsedTime)
@@ -42,14 +37,14 @@ void Block::Move(const Vector2<float>& aMovementVector)
 void Block::AddAttribute(BlockAttribute* aAttribute)
 {
 	BlockAttributeType type = aAttribute->GetType();
-	myAttributes[type] = aAttribute;
 	aAttribute->SetOwner(this);
+	myAttributes.Add(aAttribute);
 }
 void Block::AddAttributes(GrowingArray<Block*>& someAttributes)
 {
 
 }
-StaticArray<BlockAttribute*,BAT_NUM>& Block::GetAttributes()
+GrowingArray<BlockAttribute*>& Block::GetAttributes()
 {
 	return myAttributes;
 }
@@ -64,14 +59,14 @@ void Block::SnapToGrid()
 }
 void Block::OnEnter()
 {
-	for( int i = 0; i < BAT_NUM; ++i)
+	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 //		myAttributes[i]->OnEnter();
 	}
 }
 void Block::OnExit()
 {
-	for( int i = 0; i < BAT_NUM; ++i)
+	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 //		myAttributes[i]->OnExit();
 	}
@@ -79,7 +74,8 @@ void Block::OnExit()
 
 void Block::Clear()
 {
-	for( int i = 0; i < BAT_NUM; ++i)
+	//TODO
+	for( int i = 0; i < myAttributes.Count(); ++i)
 	{
 //		myAttributes[i]->Clear();
 	}
@@ -89,7 +85,7 @@ void Block::Clear()
 Block* Block::Copy()
 {
 	Block* returnBlock = CONTAINERS.myBlockContainer.GetNewBlock();
-	for(int i = 0; i < BAT_NUM; ++i)
+	for(int i = 0; i < myAttributes.Count(); ++i)
 	{
 		//returnBlock->AddAttribute(myAttributes[i]->Copy());
 		//returnBlock->GetAttribute<BlockAttribute*>(static_cast<BlockAttributeType>(i)) ->SetOwner(returnBlock);

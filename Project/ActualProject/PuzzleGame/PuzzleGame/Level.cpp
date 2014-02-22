@@ -1,6 +1,13 @@
 #include "StdAfx.h"
 #include "Level.h"
 
+#include "Tile.h"
+#include "Block.h"
+#include "Root.h"
+
+#define TILE_WIDTH 32
+#define TILE_HEIGHT 32
+
 Level::Level(void)
 :	myTiles(256)
 {
@@ -21,6 +28,8 @@ void Level::Init(const Vector2<int>& someDimensions)
 			myTiles.Add(Tile());
 			myTiles[counter].Init();
 			myTiles[counter].SetTileType(TT_NORMAL);
+			myTiles[counter].SetSprite(ROOT->GetManagers().mySpriteManager.GetSprite("Data\\GFX\\Tiles\\tile01.png"));
+			myTiles[counter].SetPosition(Vector2<int>(x*TILE_WIDTH,y*TILE_HEIGHT));
 			counter++;
 		}
 	}

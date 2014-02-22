@@ -214,42 +214,6 @@
 			Name="Block"
 			>
 			<File
-				RelativePath=".\Block.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Block.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttribute.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttribute.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeBlockin.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeBlockin.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeControllable.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeControllable.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeType.h"
-				>
-			</File>
-			<File
 				RelativePath=".\BlockManager.cpp"
 				>
 			</File>
@@ -265,66 +229,66 @@
 				RelativePath=".\ControllManager.h"
 				>
 			</File>
+			<Filter
+				Name="Block"
+				>
+				<File
+					RelativePath=".\Block.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Block.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="BlockAttribute"
+				>
+				<File
+					RelativePath=".\BlockAttribute.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BlockAttribute.h"
+					>
+				</File>
+				<Filter
+					Name="Blockin"
+					>
+					<File
+						RelativePath=".\BlockAttributeBlockin.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\BlockAttributeBlockin.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Controllable"
+					>
+					<File
+						RelativePath=".\BlockAttributeControllable.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\BlockAttributeControllable.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Type"
+					>
+					<File
+						RelativePath=".\BlockAttributeType.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Root"
 			>
-			<File
-				RelativePath=".\BlockAttributeContainer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeContainer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockAttributeFactory.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockContainer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockContainer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BlockFactory.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Containers.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Containers.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Factories.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Factories.h"
-				>
-			</File>
-			<File
-				RelativePath=".\LevelFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\LevelFactory.h"
-				>
-			</File>
 			<File
 				RelativePath=".\Root.cpp"
 				>
@@ -333,6 +297,126 @@
 				RelativePath=".\Root.h"
 				>
 			</File>
+			<Filter
+				Name="Containers"
+				>
+				<File
+					RelativePath=".\Containers.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Containers.h"
+					>
+				</File>
+				<Filter
+					Name="Block Attribute"
+					>
+					<File
+						RelativePath=".\BlockAttributeContainer.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\BlockAttributeContainer.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Block"
+					>
+					<File
+						RelativePath=".\BlockContainer.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\BlockContainer.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="Factories"
+				>
+				<File
+					RelativePath=".\Factories.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Factories.h"
+					>
+				</File>
+				<Filter
+					Name="Block Attribute"
+					>
+					<File
+						RelativePath=".\BlockAttributeFactory.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\BlockAttributeFactory.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Block"
+					>
+					<File
+						RelativePath=".\BlockFactory.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\BlockFactory.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Level"
+					>
+					<File
+						RelativePath=".\LevelFactory.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\LevelFactory.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="Managers"
+				>
+				<File
+					RelativePath=".\Managers.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Managers.h"
+					>
+				</File>
+				<Filter
+					Name="SpriteManager"
+					>
+					<File
+						RelativePath=".\SpriteManager.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\SpriteManager.h"
+						>
+					</File>
+					<Filter
+						Name="SpriteWrapper"
+						>
+						<File
+							RelativePath=".\SpriteWrapper.cpp"
+							>
+						</File>
+						<File
+							RelativePath=".\SpriteWrapper.h"
+							>
+						</File>
+					</Filter>
+				</Filter>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Game"
@@ -345,18 +429,6 @@
 				RelativePath=".\Game.h"
 				>
 			</File>
-			<Filter
-				Name="Camera"
-				>
-				<File
-					RelativePath=".\Camera.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Camera.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="Level"
@@ -382,30 +454,14 @@
 				</File>
 			</Filter>
 		</Filter>
-		<Filter
-			Name="SpriteManager"
+		<File
+			RelativePath=".\Camera.cpp"
 			>
-			<File
-				RelativePath=".\SpriteManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SpriteManager.h"
-				>
-			</File>
-			<Filter
-				Name="SpriteWrapper"
-				>
-				<File
-					RelativePath=".\SpriteWrapper.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\SpriteWrapper.h"
-					>
-				</File>
-			</Filter>
-		</Filter>
+		</File>
+		<File
+			RelativePath=".\Camera.h"
+			>
+		</File>
 		<File
 			RelativePath=".\main.cpp"
 			>
@@ -435,14 +491,6 @@
 					CompileAsManaged="1"
 				/>
 			</FileConfiguration>
-		</File>
-		<File
-			RelativePath=".\Managers.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\Managers.h"
-			>
 		</File>
 	</Files>
 	<Globals>

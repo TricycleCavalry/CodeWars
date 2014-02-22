@@ -25,7 +25,7 @@ bool App::Init()
 {
 	HWND hWnd = myHGE.System_GetState(HGE_HWND);
 	HINSTANCE hInstance = reinterpret_cast<HINSTANCE>(GetWindowLong(hWnd,GWL_HINSTANCE));
-	InputHandler::Create(hInstance,hWnd,myHGE.System_GetState(HGE_SCREENWIDTH),myHGE.System_GetState(HGE_SCREENHEIGHT),true);
+	InputHandler::Create(hInstance,hWnd,myHGE.System_GetState(HGE_SCREENWIDTH),myHGE.System_GetState(HGE_SCREENHEIGHT),false);
 	
 	srand(static_cast<unsigned int>(time(NULL))); 
 	DL_Debug::Create();
@@ -56,6 +56,8 @@ bool App::Update()
 	}
 
 	float elapsedTime = static_cast<float>(myTimeManager.GetElapsedTime().GetTime());
+	myGame.Update(elapsedTime);
+
 	myGame.Update(elapsedTime);
 
 	Render();

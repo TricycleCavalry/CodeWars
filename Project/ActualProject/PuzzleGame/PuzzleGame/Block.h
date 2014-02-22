@@ -21,7 +21,7 @@ public:
 	void AddAttribute(BlockAttribute* aAttribute);
 	void AddAttributes(GrowingArray<Block*>& someAttributes);
 
-	StaticArray<BlockAttribute*,BAT_NUM>& GetAttributes();
+	GrowingArray<BlockAttribute*>& GetAttributes();
 
 	GrowingArray<Block*>& GetIntersectingBlocks();
 	void SnapToGrid();
@@ -42,7 +42,7 @@ private:
 private:
 	Vector2<float> myPosition;
 	Vector2<float> myExtents;
-	StaticArray<BlockAttribute*,BAT_NUM> myAttributes;
+	GrowingArray<BlockAttribute*> myAttributes;
 	GrowingArray<Block*> myIntersectingBlocks;
 
 };
