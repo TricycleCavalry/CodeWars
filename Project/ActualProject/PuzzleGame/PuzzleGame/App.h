@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "InputHandler.h"
 #include "Game.h"
+#include "SpriteManager.h"
 
 class HGE;
 class hgeFont;
@@ -25,6 +26,9 @@ private:
 	TimeManager myTimeManager;
 
 	Game myGame;
+	SpriteWrapper myWinSprite;
+	bool myIsWon;
+	float myWinCounter;
 };
 
 #endif

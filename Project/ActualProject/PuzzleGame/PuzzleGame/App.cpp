@@ -14,6 +14,8 @@
 
 App::App(HGE& aHGE)
 :	myHGE(aHGE)
+,	myIsWon(false)
+,	myWinCounter(3)
 {
 }
 
@@ -35,6 +37,9 @@ bool App::Init()
 	ROOT->GetFactories().Load();
 
 	myGame.Init(&myHGE);
+	myWinSprite = Root::GetInstance()->GetManagers().mySpriteManager.GetSprite("Data\\GFX\\WinScreen.png");
+	/*myWinSprite = Root::GetInstance()->GetManagers().mySpriteManager.GetSprite("Data\\GFX\\Tiles\\tile01.png");*/
+	
 	return(true);
 };
 
@@ -60,11 +65,25 @@ bool App::Update()
 	{
 		elapsedTime = 0.1;
 	} 
-	if(myGame.Update(elapsedTime) == false)
+	if(myIsWon == false)
 	{
-		return false;
+		if(myGame.Update(elapsedTime) == false)
+		{
+			myIsWon = true;
+			/*return false;*/
+		}
 	}
-
+	else
+	{
+		if(myWinCounter > 0)
+		{
+			myWinCounter -= elapsedTime;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 	Render();
 	return(true);
@@ -76,7 +95,14 @@ bool App::Render()
 	myHGE.Gfx_BeginScene();
 	myHGE.Gfx_Clear(ARGB(1,1,1,1));
 	// DO HGE render stuff
-	myGame.Render();
+	if(myIsWon == false)
+	{
+		myGame.Render();
+	}
+	else
+	{
+		myWinSprite.Render(Vector2<float>(0,0));
+	}
 	myHGE.Gfx_EndScene();
 
 	return true;
