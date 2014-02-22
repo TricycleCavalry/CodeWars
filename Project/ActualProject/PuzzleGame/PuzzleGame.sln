@@ -14,6 +14,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcp
 		{43884794-3158-4103-942A-E20137CC8571} = {43884794-3158-4103-942A-E20137CC8571}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PuzzleEditor", "PuzzleEditor\PuzzleEditor.vcproj", "{B4DD60C2-EBE3-40B9-AE83-A10ECEAFEA1E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43884794-3158-4103-942A-E20137CC8571} = {43884794-3158-4103-942A-E20137CC8571}
+		{7E060FE5-68A3-42FF-A436-D80C66408C54} = {7E060FE5-68A3-42FF-A436-D80C66408C54}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -32,6 +38,10 @@ Global
 		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Debug|Win32.Build.0 = Debug|Win32
 		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Release|Win32.ActiveCfg = Release|Win32
 		{7E060FE5-68A3-42FF-A436-D80C66408C54}.Release|Win32.Build.0 = Release|Win32
+		{B4DD60C2-EBE3-40B9-AE83-A10ECEAFEA1E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B4DD60C2-EBE3-40B9-AE83-A10ECEAFEA1E}.Debug|Win32.Build.0 = Debug|Win32
+		{B4DD60C2-EBE3-40B9-AE83-A10ECEAFEA1E}.Release|Win32.ActiveCfg = Release|Win32
+		{B4DD60C2-EBE3-40B9-AE83-A10ECEAFEA1E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
