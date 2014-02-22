@@ -2,11 +2,25 @@
 #include "SpriteWrapper.h"
 
 SpriteWrapper::SpriteWrapper(void)
-:mySprite(NULL)
+:	mySprite(NULL)
+,	myColor(ARGB(1,1,1,1))
+,	myHotSpot(Vector2f(0,0))
+,	myBlendMode(BLEND_DEFAULT)
 {
 }
 SpriteWrapper::SpriteWrapper(hgeSprite *aSprite)
-:mySprite(aSprite)
+:	mySprite(aSprite)
+,	myColor(ARGB(1,1,1,1))
+,	myHotSpot(Vector2f(0,0))
+,	myBlendMode(BLEND_DEFAULT)
+{
+}
+
+SpriteWrapper::SpriteWrapper(const SpriteWrapper& aSpriteWrapper)
+:	mySprite(aSpriteWrapper.mySprite)
+,	myColor(aSpriteWrapper.myColor)
+,	myHotSpot(aSpriteWrapper.myHotSpot)
+,	myBlendMode(aSpriteWrapper.myBlendMode)
 {
 }
 
@@ -24,35 +38,38 @@ void SpriteWrapper::Render(Vector2<int> aPosition)
 }
 void SpriteWrapper::Render(Vector2<float> aPosition)
 {
-	mySprite->Render(aPosition.myX, aPosition.myY);
+	PreRender();
+	mySprite->Render(aPosition.myX, aPosition.myX);
 }
 void SpriteWrapper::Render(Vector2<float> aPosition, const float aRotation)
 {
+	PreRender();
 	mySprite->RenderEx(aPosition.myX, aPosition.myY, aRotation);
 }
 void SpriteWrapper::Render(Vector2<float> aPosition, const float aRotation, const float anXScale, const float anYScale)
 {
+	PreRender();
 	mySprite->RenderEx(aPosition.myX, aPosition.myY, aRotation, anXScale, anYScale);
 }
 void SpriteWrapper::SetColor(DWORD aColor)
 {
-	mySprite->SetColor(aColor);
+	myColor = aColor;
 }
 void SpriteWrapper::SetHotSpot(Vector2<float> aHotSpotPosition)
 {
-	mySprite->SetHotSpot(aHotSpotPosition.myX, aHotSpotPosition.myY);
+	myHotSpot = aHotSpotPosition;
 }
 void SpriteWrapper::SetBlendMode(const int aBlendMode)
 {
-	mySprite->SetBlendMode(aBlendMode);
+	myBlendMode = aBlendMode;
 }
 int SpriteWrapper::GetBlendMode()
 {
-	return mySprite->GetBlendMode();
+	return myBlendMode;
 }
 DWORD SpriteWrapper::GetColor()
 {
-	return mySprite->GetColor();
+	return myColor;
 }
 float SpriteWrapper::GetWidth()
 {
@@ -61,4 +78,11 @@ float SpriteWrapper::GetWidth()
 float SpriteWrapper::GetHeight()
 {
 	return mySprite->GetHeight();
+}
+
+void SpriteWrapper::PreRender()
+{
+	mySprite->SetColor(myColor);
+	mySprite->SetHotSpot(myHotSpot.myX, myHotSpot.myY);
+	mySprite->SetBlendMode(myBlendMode);
 }

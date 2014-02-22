@@ -40,8 +40,8 @@ void LevelFactory::CreateBlocks(Level* aLevel, tinyxml2::XMLElement* aBlockEleme
 	Tile* currentTile = NULL;
 	while(blockIterator != NULL)
 	{
-		blockId = XMLUTIL::GetString(aBlockElement,"BlockId");
-		blockTilePosF = XMLUTIL::GetVector2(aBlockElement,"Tile");
+		blockId = XMLUTIL::GetString(blockIterator,"BlockId");
+		blockTilePosF = XMLUTIL::GetVector2(blockIterator,"Tile");
 		blockTilePos = Vector2<int>(static_cast<int>(blockTilePosF.x),static_cast<int>(blockTilePosF.y));
 		
 		currentTile = aLevel->GetTile(blockTilePos);

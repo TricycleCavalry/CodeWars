@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "Tile.h"
 
+#include "Block.h"
+
 Tile::Tile(void)
 :	myType(TT_NULL)
 {
@@ -39,6 +41,10 @@ void Tile::Render(const Vector2<float> &aCameraPosition)
 {
 	Vector2<int> camPos(aCameraPosition.myX, aCameraPosition.myY);
 	mySprite.Render(myPosition - camPos);
+	for(int i=0,count=myBlocks.Count();i<count;i++)
+	{
+		myBlocks[i]->Render(aCameraPosition);
+	}
 }
 
 GrowingArray<Block*>& Tile::GetBlocks()

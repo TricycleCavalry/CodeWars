@@ -1,10 +1,13 @@
 #ifndef _BLOCK_H_
 #define _BLOCK_H_
 
+#include <string>
 #include "Vector2.h"
+#include "Vector4.h"
 #include "GrowingArray.h"
 #include "StaticArray.h"
 #include "BlockAttributeType.h"
+#include "SpriteWrapper.h"
 
 class BlockAttribute;
 
@@ -16,6 +19,7 @@ public:
 
 	void Init(const Vector2<float>& aPosition, const Vector2<float>& someExtents);
 	void Update(const float anElapsedTime);
+	void Render(const Vector2<float>& aCameraPosition);
 	
 	Vector2<float>& GetPosition();
 	void Move(const Vector2<float>& aMovementVector);
@@ -30,6 +34,7 @@ public:
 	template<typename TYPE>
 	TYPE* GetAttribute(const BlockAttributeType aType);
 	
+	void SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor);
 
 	void OnEnter();
 	void OnExit();
@@ -45,7 +50,9 @@ private:
 	Vector2<float> myExtents;
 	GrowingArray<BlockAttribute*> myAttributes;
 	GrowingArray<Block*> myIntersectingBlocks;
-
+	
+	SpriteWrapper mySprite;
+	Vector4f myBlockColor;
 };
 
 template<typename TYPE>

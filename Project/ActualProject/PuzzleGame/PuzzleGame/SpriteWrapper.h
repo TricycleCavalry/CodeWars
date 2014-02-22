@@ -9,6 +9,7 @@ class SpriteWrapper
 {
 public:
 	SpriteWrapper(void);
+	SpriteWrapper(const SpriteWrapper& aSpriteWrapper);
 	SpriteWrapper(hgeSprite *aSprite);
 	~SpriteWrapper(void);
 
@@ -29,7 +30,12 @@ public:
 	float GetHeight();
 
 private:
+	void PreRender();
+
 	hgeSprite *mySprite;
+	DWORD myColor;
+	Vector2f myHotSpot;
+	int myBlendMode;
 };
 
 #endif

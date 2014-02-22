@@ -46,7 +46,15 @@ void BlockFactory::CreateBlockType(tinyxml2::XMLElement* anXMLElement)
 	}
 	//block->AddAttributes(myCurrentBlockBlockAttributes);
 
-	StringId type = anXMLElement->Attribute("Id");
+	Vector4f blockClor = XMLUTIL::GetVector4(anXMLElement->Attribute("Color"),Vector4f(1,1,1,1));
+	const char* spriteFilePath = anXMLElement->Attribute("FilePath");
+	if(spriteFilePath == NULL)
+	{
+		spriteFilePath = "";
+	}
+	block->SetBlockSprite(spriteFilePath,blockClor);
+
+	StringId type = XMLUTIL::GetString(anXMLElement,"Id");
 	myTypes[type] = block;
 }
 

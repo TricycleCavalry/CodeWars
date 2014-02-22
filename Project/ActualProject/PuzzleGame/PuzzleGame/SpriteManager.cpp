@@ -37,7 +37,14 @@ SpriteWrapper SpriteManager::GetSprite(StringId &aSpriteId)
 hgeSprite* SpriteManager::LoadSprite(const std::string &aFilePath)
 {
 	StringId spriteId(aFilePath);
-	HTEXTURE texture = myHGE->Texture_Load(aFilePath.c_str());
-	mySprites.Add(new hgeSprite(texture, 0,0, static_cast<float>(myHGE->Texture_GetWidth(texture)), static_cast<float>(myHGE->Texture_GetHeight(texture))), spriteId);
+	if(aFilePath != "")
+	{
+		HTEXTURE texture = myHGE->Texture_Load(aFilePath.c_str());
+		mySprites.Add(new hgeSprite(texture, 0,0, static_cast<float>(myHGE->Texture_GetWidth(texture)), static_cast<float>(myHGE->Texture_GetHeight(texture))), spriteId);
+	}
+	else
+	{
+		mySprites.Add(new hgeSprite(0,0,0,32.f,32.f),spriteId);
+	}
 	return mySprites[spriteId];
 }

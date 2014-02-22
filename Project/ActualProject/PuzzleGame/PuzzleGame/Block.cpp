@@ -30,6 +30,10 @@ void Block::Update(const float anElapsedTime)
 		myAttributes[i]->Update(anElapsedTime);
 	}
 }
+void Block::Render(const Vector2<float>& aCameraPosition)
+{
+	mySprite.Render(myPosition - aCameraPosition);
+}
 Vector2<float>& Block::GetPosition()
 {
 	return myPosition;
@@ -60,6 +64,15 @@ void Block::SnapToGrid()
 {
 	//TODO:
 	//ROOT->myBlockManager->SnapBlockToGrid(this);
+}
+void Block::SetBlockSprite(const std::string& aFilePath, const Vector4f& aColor)
+{
+	mySprite = Root::GetInstance()->GetManagers().mySpriteManager.GetSprite(aFilePath);
+	myBlockColor = aColor;
+	if(aFilePath == "")
+	{
+		mySprite.SetColor(ARGB(myBlockColor.a,myBlockColor.r,myBlockColor.g,myBlockColor.b));
+	}
 }
 void Block::OnEnter()
 {
@@ -93,6 +106,8 @@ Block* Block::Copy()
 	{
 		//returnBlock->AddAttribute(myAttributes[i]->Copy());
 		//returnBlock->GetAttribute<BlockAttribute*>(static_cast<BlockAttributeType>(i)) ->SetOwner(returnBlock);
-	}	
+	}
+	returnBlock->mySprite = mySprite;
+	returnBlock->myBlockColor = myBlockColor;
 	return returnBlock;
 }
