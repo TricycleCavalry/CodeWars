@@ -165,4 +165,5 @@ void Editor::SaveFile( const std::string &aFile )
 	{
 		file.WriteInt( myTiles[i].myType );
 	}
+	file.Close();
 }
